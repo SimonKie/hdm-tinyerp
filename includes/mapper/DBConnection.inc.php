@@ -8,5 +8,21 @@
  */
 class DBConnection
 {
+    private static $dsn = 'mysql:host=wp306.webpack.hosteurope.de;dbname=db1076019-tinyerp';
+    private static $dbuser = 'db1076019-u';
+    private static $dbpass = 'HdM2016!';
 
+
+    public static function getConnection()
+    {
+        try {
+            $conn = new PDO(self::$dsn, self::$dbuser, self::$dbpass);
+        } catch (PDOException $e)
+        {
+            echo $e->getMessage();
+            $conn = FALSE;
+        }
+
+        return $conn;
+    }
 }
