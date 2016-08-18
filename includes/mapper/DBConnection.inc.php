@@ -10,7 +10,7 @@ class DBConnection
 {
     private static $dsn = 'mysql:host=wp306.webpack.hosteurope.de;dbname=db1076019-tinyerp';
     private static $dbuser = 'db1076019-u';
-    private static $dbpass = 'HdM2016!';
+    private static $dbpass = '';
 
 
     public static function getConnection()
