@@ -1,10 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ placeholder:title }}</title>
+    
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/Main.css" />
+    
+    
 </head>
 <body>
-
+    <div class="topbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>TinyERP</h1>
+                </div>
+                <div class="col-sm-6">
+                    <p class="user">Max Mustermann</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="dash">
+        <div class="container">
+            <div class="row">
+                <!-- left area -->
+                <div class="col-sm-3">
+                    <div class="box">
+                        <h2>Hauptmenü</h2>
+                    </div>
+                    <div class="box">
+                        <h2>Statistiken</h2>
+                    </div>
+                </div>
+                
+                <!-- center area -->
+                <div class="col-sm-6">
+                    <div class="box">
+                        <h2>Neue Rechnung erstellen</h2>
+                        <p>Erstellen Sie hier eine neue Rechnung für einen neuen oder einen Bestandskunden. Tragen Sie hierzu alle benötigten Informationen in die entsprechenden Felder ein. Falls Eingaben unklar sind, klicken Sie auf das (i)-Symbol, um detaillierte Informationen zur jeweils benötgiten Eingabe zu erhalten. Alle Felder sind Pflichtfelder.</p>
+                        
+                        <form class="">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <p>Rechnungsdatum</p>
+                                    </td>
+                                    <td>
+                                        <input type="text" placeholder="21.08.2016" class="input" />
+                                    </td>
+                                    <td class="add-info">
+                                        <p>i</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Lieferdatum</p>
+                                    </td>
+                                    <td>
+                                        <input type="text" placeholder="21.08.2016" class="input" />
+                                    </td>
+                                    <td class="add-info">
+                                        <p>i</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- right area -->
+                <div class="col-sm-3">
+                    <div class="box">
+                        <h2>Fortschritt</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
