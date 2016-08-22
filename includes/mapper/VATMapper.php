@@ -93,4 +93,26 @@ class VATMapper extends DataMapper
         else
             return $VATs;
     }
+
+    public function update($VAT)
+    {
+        $st = self::$db->prepare("
+        update VAT set 
+        Value = :Value,
+        Description = :Description,
+        StartDate = :StartDate,
+        EndDate = :EndDate,
+        WHERE ID= :id
+        ");
+
+        $st->execute(array(
+            ':Value' => $VAT->getValue(),
+            ':Description' => $VAT->getDescription(),
+            ':StartDate' => $VAT->getStartDate(),
+            ':EndDate' => $VAT->getEndDate(),
+            ':id' => $VAT->getId()
+        ));
+
+        return self::$db->lastInsertId();
+    }
 }
