@@ -54,11 +54,11 @@ class VATMapper extends DataMapper
         if($v = $query->fetch(PDO::FETCH_OBJ))
         {
             $VAT = new VAT();
-            $VAT->setId($v->ID);
-            $VAT->setValue($v->Value);
+            $VAT->setId(intval($v->ID));
+            $VAT->setValue(floatval($v->Value));
             $VAT->setDescription($v->Description);
-            $VAT->setStartDate($v->StartDate);
-            $VAT->setEndDate($v->EndDate);
+            $VAT->setStartDate(strtotime($v->StartDate));
+            $VAT->setEndDate(strtotime($v->EndDate));
 
             return $VAT;
         } else
@@ -79,11 +79,11 @@ class VATMapper extends DataMapper
         while($v = $query->fetch(PDO::FETCH_OBJ))
         {
             $VAT = new VAT();
-            $VAT->setId($v->ID);
-            $VAT->setValue($v->Value);
+            $VAT->setId(intval($v->ID));
+            $VAT->setValue(floatval($v->Value));
             $VAT->setDescription($v->Description);
-            $VAT->setStartDate($v->StartDate);
-            $VAT->setEndDate($v->EndDate);
+            $VAT->setStartDate(strtotime($v->StartDate));
+            $VAT->setEndDate(strtotime($v->EndDate));
 
             $VATs[] = $VAT;
         }
