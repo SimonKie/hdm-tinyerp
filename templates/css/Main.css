@@ -2,6 +2,8 @@
     Main Style for TinyERP
 */
 
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+
 body {
     background: #efefef;
     font-family: 'Open Sans';
