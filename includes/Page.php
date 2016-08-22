@@ -6,6 +6,9 @@
  * Date: 22.08.2016
  * Time: 23:46
  */
+
+require_once('Config.php');
+
 class Page
 {
     private $Title = "";

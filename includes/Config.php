@@ -7,16 +7,10 @@
  */
 
 
-# Database Settings
+## Database Settings ##
 
-// Enter your Database Hostname, default is 'localhost'
-define(DB_Host, 'localhost');
+define('DB_Host', 'localhost'); // Enter your Database Hostname, default is 'localhost'
+define('DB_Name', 'tinyERP'); // Enter your Database Name
+define('DB_User', 'root'); // Enter your Database Username
+define('DB_Password', ''); // Enter your Database Password
 
-// Enter your Database Name
-define(DB_Name, 'tinyERP');
-
-// Enter your Database Username
-define(DB_User, 'root');
-
-// Enter your Database Password
-define(DB_User, '');
