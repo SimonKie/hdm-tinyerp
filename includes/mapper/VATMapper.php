@@ -7,7 +7,6 @@
  */
 
 require_once('DataMapper.php');
-require_once('../classes/VAT.php');
 
 class VATMapper extends DataMapper
 {
@@ -49,7 +48,7 @@ class VATMapper extends DataMapper
      */
     public static function findbyid($id)
     {
-        $query = self::$db->query("select * from VAT where ID=" . $id);
+        $query = self::$db->query("select * from vat where ID=" . $id);
 
         if($v = $query->fetch(PDO::FETCH_OBJ))
         {
@@ -63,7 +62,7 @@ class VATMapper extends DataMapper
             return $VAT;
         } else
         {
-            return false;
+            return null;
         }
     }
 
@@ -72,7 +71,7 @@ class VATMapper extends DataMapper
      */
     public static function getallVATs()
     {
-        $query = self::$db->query("select * from VAT");
+        $query = self::$db->query("select * from vat");
 
         $VATs = array();
 
@@ -88,8 +87,8 @@ class VATMapper extends DataMapper
             $VATs[] = $VAT;
         }
 
-        if(array_count_values($VATs) == 0)
-            return false;
+        if($query->rowCount() == 0)
+            return null;
         else
             return $VATs;
     }
@@ -97,7 +96,7 @@ class VATMapper extends DataMapper
     public function update($VAT)
     {
         $st = self::$db->prepare("
-        update VAT set 
+        update vat set 
         Value = :Value,
         Description = :Description,
         StartDate = :StartDate,

@@ -39,6 +39,14 @@ class VAT
     }
 
     /**
+     * @return mixed
+     */
+    public function getValueasPercent()
+    {
+        return intval($this->Value*100);
+    }
+
+    /**
      * @param mixed $Value
      */
     public function setValue($Value)
@@ -94,5 +102,16 @@ class VAT
         $this->EndDate = $EndDate;
     }
 
+    public function listObject()
+    {
+        $return = '<div>
+        <h1>' . $this->getDescription() . '</h1>
+        <p>Steuersatz: ' . $this->getValueasPercent() . ' gültig: ' . $this->getStartDate() . ' - ' . $this->getEndDate() . '
+        <a href="">bearbeiten</a> | <a href="">löschen</a>
+        </p>        
+        ';
+        
+        return $return;
+    }
 
 }
