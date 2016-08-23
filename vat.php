@@ -21,6 +21,6 @@ foreach($vats as $vat) {
 }
 
 $page = new Page();
-$page->setTitle("tinyERP");
+$page->setTitle("tinyERP - VAT");
 $page->setContent($content);
 $page->run();
