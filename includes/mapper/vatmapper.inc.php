@@ -14,7 +14,7 @@ class VATMapper extends DataMapper
      * @param VAT:$VAT
      * @return integer|$id
      */
-    public function add($VAT)
+    public static function add($VAT)
     {
         $st = self::$db->prepare("
         insert into VAT set 
@@ -39,7 +39,7 @@ class VATMapper extends DataMapper
      */
     public static function delete($VAT)
     {
-        self::$db->query("delete from VAT where ID=" . $VAT->getid);
+        self::$db->query("delete from VAT where ID=" . $VAT->getid());
     }
 
     /**
@@ -93,7 +93,7 @@ class VATMapper extends DataMapper
             return $VATs;
     }
 
-    public function update($VAT)
+    public static function update($VAT)
     {
         $st = self::$db->prepare("
         update vat set 
@@ -111,7 +111,5 @@ class VATMapper extends DataMapper
             ':EndDate' => $VAT->getEndDate(),
             ':id' => $VAT->getId()
         ));
-
-        return self::$db->lastInsertId();
     }
 }

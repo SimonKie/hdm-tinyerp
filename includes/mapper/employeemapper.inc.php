@@ -14,7 +14,7 @@ class EmployeeMapper extends DataMapper
 {
 
 
-    public function add($Employee){
+    public static function add($Employee){
         $st = self::$db->prepare("
         insert into Employee set 
         FirstName = :FirstName,
@@ -35,7 +35,7 @@ class EmployeeMapper extends DataMapper
 
     public static function delete($Employee)
     {
-        self::$db->query("delete from Employee where ID=" . $Employee->getId);
+        self::$db->query("delete from Employee where ID=" . $Employee->getId());
     }
 
     public static function findbyid($id)
@@ -46,7 +46,7 @@ class EmployeeMapper extends DataMapper
         {
             
             $Employee = new Employee();
-            $Employee->setId($e->ID);
+            $Employee->setId(intval($e->ID));
             $Employee->setFirstName($e->FirstName);
             $Employee->setLastName($e->LastName);
             $Employee->setEMail($e->EMail);
@@ -69,7 +69,7 @@ class EmployeeMapper extends DataMapper
         while($e = $query->fetch(PDO::FETCH_OBJ))
         {
             $Employee = new Employee();
-            $Employee->setId($e->ID);
+            $Employee->setId(intval($e->ID));
             $Employee->setFirstName($e->FirstName);
             $Employee->setLastName($e->LastName);
             $Employee->setEMail($e->EMail);
@@ -84,7 +84,7 @@ class EmployeeMapper extends DataMapper
             return $Employees;
     }
 
-    public function update($Employee)
+    public static function update($Employee)
     {
         $st = self::$db->prepare("
         update employee set 
@@ -102,7 +102,5 @@ class EmployeeMapper extends DataMapper
             ':Phone' => $Employee->getPhone(),
             ':id' => $Employee->getId()
         ));
-
-        return self::$db->lastInsertId();
     }
 }
