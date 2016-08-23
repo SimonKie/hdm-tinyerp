@@ -7,7 +7,7 @@
  */
 
 /**
- * Import all mapper classes an config file
+ * Import all mapper classes and config file
  */
 require_once('mapper/datamapper.inc.php');
 require_once('mapper/vatmapper.inc.php');

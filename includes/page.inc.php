@@ -17,8 +17,8 @@ class Page
 
     private $MainNav = array(
         'Home' => 'index.php',
-        'Rechnungen' => 'invoice.php',
-        'Kunden' => 'customers.php'
+        'Rechnungen' => '',
+        'Kunden' => ''
     );
 
     /**
@@ -80,9 +80,9 @@ class Page
 
     public function run()
     {
+        echo $this->getHeader();
+        echo $this->getMainNav();
+        echo $this->getFooter();
 
     }
-
-
-
 }
