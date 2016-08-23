@@ -9,9 +9,9 @@
 /**
  * Import all mapper classes an config file
  */
-require_once('mapper/DataMapper.php');
-require_once('mapper/VATMapper.php');
-require_once('Config.php');
+require_once('mapper/datamapper.inc.php');
+require_once('mapper/vatmapper.inc.php');
+require_once('config.inc.php');
 
 
 /**

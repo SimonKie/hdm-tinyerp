@@ -7,7 +7,7 @@
  * Time: 23:46
  */
 
-require_once('Config.php');
+require_once('config.inc.php');
 
 class Page
 {

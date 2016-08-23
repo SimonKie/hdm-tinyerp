@@ -6,8 +6,8 @@
  * Time: 09:49
  */
 
-require_once('includes/classes/VAT.php');
-require_once('includes/MySQL.php');
+require_once('includes/classes/vat.inc.php');
+require_once('includes/mysql.inc.php');
 
 $vats = VATMapper::getallVATs();
 
