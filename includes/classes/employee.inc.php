@@ -62,7 +62,7 @@ class Employee
     public function setFirstName($FirstName)
     {
         $this->FirstName = $FirstName;
-        return $this;
+        // return $this; ???
     }
 
     /**

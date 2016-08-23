@@ -11,9 +11,9 @@ require_once('config.inc.php');
 
 class Page
 {
-    private $Title = "";
-    private $Content = "";
-    private $RightCol = "";
+    private $Title = "tinyERP";
+    private $Content = "Error 404!";
+    private $RightArea = "Fortschritt";
 
     private $MainNav = array(
         'Home' => 'index.php',
@@ -40,9 +40,9 @@ class Page
     /**
      * @param string $rightCol
      */
-    public function setRightCol($RightCol)
+    public function setRightArea($RightArea)
     {
-        $this->RightCol = $RightCol;
+        $this->RightArea = $RightArea;
     }
 
     /**
@@ -50,7 +50,37 @@ class Page
      */
     private function getHeader()
     {
-        return '';
+        return "
+<!DOCTYPE html>
+<html lang=\"de\">
+<head>
+    <meta charset=\"UTF-8\">
+    <title>$this->Title</title>
+    
+    <!-- css -->
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"includes/css/bootstrap.min.css\" />
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"includes/css/bootstrap-theme.min.css\" />
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"includes/css/main.css\" />
+    
+    
+</head>
+<body>
+    <div class=\"topbar\">
+        <div class=\"container\">
+            <div class=\"row\">
+                <div class=\"col-sm-6\">
+                    <h1>TinyERP</h1>
+                </div>
+                <div class=\"col-sm-6\">
+                    <p class=\"user\">Max Mustermann</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=\"dash\">
+        <div class=\"container\">
+            <div class=\"row\">
+        ";
     }
 
     /**
@@ -58,14 +88,14 @@ class Page
      */
     private function getMainNav()
     {
-        $return = '<ul>';
+        $return = "<ul class=\"MainNav\">";
 
         foreach($this->MainNav as $key => $value)
         {
-            $return .= '<li></li>';
+            $return .= "<li><a href='$value'>$key</a></li>";
         }
 
-        $return .= '</ul>';
+        $return .= "</ul>";
 
         return $return;
     }
@@ -73,15 +103,66 @@ class Page
     /**
      * @return string
      */
+    private function getLeftArea($LeftArea)
+    {
+        return "
+                <!-- left area -->
+                <div class=\"col-sm-3\">
+                    <div class=\"box\">
+                        <h2>Hauptmenü</h2>
+                        $LeftArea
+                    </div>
+                    <div class=\"box\">
+                        <h2>Statistiken</h2>
+                    </div>
+                </div>       
+        ";
+    }
+
+    private function getContent()
+    {
+        return "
+                <!-- center area -->
+                <div class=\"col-sm-6\">
+                    <div class=\"box\">
+                        $this->Content
+                    </div>
+                </div>
+        ";
+    }
+
+    private function getRightArea()
+    {
+        return "
+                <!-- right area -->
+                <div class=\"col-sm-3\">
+                    <div class=\"box\">
+                        <h2>$this->RightArea &nbsp;</h2>
+                    </div>
+                </div>        
+        ";
+    }
+
+    /**
+     * @return string
+     */
     private function getFooter()
     {
-        return '';
+        return "
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+        ";
     }
 
     public function run()
     {
         echo $this->getHeader();
-        echo $this->getMainNav();
+        echo $this->getLeftArea($this->getMainNav());
+        echo $this->getContent();
+        echo $this->getRightArea();
         echo $this->getFooter();
 
     }

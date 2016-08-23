@@ -104,8 +104,8 @@ class VAT
 
     public function listObject()
     {
-        $return = '<div>
-        <h1>' . $this->getDescription() . '</h1>
+        $return = '
+        <h6>' . $this->getDescription() . '</h6>
         <p>Steuersatz: ' . $this->getValueasPercent() . ' gültig: ' . $this->getStartDate() . ' - ' . $this->getEndDate() . '
         <a href="">bearbeiten</a> | <a href="">löschen</a>
         </p>        

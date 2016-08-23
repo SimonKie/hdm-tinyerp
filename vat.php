@@ -8,9 +8,19 @@
 
 require_once('includes/classes/vat.inc.php');
 require_once('includes/mysql.inc.php');
+require_once('includes/page.inc.php');
+
+
 
 $vats = VATMapper::getallVATs();
 
+$content = "";
+
 foreach($vats as $vat) {
-    echo $vat->listObject();
+    $content .= $vat->listObject();
 }
+
+$page = new Page();
+$page->setTitle("tinyERP");
+$page->setContent($content);
+$page->run();
