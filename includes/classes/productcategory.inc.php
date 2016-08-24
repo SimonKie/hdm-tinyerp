@@ -75,7 +75,7 @@ class productcategory
 
         foreach ($ProductCategories as $PC)
         {
-            $content .= "<option value=\"" . $PC->getId() . "\">" . $PC->getName() . "</option>";
+            $content .= "<option value=\"" . $PC->getId() . "\">" . $PC->getName() . "</option>\n";
         }
 
         $content .= "</select>";

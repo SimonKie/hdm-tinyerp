@@ -122,7 +122,7 @@ class VAT
 
         foreach ($VAT as $v)
         {
-            $content .= "<option value=\"" . $v->getId() . "\">" . $v->getDescription() . "</option>";
+            $content .= "<option value=\"" . $v->getId() . "\">" . $v->getDescription() . "</option>\n";
         }
 
         $content .= "</select>";
