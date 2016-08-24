@@ -98,6 +98,26 @@ class Employee
         $this->Phone = $Phone;
     }
 
+    public function getFullName()
+    {
+        return $this->LastName . ", " . $this->FirstName;
+    }
+
+    public static function getDropdown($Employees)
+    {
+        $content = "
+        <select name=\"Employee\">
+        <option selected value=\"null\">&nbsp;</option> ";
+
+        foreach ($Employees as $e)
+        {
+            $content .= "<option value=\"" . $e->getId() . "\">" . $e->FullName() . "</option>\n";
+        }
+
+        $content .= "</select>";
+
+        return $content;
+    }
 
 
 
