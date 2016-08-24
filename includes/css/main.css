@@ -3,6 +3,7 @@
 */
 
 @import 'https://fonts.googleapis.com/css?family=Open+Sans';
+@import 'https://fonts.googleapis.com/css?family=Lobster';
 
 body {
     background: #efefef;
@@ -11,9 +12,11 @@ body {
 
 .topbar {
     width: 100%;
-    background: #09f;
+    background: #1f6a66;
     margin-bottom: 30px;
     box-shadow: 0px 0px 2px #9f9f9f;
+    height: 60px;
+    oveflow: hidden;
 }
 
 h1 {
@@ -21,8 +24,11 @@ h1 {
     line-height: 60px;
     margin: 0;
     color: #fff;
-    font-weight: 100;
-    font-size: 200%;
+    font-weight: 600;
+    font-size: 70px;
+    font-family: 'Lobster';
+    margin-top: 10px;
+    z-index: 100;
 }
 
 p.user {
@@ -32,6 +38,15 @@ p.user {
     margin: 0;
     color: #fff;
     font-size: 90%;
+}
+
+.topbar img {
+    float: right;
+    width: 40px;
+    height: 40px;
+    display: inline;
+    margin: 10px 0 10px 20px;
+    border-radius: 4px;
 }
 
 .box {
@@ -48,6 +63,27 @@ p.user {
     font-size: 150%;
 }
 
+.login {
+    bottom: 40%;
+}
+
+.login form {
+    margin: 40px 0;
+}
+
+.login input {
+    margin: 0 0 20px 0;
+}
+
+.btn-primary,
+.btn-primary:focus,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:active:hover {
+    background: #1f6a66;
+    border: none;
+}
+
 table {
     width: 100%;
 }
@@ -59,4 +95,10 @@ table {
     padding: 2px 5px;
     text-align: center;
     cursor: pointer;
+}
+
+p.copyright {
+    text-align: center;
+    font-size: 80%;
+    color: #666;
 }

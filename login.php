@@ -6,6 +6,9 @@
  * Time: 20:31
  */
 
+    require_once('includes/classes/html.inc.php');
+    $html = new HTML();
+
     session_start();
 
     // do both fields contain information?
@@ -31,5 +34,19 @@
         Header('Location: index.php');
         exit;
     } else {
-        // TODO output form without errors
+
+        // output standard form without modifications
+        echo $html->header("TinyERP :: Login");
+        echo $html->topbar(false,"");
+        echo $html->startLoginForm();
+        echo "<h2>Login</h2>";
+        echo "<form method=\"post\" action=\"login.php\" class=\"form-group\">";
+        echo "<input class=\"form-control\" type=\"text\" name=\"username\" placeholder=\"Benutzername\"/>";
+        echo "<input class=\"form-control\" type=\"password\" name=\"password\" placeholder=\"Passwort\"/>";
+        echo "<button type=\"submit\" class=\"btn btn-primary\">Anmelden</button>";
+        echo "</form>";
+        echo $html->endLoginForm();
+        echo $html->footer();
+
+
     }
