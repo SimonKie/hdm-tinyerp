@@ -115,13 +115,13 @@ class VAT
         return $return;
     }
 
-    public static function getDropdown($VAT)
+    public static function getDropdown($VATs)
     {
         $content = "
         <select name=\"VAT\">
-        <option value=\"null\">&nbsp;</option> ";
+        <option selected value=\"null\">&nbsp;</option> ";
 
-        foreach ($VAT as $v)
+        foreach ($VATs as $v)
         {
             $content .= "<option value=\"" . $v->getId() . "\">" . $v->getDescription() . "</option>\n";
         }
