@@ -164,6 +164,6 @@ class Page
         echo $this->getContent();
         echo $this->getRightArea();
         echo $this->getFooter();
-
+        die();
     }
 }

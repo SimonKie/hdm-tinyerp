@@ -114,4 +114,20 @@ class VAT
         return $return;
     }
 
+    public static function getDropdown($VAT)
+    {
+        $content = "
+        <select name=\"VAT\">
+        <option value=\"null\">&nbsp;</option> ";
+
+        foreach ($VAT as $v)
+        {
+            $content .= "<option value=\"" . $v->getId() . "\">" . $v->getDescription() . "</option>";
+        }
+
+        $content .= "</select>";
+
+        return $content;
+    }
+
 }

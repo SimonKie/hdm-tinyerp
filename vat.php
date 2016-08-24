@@ -6,19 +6,12 @@
  * Time: 09:49
  */
 
-require_once('includes/classes/vat.inc.php');
-require_once('includes/mysql.inc.php');
-require_once('includes/page.inc.php');
 
 
+require_once('includes/bootstrap.inc.php');
 
-$vats = VATMapper::getallVATs();
 
-$content = "";
-
-foreach($vats as $vat) {
-    $content .= $vat->listObject();
-}
+$content = VAT::getDropdown(VATMapper::getallVATs());
 
 $page = new Page();
 $page->setTitle("tinyERP - VAT");
