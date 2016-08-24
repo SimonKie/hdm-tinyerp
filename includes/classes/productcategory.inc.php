@@ -72,7 +72,7 @@ class productcategory
     {
         $content = "
         <select name=\"ProductCategory\">
-        <option value=\"null\">&nbsp;</option> ";
+        <option selected value=\"null\">&nbsp;</option> ";
 
         foreach ($ProductCategories as $PC)
         {
