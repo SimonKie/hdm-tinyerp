@@ -8,7 +8,7 @@
  */
 class VAT
 {
-    private $id;
+    private $id = null;
     private $Value;
     private $Description;
     private $StartDate;
@@ -27,7 +27,8 @@ class VAT
      */
     public function setId($id)
     {
-        $this->id = $id;
+        if($this->id == null)
+            $this->id = $id;
     }
 
     /**

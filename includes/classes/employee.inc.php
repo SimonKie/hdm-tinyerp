@@ -8,7 +8,7 @@
  */
 class Employee
 {
-    private $id;
+    private $id = null;
     private $FirstName;
     private $LastName;
     private $EMail;
@@ -28,7 +28,8 @@ class Employee
      */
     public function setId($id)
     {
-        $this->id = $id;
+        if($this->id == null)
+            $this->id = $id;
     }
 
     /**

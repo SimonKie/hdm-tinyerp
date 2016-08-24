@@ -8,7 +8,7 @@
  */
 class productcategory
 {
-    private $id;
+    private $id = null;
     private $Name;
     private $Description;
 
@@ -25,7 +25,8 @@ class productcategory
      */
     public function setId($id)
     {
-        $this->id = $id;
+        if($this->id == null)
+            $this->id = $id;
     }
 
     /**
