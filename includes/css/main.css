@@ -31,13 +31,23 @@ h1 {
     z-index: 100;
 }
 
-p.user {
-    text-align: right;
-    height: 60px;
+#user-menu {
+    float: right;
     line-height: 60px;
-    margin: 0;
+    height: 60px;
+    padding: 0 64px 0 15px;
+    margin: 0 -15px 0 0;
     color: #fff;
     font-size: 90%;
+    display: inline;
+    border-radius: 0px;
+    background-color: transparent;
+}
+
+button#user-menu:focus,
+button#user-menu:hover,
+button#user-menu:active {
+    background-color: #094a46 !important;
 }
 
 .topbar img {
@@ -82,6 +92,10 @@ p.user {
 .btn-primary:active:hover {
     background: #1f6a66;
     border: none;
+}
+
+.dropdown-menu span.glyphicon {
+    margin-right: 10px;
 }
 
 table {
