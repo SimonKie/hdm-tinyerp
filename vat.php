@@ -10,10 +10,10 @@
 
 require_once('includes/bootstrap.inc.php');
 
-
 $content = "MWSt. : " . VAT::getDropdown(VATMapper::getallVATs());
 
 $page = new Page();
 $page->setTitle("tinyERP - VAT");
+$page->setRightArea($page->getMasterDataNav());
 $page->setContent($content);
 $page->run();

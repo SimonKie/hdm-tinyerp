@@ -27,7 +27,7 @@ class VAT
      */
     public function setId($id)
     {
-        if($this->id == null)
+        if($this->id == null && $id !== null)
             $this->id = $id;
     }
 
@@ -118,7 +118,7 @@ class VAT
     public static function getDropdown($VATs)
     {
         $content = "
-        <select name=\"VAT\">
+        <select class='dropdown' name=\"VAT\">
         <option selected value=\"null\">&nbsp;</option> ";
 
         foreach ($VATs as $v)

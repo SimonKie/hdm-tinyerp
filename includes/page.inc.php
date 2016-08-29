@@ -21,6 +21,15 @@ class Page
         'Kunden' => ''
     );
 
+    private $MasterDataNav = array(
+        'Firma' => '',
+        'Mitarbeiter' => '',
+        'Steuersätze' => '',
+        'Produktkategorien' => '',
+        'Produkte' => '',
+        'tinyERP' => ''
+    );
+
     /**
      * @param string $Title
      */
@@ -88,9 +97,23 @@ class Page
      */
     private function getMainNav()
     {
-        $return = "<ul class=\"MainNav\">";
+        $return = "<ul class=\"main-nav\">";
 
         foreach($this->MainNav as $key => $value)
+        {
+            $return .= "<li><a href='$value'>$key</a></li>";
+        }
+
+        $return .= "</ul>";
+
+        return $return;
+    }
+
+    public function getMasterDataNav()
+    {
+        $return = "<ul class=\"sub-nav\">";
+
+        foreach($this->MasterDataNav as $key => $value)
         {
             $return .= "<li><a href='$value'>$key</a></li>";
         }

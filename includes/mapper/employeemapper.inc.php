@@ -13,7 +13,6 @@ require_once('datamapper.inc.php');
 class EmployeeMapper extends DataMapper
 {
 
-
     public static function add($Employee){
         $st = self::$db->prepare("
         insert into Employee set 
