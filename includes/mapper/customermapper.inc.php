@@ -10,7 +10,7 @@
 require_once('datamapper.inc.php');
 
 
-class Customermapper extends DataMapper
+class CustomerMapper extends DataMapper
 {
 
     public static function add($customer){

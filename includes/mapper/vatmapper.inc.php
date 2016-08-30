@@ -8,7 +8,7 @@
 
 require_once('datamapper.inc.php');
 
-class VATMapper extends DataMapper
+class VatMapper extends DataMapper
 {
     /**
      * @param $vat:$VAT
