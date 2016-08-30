@@ -7,7 +7,7 @@
  * Time: 16:34
  */
 
-require_once('datamapper.inc.php');
+require_once('dataMapper.inc.php');
 
 class ProductCategoryMapper extends DataMapper
 {

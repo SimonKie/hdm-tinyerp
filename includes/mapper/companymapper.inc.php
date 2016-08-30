@@ -6,7 +6,7 @@
  * Date: 8/30/2016
  * Time: 4:45 PM
  */
-require_once('datamapper.inc.php');
+require_once('dataMapper.inc.php');
 
 class CompanyMapper extends DataMapper
 {
