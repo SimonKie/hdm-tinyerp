@@ -178,7 +178,7 @@ class Invoice
 
         foreach ($invoice as $i)
         {
-            $content .= "<option value=\"" .$i->getId()."\">" .$i->getCustomer(). .$i->getCompany()."</option>\n";
+            $content .= "<option value=\"" .$i->getId()."\">" .$i->getCustomer()."\">" .$i->getCompany()."</option>\n";
         }
 
         $content .= "</select>";
