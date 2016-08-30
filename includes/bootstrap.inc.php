@@ -10,12 +10,18 @@
  * Import all mapper classes and config file
  */
 
-require_once('classes/vat.inc.php');
-require_once('classes/productcategory.inc.php');
+require_once('classes/customer.inc.php');
+require_once('classes/company.inc.php');
 require_once('classes/employee.inc.php');
 require_once('classes/invoice.inc.php');
-require_once('classes/customer.inc.php');
-require_once (classes/company.inc.php);
+require_once('classes/invoicePosition.inc.php');
+require_once('classes/number.inc.php');
+require_once('classes/pdfArchive.inc.php');
+require_once('classes/product.inc.php');
+require_once('classes/productcategory.inc.php');
+require_once('classes/user.inc.php');
+require_once('classes/userRole.inc.php');
+require_once('classes/vat.inc.php');
 
 
 require_once('mapper/datamapper.inc.php');
