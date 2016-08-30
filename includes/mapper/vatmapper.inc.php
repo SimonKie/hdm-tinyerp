@@ -6,7 +6,7 @@
  * Time: 21:58
  */
 
-require_once('datamapper.inc.php');
+require_once('dataMapper.inc.php');
 
 class VatMapper extends DataMapper
 {

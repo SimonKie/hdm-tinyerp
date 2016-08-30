@@ -6,9 +6,9 @@
  * Date: 8/30/2016
  * Time: 4:45 PM
  */
-require_once('datamapper.inc.php');
+require_once('dataMapper.inc.php');
 
-class companymapper extends DataMapper
+class CompanyMapper extends DataMapper
 {
     public static function add($company){
         $st = self::$db->prepare("
@@ -16,7 +16,7 @@ class companymapper extends DataMapper
         Name = :Name,
         Street = :Street,
         EMail = :EMail,
-        ZipCode = :ZipCode,
+        ZIPCode = :ZIPCode,
         City = :City,
         EMail = :EMail,
         Bank = :Bank,
@@ -61,13 +61,18 @@ class companymapper extends DataMapper
             $Company->setId(intval($e->ID));
             $Company->setName($e->Name);
             $Company->setStreet($e->Street);
-            $Company->setZIPCode($e->zipCode);
+            $Company->setZipCode($e->ZIPCode);
             $Company->setCity($e->City);
             $Company->setEMail($e->EMail);
             $Company->setBank($e->Bank);
-            
-
-            return $Employee;
+            $Company->setIban($e->IBAN);
+            $Company->setBic($e->BIC);
+            $Company->setCeo($e->CEO);
+            $Company->setRegister($e->Register);
+            $Company->setRegisterNr($e->RegisterNr);
+            $Company->setVatid($e->VATID);
+          
+            return $Company;
         } else
         {
             return null;
@@ -75,47 +80,70 @@ class companymapper extends DataMapper
     }
 
 
-    public static function getallEmployees()
+    public static function getAllCompanies()
     {
-        $query = self::$db->query("select * from employee");
+        $query = self::$db->query("SELECT * FROM Company");
 
-        $Employees = array();
+        $Companies = array();
 
-        while($e = $query->fetch(PDO::FETCH_OBJ))
+        WHILE($e = $query->fetch(PDO::FETCH_OBJ))
         {
-            $Employee = new Employee();
-            $Employee->setId(intval($e->ID));
-            $Employee->setFirstName($e->FirstName);
-            $Employee->setLastName($e->LastName);
-            $Employee->setEMail($e->EMail);
-            $Employee->setPhone($e->Phone);
 
-            $Employees[] = $Employee;
+            $Company = new Company();
+            $Company->setId(intval($e->ID));
+            $Company->setName($e->Name);
+            $Company->setStreet($e->Street);
+            $Company->setZipCode($e->ZIPCode);
+            $Company->setCity($e->City);
+            $Company->setEMail($e->EMail);
+            $Company->setBank($e->Bank);
+            $Company->setIban($e->IBAN);
+            $Company->setBic($e->BIC);
+            $Company->setCeo($e->CEO);
+            $Company->setRegister($e->Register);
+            $Company->setRegisterNr($e->RegisterNr);
+            $Company->setVatid($e->VATID);
+            $Companies[] = $Company;
         }
 
         if($query->rowCount() == 0)
             return null;
         else
-            return $Employees;
+            return $Companies;
     }
 
-    public static function update($Employee)
+    public static function update($company)
     {
         $st = self::$db->prepare("
-        update employee set 
-        FirstName = :FirstName,
-        LastName = :LastName,
+        UPDATE Company SET 
+        Name = :Name,
+        Street = :Street,
         EMail = :EMail,
-        Phone = :Phone,
-        WHERE ID= :id
+        ZIPCode = :ZIPCode,
+        City = :City,
+        EMail = :EMail,
+        Bank = :Bank,
+        IBAN = :IBAN,
+        BIC = :BIC,
+        CEO = :CEO,
+        Register = :Register,
+        RegisterNr = :RegisterNr,
+        VATID = :VATID,
+        WHERE ID= :ID
         ");
 
         $st->execute(array(
-            ':FirstName' => $Employee->getFirstName(),
-            ':LastName' => $Employee->getLastName(),
-            ':EMail' => $Employee->getEMail(),
-            ':Phone' => $Employee->getPhone(),
-            ':id' => $Employee->getId()
+            ':Name' => $company->getName(),
+            ':Street' => $company->getStreet(),
+            ':EMail' => $company->getEMail(),
+            ':ZipCode' => $company->getZipCode(),
+            ':City' => $company->getCity(),
+            ':Bank' => $company->getBank(),
+            ':IBAN' => $company->getIban(),
+            ':BIC' => $company->getBic(),
+            ':Register' => $company->getRegister(),
+            ':RegisterNr' => $company->getRegisterNr(),
+            ':VATID' => $company->getVatid(),
         ));
     }
 
