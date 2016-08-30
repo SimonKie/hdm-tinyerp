@@ -11,17 +11,35 @@ class company
 {
     private $id = null;
     private $zipCode;
-    private $cityName;
+    private $city;
     private $name;
     private $bank;
     private $bic;
     private $iban;
+    private $register;
     private $registerNr;
     private $eMail;
     private $phone;
     private $street;
     private $ceo;
     private $vatid;
+    
+    public function __constructor($id, $zipCode, $cityName, $name, $bank, $bic, $iban, $register, $registerNr, $eMail, $phone, $street, $ceo, $vatid){
+        $this->id = $id;
+        $this->zipCode = $zipCode;
+        $this->city = $cityName;
+        $this->name = $name;
+        $this->bank = $bank;
+        $this->bic = $bic;
+        $this->iban = $iban;
+        $this->register = $register;
+        $this->registerNr = $registerNr;
+        $this->eMail = $eMail;
+        $this->phone = $phone;
+        $this->street = $street;
+        $this->ceo = $ceo;
+        $this->vatid = $vatid;
+    }
 
     /**
      * @return null
@@ -61,15 +79,15 @@ class company
      */
     public function getCityName()
     {
-        return $this->cityName;
+        return $this->city;
     }
 
     /**
-     * @param mixed $cityName
+     * @param mixed $city
      */
-    public function setCityName($cityName)
+    public function setCity($city)
     {
-        $this->cityName = $cityName;
+        $this->city = $city;
     }
 
     /**
@@ -134,6 +152,22 @@ class company
     public function setIban($iban)
     {
         $this->iban = $iban;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegister()
+    {
+        return $this->register;
+    }
+
+    /**
+     * @param mixed $register
+     */
+    public function setRegister($register)
+    {
+        $this->register = $register;
     }
 
     /**
@@ -229,22 +263,6 @@ class company
      */
     public function setVatid($vatid)
     {
-        $this->vatid = $vatid;
-    }
-
-    public function __constructor($id, $zipCode, $cityName, $name, $bank, $bic, $iban, $registerNr, $eMail, $phone, $street, $ceo, $vatid){
-        $this->id = $id;
-        $this->zipCode = $zipCode;
-        $this->cityName = $cityName;
-        $this->name = $name;
-        $this->bank = $bank;
-        $this->bic = $bic;
-        $this->iban = $iban;
-        $this->registerNr = $registerNr;
-        $this->eMail = $eMail;
-        $this->phone = $phone;
-        $this->street = $street;
-        $this->ceo = $ceo;
         $this->vatid = $vatid;
     }
 

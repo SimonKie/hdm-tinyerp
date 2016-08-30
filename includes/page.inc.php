@@ -11,17 +11,18 @@ require_once('config.inc.php');
 
 class Page
 {
-    private $Title = "tinyERP";
-    private $Content = "Error 404!";
-    private $RightArea = "Fortschritt";
+    private $title = "tinyERP";
+    private $content = "Error 404!";
+    private $rightArea = "Fortschritt";
+    private $loggedIn = false;
 
-    private $MainNav = array(
+    private $mainNav = array(
         'Home' => 'index.php',
         'Rechnungen' => '',
-        'Kunden' => ''
+        'Stammdaten' => ''
     );
 
-    private $MasterDataNav = array(
+    private $masterDataNav = array(
         'Firma' => '',
         'Mitarbeiter' => '',
         'Steuersätze' => '',
@@ -31,65 +32,101 @@ class Page
     );
 
     /**
-     * @param string $Title
+     * @param string $title
      */
-    public function setTitle($Title)
+    public function setTitle($title)
     {
-        $this->Title = $Title;
+        $this->title = $title;
     }
 
     /**
-     * @param string $Content
+     * @param string $content
      */
-    public function setContent($Content)
+    public function setContent($content)
     {
-        $this->Content = $Content;
+        $this->content = $content;
     }
 
     /**
      * @param string $rightCol
      */
-    public function setRightArea($RightArea)
+    public function setRightArea($rightArea)
     {
-        $this->RightArea = $RightArea;
+        $this->rightArea = $rightArea;
+    }
+
+    /**
+     * @param boolean $loggedIn
+     */
+    public function setLoggedIn($loggedIn)
+    {
+        $this->loggedIn = $loggedIn;
     }
 
     /**
      * @return string
      */
-    private function getHeader()
+    private function getHeader($user)
     {
-        return "
-<!DOCTYPE html>
-<html lang=\"de\">
-<head>
-    <meta charset=\"UTF-8\">
-    <title>$this->Title</title>
-    
-    <!-- css -->
-    <link rel=\"stylesheet\" type=\"text/css\" href=\"includes/css/bootstrap.min.css\" />
-    <link rel=\"stylesheet\" type=\"text/css\" href=\"includes/css/bootstrap-theme.min.css\" />
-    <link rel=\"stylesheet\" type=\"text/css\" href=\"includes/css/main.css\" />
-    
-    
-</head>
-<body>
-    <div class=\"topbar\">
-        <div class=\"container\">
-            <div class=\"row\">
-                <div class=\"col-sm-6\">
-                    <h1>TinyERP</h1>
-                </div>
-                <div class=\"col-sm-6\">
-                    <p class=\"user\">Max Mustermann</p>
+        if($this->loggedIn) {
+            return "
+    <!DOCTYPE html>
+    <html lang=\"de\">
+    <head>
+        <meta charset=\"UTF-8\">
+        <title>$this->title</title>
+        
+        <!-- css -->
+        <link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">
+        <link rel=\"stylesheet\" type=\"text/css\" href=\"" . HOME_URL . "/includes/css/main.css\" />
+        
+        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>
+        <script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>
+        
+        
+    </head>
+    <body>
+        <div class=\"topbar\">
+                <div class=\"container\">
+                    <div class=\"row\">
+                        <div class=\"col-xs-8\">
+                            <h1>T</h1>
+                        </div>                   
+                        <div class=\"col-xs-4 dropdown\">
+                            <button class=\"btn btn-primary dropdown-toggle\" id=\"user-menu\" type=\"button\" data-toggle=\"dropdown\"
+                                    style=\"background: url('" . HOME_URL . "/images/users/example.jpg') no-repeat right 12px center; background-size: 40px 40px;\">
+                                    <span class=\"badge\">ADMIN</span> " . $user->getFirstName() . " " . $user->getLastName() . " 
+                            </button>
+                            <ul class=\"dropdown-menu dropdown-menu-right\">
+                                <li class=\"dropdown-header\">Verbundene E-Mail-Adresse</li>
+                                <li><a href=\"#\">" . $user->getEmail() . "</a></li>
+                                <li class=\"divider\" ></li >
+                                <li ><a href = \"#\" ><span class=\"glyphicon glyphicon-user\" ></span > Profil bearbeiten </a ></li >
+                                <li ><a href = \"./login.php?logout=true\" ><span class=\"glyphicon glyphicon-off\" ></span > Abmelden</a ></li >
+                            </ul >
+                        </div >
+                    </div >
+                </div >
+            </div > 
+            <div class=\"dash\">
+                <div class=\"container\">
+                    <div class=\"row\">";
+        }
+        else {
+            return "         <div class=\"topbar\">
+            <div class=\"container\">
+                <div class=\"row\">
+                    <div class=\"col - xs - 12\">
+                        <h1>T</h1>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class=\"dash\">
-        <div class=\"container\">
-            <div class=\"row\">
+        <div class=\"dash\">
+            <div class=\"container\">
+                <div class=\"row\">
         ";
+        }
     }
 
     /**
@@ -99,7 +136,7 @@ class Page
     {
         $return = "<ul class=\"main-nav\">";
 
-        foreach($this->MainNav as $key => $value)
+        foreach($this->mainNav as $key => $value)
         {
             $return .= "<li><a href='$value'>$key</a></li>";
         }
@@ -113,7 +150,7 @@ class Page
     {
         $return = "<ul class=\"sub-nav\">";
 
-        foreach($this->MasterDataNav as $key => $value)
+        foreach($this->masterDataNav as $key => $value)
         {
             $return .= "<li><a href='$value'>$key</a></li>";
         }
@@ -148,7 +185,7 @@ class Page
                 <!-- center area -->
                 <div class=\"col-sm-6\">
                     <div class=\"box\">
-                        $this->Content
+                        $this->content
                     </div>
                 </div>
         ";
@@ -160,7 +197,7 @@ class Page
                 <!-- right area -->
                 <div class=\"col-sm-3\">
                     <div class=\"box\">
-                        <h2>$this->RightArea &nbsp;</h2>
+                        <h2>$this->rightArea &nbsp;</h2>
                     </div>
                 </div>        
         ";
@@ -175,14 +212,21 @@ class Page
             </div>
         </div>
     </div>
+    <div class=\"container\">
+        <div class=\"row\">
+            <div class=\"col-xs-12\">
+                <p class=\"copyright\">&copy; " . date('Y') . " HdM GmbH</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
         ";
     }
 
-    public function run()
+    public function run($user)
     {
-        echo $this->getHeader();
+        echo $this->getHeader($user);
         echo $this->getLeftArea($this->getMainNav());
         echo $this->getContent();
         echo $this->getRightArea();
