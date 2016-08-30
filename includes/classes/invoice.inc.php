@@ -23,7 +23,7 @@ class Invoice
      * @param $customer
      * @param $employee
      * @param $product
-     * @param $invoiceNR
+     * @param $invoiceNr
      * @param $text
      * @param $date
      * @param $state
@@ -114,11 +114,11 @@ class Invoice
     }
 
     /**
-     * @param mixed $invoiceNR
+     * @param mixed $invoiceNr
      */
     public function setInvoiceNr($invoiceNr)
     {
-        $this->invoiceNR = $invoiceNr;
+        $this->invoiceNr = $invoiceNr;
     }
 
     /**
