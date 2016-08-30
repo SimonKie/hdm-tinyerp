@@ -19,7 +19,7 @@ class Page
     private $mainNav = array(
         'Home' => 'index.php',
         'Rechnungen' => '',
-        'Kunden' => ''
+        'Stammdaten' => ''
     );
 
     private $masterDataNav = array(
@@ -95,7 +95,7 @@ class Page
                         <div class=\"col-xs-4 dropdown\">
                             <button class=\"btn btn-primary dropdown-toggle\" id=\"user-menu\" type=\"button\" data-toggle=\"dropdown\"
                                     style=\"background: url('" . HOME_URL . "/images/users/example.jpg') no-repeat right 12px center; background-size: 40px 40px;\">
-                                    " . $user->getFirstName() . " " . $user->getLastName() . " 
+                                    <span class=\"badge\">ADMIN</span> " . $user->getFirstName() . " " . $user->getLastName() . " 
                             </button>
                             <ul class=\"dropdown-menu dropdown-menu-right\">
                                 <li class=\"dropdown-header\">Verbundene E-Mail-Adresse</li>
