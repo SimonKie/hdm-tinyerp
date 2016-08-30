@@ -112,7 +112,7 @@ class CompanyMapper extends DataMapper
             return $Companies;
     }
 
-    public static function update($Company)
+    public static function update($company)
     {
         $st = self::$db->prepare("
         UPDATE Company SET 
