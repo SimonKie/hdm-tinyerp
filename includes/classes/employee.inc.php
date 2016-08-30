@@ -13,7 +13,7 @@ class Employee
     private $LastName;
     private $EMail;
     private $Phone;
-    
+
 
     /**
      * @return mixed
@@ -111,7 +111,8 @@ class Employee
 
         foreach ($Employees as $e)
         {
-            $content .= "<option value=\"" . $e->getId() . "\">" . $e->FullName() . "</option>\n";
+            //Sollte es nicht getFullName sein?
+            $content .="<option value=\"" . $e->getId(). "\">" . $e->FullName() . "</option>\n";
         }
 
         $content .= "</select>";
