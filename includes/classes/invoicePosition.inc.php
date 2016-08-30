@@ -3,7 +3,7 @@
 
 /**
  * Created by PhpStorm.
- * User: Owner
+ * User: Elli
  * Date: 8/30/2016
  * Time: 12:56 PM
  */
@@ -74,6 +74,7 @@ class invoicePosition
     {
         $this->qty = $qty;
     }
+
 
     //Wie schreibt man das richtig? Wofuer braucht man daS?
     public static function getDropdown($invoicePosition)

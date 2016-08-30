@@ -2,7 +2,7 @@
 
 /**
  * Created by PhpStorm.
- * User: Owner
+ * User: Elli
  * Date: 8/30/2016
  * Time: 3:15 PM
  */
@@ -55,6 +55,7 @@ class userRole
         $this->name = $name;
     }
 
+    
     //Wie schreibt man das richtig? Wofuer braucht man daS?
     public static function getDropdown($userRole)
     {

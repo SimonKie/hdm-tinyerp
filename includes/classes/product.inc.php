@@ -6,6 +6,7 @@
  * Date: 8/30/2016
  * Time: 12:39 PM
  */
+
 class product
 {
     private $id = null;

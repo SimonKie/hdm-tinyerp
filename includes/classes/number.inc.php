@@ -94,6 +94,7 @@ class number
     }
 
 
+    
 //Wie schreibt man das richtig? Wofuer braucht man daS?
     public static function getDropdown($number)
     {
