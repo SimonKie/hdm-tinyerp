@@ -18,17 +18,17 @@ require_once('classes/invoicePosition.inc.php');
 require_once('classes/number.inc.php');
 require_once('classes/pdfArchive.inc.php');
 require_once('classes/product.inc.php');
-require_once('classes/productcategory.inc.php');
+require_once('classes/productCategory.inc.php');
 require_once('classes/user.inc.php');
 require_once('classes/userRole.inc.php');
 require_once('classes/vat.inc.php');
 
 
 
-require_once('mapper/datamapper.inc.php');
-require_once('mapper/vatmapper.inc.php');
-require_once('mapper/productcategorymapper.inc.php');
-require_once('mapper/employeemapper.inc.php');
+require_once('mapper/dataMapper.inc.php');
+require_once('mapper/vatMapper.inc.php');
+require_once('mapper/productCategoryMapper.inc.php');
+require_once('mapper/employeeMapper.inc.php');
 require_once('config.inc.php');
 require_once('page.inc.php');
 
