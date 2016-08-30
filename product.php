@@ -10,7 +10,7 @@ require_once('includes/bootstrap.inc.php');
 
 
 
-$content = ProductCategory::getDropdown(ProductCategoryMapper::getallProductCategories());
+$content = ProductCategory::getDropdown(ProductCategoryMapper::getAllProductCategories());
 
 $content .= "";
 

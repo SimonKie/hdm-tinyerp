@@ -11,13 +11,13 @@ require_once('datamapper.inc.php');
 class VATMapper extends DataMapper
 {
     /**
-     * @param VAT:$VAT
+     * @param $vat:$VAT
      * @return integer|$id
      */
-    public static function add($VAT)
+    public static function add($vat)
     {
         $st = self::$db->prepare("
-        insert into VAT set 
+        INSERT INTO VAT SET 
         Value = :Value,
         Description = :Description,
         StartDate = :StartDate,
@@ -25,30 +25,30 @@ class VATMapper extends DataMapper
         ");
 
         $st->execute(array(
-            ':Value' => $VAT->getValue(),
-            ':Description' => $VAT->getDescription(),
-            ':StartDate' => $VAT->getStartDate(),
-            ':EndDate' => $VAT->getEndDate()
+            ':Value' => $vat->getValue(),
+            ':Description' => $vat->getDescription(),
+            ':StartDate' => $vat->getStartDate(),
+            ':EndDate' => $vat->getEndDate()
         ));
 
         return self::$db->lastInsertId();
     }
 
     /**
-     * @param VAT:$VAT
+     * @param $vat:$VAT
      */
-    public static function delete($VAT)
+    public static function delete($vat)
     {
-        self::$db->query("delete from VAT where ID=" . $VAT->getid());
+        self::$db->query("DELETE FROM VAT WHERE ID=" . $vat->getid());
     }
 
     /**
      * @param integer:$id
      * @return bool|VAT
      */
-    public static function findbyid($id)
+    public static function findById($id)
     {
-        $query = self::$db->query("select * from vat where ID=" . $id);
+        $query = self::$db->query("SELECT * FROM VAT WHERE ID=" . $id);
 
         if($v = $query->fetch(PDO::FETCH_OBJ))
         {
@@ -69,11 +69,11 @@ class VATMapper extends DataMapper
     /**
      * @return VAT:array
      */
-    public static function getallVATs()
+    public static function getAllVats()
     {
-        $query = self::$db->query("select * from vat");
+        $query = self::$db->query("SELECT * FROM VAT");
 
-        $VATs = array();
+        $vats = array();
 
         while($v = $query->fetch(PDO::FETCH_OBJ))
         {
@@ -84,19 +84,19 @@ class VATMapper extends DataMapper
             $VAT->setStartDate(strtotime($v->StartDate));
             $VAT->setEndDate(strtotime($v->EndDate));
 
-            $VATs[] = $VAT;
+            $vats[] = $VAT;
         }
 
         if($query->rowCount() == 0)
             return null;
         else
-            return $VATs;
+            return $vats;
     }
 
-    public static function update($VAT)
+    public static function update($vat)
     {
         $st = self::$db->prepare("
-        update vat set 
+        UPDATE VAT SET 
         Value = :Value,
         Description = :Description,
         StartDate = :StartDate,
@@ -105,11 +105,11 @@ class VATMapper extends DataMapper
         ");
 
         $st->execute(array(
-            ':Value' => $VAT->getValue(),
-            ':Description' => $VAT->getDescription(),
-            ':StartDate' => $VAT->getStartDate(),
-            ':EndDate' => $VAT->getEndDate(),
-            ':id' => $VAT->getId()
+            ':Value' => $vat->getValue(),
+            ':Description' => $vat->getDescription(),
+            ':StartDate' => $vat->getStartDate(),
+            ':EndDate' => $vat->getEndDate(),
+            ':id' => $vat->getId()
         ));
     }
 }

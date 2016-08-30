@@ -13,9 +13,9 @@ require_once('datamapper.inc.php');
 class EmployeeMapper extends DataMapper
 {
 
-    public static function add($Employee){
+    public static function add($employee){
         $st = self::$db->prepare("
-        insert into Employee set 
+        INSERT INTO Employee SET 
         FirstName = :FirstName,
         LastName = :LastName,
         EMail = :EMail,
@@ -23,27 +23,26 @@ class EmployeeMapper extends DataMapper
         ");
 
         $st->execute(array(
-            ':FirstName' => $Employee->getFirstName(),
-            ':LastName' => $Employee->getLastName(),
-            ':EMail' => $Employee->getEMail(),
-            ':Phone' => $Employee->getPhone()
+            ':FirstName' => $employee->getFirstName(),
+            ':LastName' => $employee->getLastName(),
+            ':EMail' => $employee->getEMail(),
+            ':Phone' => $employee->getPhone()
         ));
 
         return self::$db->lastInsertId();
     }
 
-    public static function delete($Employee)
+    public static function delete($employee)
     {
-        self::$db->query("delete from Employee where ID=" . $Employee->getId());
+        self::$db->query("DELETE FROM Employee WHERE ID=" . $employee->getId());
     }
 
-    public static function findbyid($id)
+    public static function findById($id)
     {
-        $query = self::$db->query("select * from Employee where ID=" . $id);
+        $query = self::$db->query("SELECT * FROM Employee WHERE ID=" . $id);
 
         if($e = $query->fetch(PDO::FETCH_OBJ))
         {
-            
             $Employee = new Employee();
             $Employee->setId(intval($e->ID));
             $Employee->setFirstName($e->FirstName);
@@ -59,11 +58,11 @@ class EmployeeMapper extends DataMapper
     }
 
 
-    public static function getallEmployees()
+    public static function getAllEmployees()
     {
-        $query = self::$db->query("select * from employee");
+        $query = self::$db->query("SELECT * FROM Employee");
 
-        $Employees = array();
+        $employees = array();
 
         while($e = $query->fetch(PDO::FETCH_OBJ))
         {
@@ -74,19 +73,19 @@ class EmployeeMapper extends DataMapper
             $Employee->setEMail($e->EMail);
             $Employee->setPhone($e->Phone);
 
-            $Employees[] = $Employee;
+            $employees[] = $Employee;
         }
 
         if($query->rowCount() == 0)
             return null;
         else
-            return $Employees;
+            return $employees;
     }
 
-    public static function update($Employee)
+    public static function update($employee)
     {
         $st = self::$db->prepare("
-        update employee set 
+        UPDATE Employee SET 
         FirstName = :FirstName,
         LastName = :LastName,
         EMail = :EMail,
@@ -95,11 +94,11 @@ class EmployeeMapper extends DataMapper
         ");
 
         $st->execute(array(
-            ':FirstName' => $Employee->getFirstName(),
-            ':LastName' => $Employee->getLastName(),
-            ':EMail' => $Employee->getEMail(),
-            ':Phone' => $Employee->getPhone(),
-            ':id' => $Employee->getId()
+            ':FirstName' => $employee->getFirstName(),
+            ':LastName' => $employee->getLastName(),
+            ':EMail' => $employee->getEMail(),
+            ':Phone' => $employee->getPhone(),
+            ':id' => $employee->getId()
         ));
     }
 }

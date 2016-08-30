@@ -10,7 +10,7 @@ class customer
 {
     private $id = null;
     private $zipCode;
-    private $cityName;
+    private $city;
     private $firstName;
     private $lastName;
     private $eMail;
@@ -22,7 +22,7 @@ class customer
     {
         $this->id = $id;
         $this->zipCode = $zipCode;
-        $this->cityName = $cityName;
+        $this->city = $cityName;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->eMail = $eMail;
@@ -35,17 +35,17 @@ class customer
     /**
      * @return mixed
      */
-    public function getCityName()
+    public function getCity()
     {
-        return $this->cityName;
+        return $this->city;
     }
 
     /**
-     * @param mixed $cityName
+     * @param mixed $city
      */
-    public function setCityName($cityName)
+    public function setCity($city)
     {
-        $this->cityName = $cityName;
+        $this->city = $city;
     }
 
     /**

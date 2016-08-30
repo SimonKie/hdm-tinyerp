@@ -27,7 +27,7 @@ require_once('classes/vat.inc.php');
 
 require_once('mapper/datamapper.inc.php');
 require_once('mapper/vatmapper.inc.php');
-require_once('mapper/productcategorymapper.php');
+require_once('mapper/productcategorymapper.inc.php');
 require_once('mapper/employeemapper.inc.php');
 require_once('config.inc.php');
 require_once('page.inc.php');

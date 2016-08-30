@@ -12,36 +12,36 @@ require_once('datamapper.inc.php');
 class ProductCategoryMapper extends DataMapper
 {
     /**
-     * @param $ProductCategory
+     * @param $productCategory
      * @return $id
      */
-    public static function add($ProductCategory)
+    public static function add($productCategory)
     {
         $st = self::$db->prepare("
-            insert into productcategory SET 
+            INSERT INTO ProductCategory SET 
             Name = :Name,
             Description = :Description
             ");
 
         $st->execute(array(
-            ':Name' => $ProductCategory->getName(),
-            ':Description' => $ProductCategory->getDescription()
+            ':Name' => $productCategory->getName(),
+            ':Description' => $productCategory->getDescription()
         ));
 
         return self::$db->lastInsertId();
     }
 
     /**
-     * @param ProductCategory:$VAT
+     * @param $productCategory:$VAT
      */
-    public static function delete($ProductCategory)
+    public static function delete($productCategory)
     {
-        self::$db->query("delete from productcategory where ID=" . $ProductCategory->getId());
+        self::$db->query("DELETE FROM ProductCategory WHERE ID=" . $productCategory->getId());
     }
     
-    public static function findbyid($id)
+    public static function findById($id)
     {
-        $query = self::$db->query("select from productcategory where ID=" . $id);
+        $query = self::$db->query("SELECT FROM ProductCategory WHERE ID=" . $id);
         
         if($p = $query->fetch(PDO::FETCH_OBJ))
         {
@@ -59,11 +59,11 @@ class ProductCategoryMapper extends DataMapper
     /**
      * @return ProductCategory:array
      */
-    public static function getallProductCategories()
+    public static function getAllProductCategories()
     {
-        $query = self::$db->query("select * from productcategory");
+        $query = self::$db->query("SELECT * FROM ProductCategory");
 
-        $ProductCategories = array();
+        $productCategories = array();
 
         while($p = $query->fetch(PDO::FETCH_OBJ))
         {
@@ -72,28 +72,28 @@ class ProductCategoryMapper extends DataMapper
             $ProductCategory->setName($p->Name);
             $ProductCategory->setDescription($p->Description);
 
-            $ProductCategories[] = $ProductCategory;
+            $productCategories[] = $ProductCategory;
         }
 
         if($query->rowCount() == 0)
             return null;
         else
-            return $ProductCategories;
+            return $productCategories;
     }
 
-    public static function update($ProductCategory)
+    public static function update($productCategory)
     {
         $st = self::$db->prepare("
-            update productcategory SET 
+            UPDATE ProductCategory SET 
             Name = :Name,
             Description = :Description
-            where ID = :ID"
+            WHERE ID = :ID"
         );
 
         $st->execute(array(
-            ':Name' => $ProductCategory->getName(),
-            ':Description' => $ProductCategory->getDescription(),
-            ':ID' => $ProductCategory->getId()
+            ':Name' => $productCategory->getName(),
+            ':Description' => $productCategory->getDescription(),
+            ':ID' => $productCategory->getId()
         ));
 
         return self::$db->lastInsertId();
