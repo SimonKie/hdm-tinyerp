@@ -95,7 +95,7 @@ class user
     public static function getDropdown($user)
     {
         $content = "
-        <select name=\"Benutzer\">
+        <select class='dropdown'  name=\"Benutzer\">
         <option selected value=\"null\">&nbsp;</option> ";
 
         foreach ($user as $u)

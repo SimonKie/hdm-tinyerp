@@ -99,7 +99,7 @@ class number
     public static function getDropdown($number)
     {
         $content = "
-        <select name=\"Rechnungsnummer\">
+        <select class='dropdown'  name=\"Rechnungsnummer\">
         <option selected value=\"null\">&nbsp;</option> ";
 
         foreach ($number as $n)

@@ -256,7 +256,7 @@ class company
     public static function getDropdown($company)
     {
         $content = "
-        <select name=\"Firma\">
+        <select class='dropdown'  name=\"Firma\">
         <option selected value=\"null\">&nbsp;</option> ";
 
         foreach ($company as $c)

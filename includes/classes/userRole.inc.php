@@ -60,7 +60,7 @@ class userRole
     public static function getDropdown($userRole)
     {
         $content = "
-        <select name=\"Nutzerrolle\">
+        <select class='dropdown' name=\"Nutzerrolle\">
         <option selected value=\"null\">&nbsp;</option> ";
 
         foreach ($userRole as $u)

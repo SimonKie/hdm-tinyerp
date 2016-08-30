@@ -186,7 +186,7 @@ class customer
     public static function getDropdown($customer)
     {
         $content = "
-        <select name=\"Kunden\">
+        <select class='dropdown'  name=\"Kunden\">
         <option selected value=\"null\">&nbsp;</option> ";
 
         foreach ($customer as $c)

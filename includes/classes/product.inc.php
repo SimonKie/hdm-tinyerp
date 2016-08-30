@@ -90,7 +90,7 @@ class product
     public static function getDropdown($product)
     {
         $content = "
-        <select name=\"Produkte\">
+        <select class='dropdown' name=\"Produkte\">
         <option selected value=\"null\">&nbsp;</option> ";
 
         foreach ($product as $p)

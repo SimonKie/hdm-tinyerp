@@ -95,7 +95,7 @@ class pdfArchive
     public static function getDropdown($pdfArchive)
     {
         $content = "
-        <select name=\"PDFArchive\">
+        <select class='dropdown' name=\"PDFArchive\">
         <option selected value=\"null\">&nbsp;</option> ";
 
         foreach ($pdfArchive as $p)

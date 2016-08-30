@@ -173,7 +173,7 @@ class Invoice
     public static function getDropdown($invoice)
     {
         $content = "
-        <select name=\"Rechnung\">
+        <select class='dropdown' name=\"Rechnung\">
         <option selected value=\"null\">&nbsp;</option> ";
 
         foreach ($invoice as $i)

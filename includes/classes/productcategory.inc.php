@@ -71,7 +71,7 @@ class productcategory
     public static function getDropdown($ProductCategories)
     {
         $content = "
-        <select name=\"ProductCategory\">
+        <select class='dropdown'  name=\"ProductCategory\">
         <option selected value=\"null\">&nbsp;</option> ";
 
         foreach ($ProductCategories as $PC)

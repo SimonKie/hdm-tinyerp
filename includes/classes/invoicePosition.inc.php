@@ -80,7 +80,7 @@ class invoicePosition
     public static function getDropdown($invoicePosition)
     {
         $content = "
-        <select name=\"Rechnungsposition\">
+        <select class='dropdown' name=\"Rechnungsposition\">
         <option selected value=\"null\">&nbsp;</option> ";
 
         foreach ($invoicePosition as $i)
