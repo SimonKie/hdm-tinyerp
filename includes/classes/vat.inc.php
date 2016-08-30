@@ -9,10 +9,10 @@
 class VAT
 {
     private $id = null;
-    private $Value;
-    private $Description;
-    private $StartDate;
-    private $EndDate;
+    private $value;
+    private $description;
+    private $startDate;
+    private $endDate;
 
     /**
      * @return mixed
@@ -36,7 +36,7 @@ class VAT
      */
     public function getValue()
     {
-        return $this->Value;
+        return $this->value;
     }
 
     /**
@@ -44,15 +44,15 @@ class VAT
      */
     public function getValueasPercent()
     {
-        return intval($this->Value*100);
+        return intval($this->value*100);
     }
 
     /**
-     * @param mixed $Value
+     * @param mixed $value
      */
-    public function setValue($Value)
+    public function setValue($value)
     {
-        $this->Value = $Value;
+        $this->value = $value;
     }
 
     /**
@@ -60,15 +60,15 @@ class VAT
      */
     public function getDescription()
     {
-        return $this->Description;
+        return $this->description;
     }
 
     /**
-     * @param mixed $Description
+     * @param mixed $description
      */
-    public function setDescription($Description)
+    public function setDescription($description)
     {
-        $this->Description = $Description;
+        $this->description = $description;
     }
 
     /**
@@ -76,15 +76,15 @@ class VAT
      */
     public function getStartDate()
     {
-        return $this->StartDate;
+        return $this->startDate;
     }
 
     /**
-     * @param mixed $StartDate
+     * @param mixed $startDate
      */
-    public function setStartDate($StartDate)
+    public function setStartDate($startDate)
     {
-        $this->StartDate = $StartDate;
+        $this->startDate = $startDate;
     }
 
     /**
@@ -92,15 +92,15 @@ class VAT
      */
     public function getEndDate()
     {
-        return $this->EndDate;
+        return $this->endDate;
     }
 
     /**
-     * @param mixed $EndDate
+     * @param mixed $endDate
      */
-    public function setEndDate($EndDate)
+    public function setEndDate($endDate)
     {
-        $this->EndDate = $EndDate;
+        $this->endDate = $endDate;
     }
 
     public function listObject()
@@ -118,12 +118,12 @@ class VAT
     public static function getDropdown($VATs)
     {
         $content = "
-        <select class='dropdown' name=\"VAT\">
+        <select class='dropdown' name=\"Steuersatz\">
         <option selected value=\"null\">&nbsp;</option> ";
 
         foreach ($VATs as $v)
         {
-            $content .= "<option value=\"" . $v->getId() . "\">" . $v->getDescription() . "</option>\n";
+            $content .= "<option value=\"" . $v->getId(). "\">" . $v->getDescription() . "</option>\n";
         }
 
         $content .= "</select>";

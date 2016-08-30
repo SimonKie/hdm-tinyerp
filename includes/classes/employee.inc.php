@@ -9,10 +9,27 @@
 class Employee
 {
     private $id = null;
-    private $FirstName;
-    private $LastName;
-    private $EMail;
-    private $Phone;
+    private $firstName;
+    private $lastName;
+    private $eMail;
+    private $phone;
+
+    /**
+     * Employee constructor.
+     * @param null $id
+     * @param $firstName
+     * @param $lastName
+     * @param $eMail
+     * @param $phone
+     */
+    public function __construct($id, $firstName, $lastName, $eMail, $phone)
+    {
+        $this->id = $id;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->eMail = $eMail;
+        $this->phone = $phone;
+    }
 
 
     /**
@@ -37,15 +54,15 @@ class Employee
      */
     public function getLastName()
     {
-        return $this->LastName;
+        return $this->lastName;
     }
 
     /**
      * @param mixed $LastName
      */
-    public function setLastName($LastName)
+    public function setLastName($lastName)
     {
-        $this->LastName = $LastName;
+        $this->lastName = $lastName;
     }
 
     /**
@@ -53,16 +70,16 @@ class Employee
      */
     public function getFirstName()
     {
-        return $this->FirstName;
+        return $this->firstName;
     }
 
     /**
      * @param mixed $FirstName
      * @return Employee
      */
-    public function setFirstName($FirstName)
+    public function setFirstName($firstName)
     {
-        $this->FirstName = $FirstName;
+        $this->firstName = $firstName;
         // return $this; ???
     }
 
@@ -71,15 +88,15 @@ class Employee
      */
     public function getEMail()
     {
-        return $this->EMail;
+        return $this->eMail;
     }
 
     /**
-     * @param mixed $EMail
+     * @param mixed $eMail
      */
-    public function setEMail($EMail)
+    public function setEMail($eMail)
     {
-        $this->EMail = $EMail;
+        $this->eMail = $eMail;
     }
 
     /**
@@ -87,29 +104,29 @@ class Employee
      */
     public function getPhone()
     {
-        return $this->Phone;
+        return $this->phone;
     }
 
     /**
      * @param mixed $Phone
      */
-    public function setPhone($Phone)
+    public function setPhone($phone)
     {
-        $this->Phone = $Phone;
+        $this->phone = $phone;
     }
 
     public function getFullName()
     {
-        return $this->LastName . ", " . $this->FirstName;
+        return $this->lastName . ", " . $this->firstName;
     }
 
-    public static function getDropdown($Employees)
+    public static function getDropdown($employee)
     {
         $content = "
-        <select class='dropdown'  name=\"Employee\">
+        <select class='dropdown'  name=\"Mitarbeiter\">
         <option selected value=\"null\">&nbsp;</option> ";
 
-        foreach ($Employees as $e)
+        foreach ($employee as $e)
         {
             //Sollte es nicht getFullName sein?
             $content .="<option value=\"" . $e->getId(). "\">" . $e->FullName() . "</option>\n";

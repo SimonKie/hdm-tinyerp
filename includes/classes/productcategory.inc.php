@@ -9,8 +9,8 @@
 class productcategory
 {
     private $id = null;
-    private $Name;
-    private $Description;
+    private $name;
+    private $description;
 
     /**
      * @return mixed
@@ -34,15 +34,15 @@ class productcategory
      */
     public function getName()
     {
-        return $this->Name;
+        return $this->name;
     }
 
     /**
-     * @param mixed $Name
+     * @param mixed $name
      */
-    public function setName($Name)
+    public function setName($name)
     {
-        $this->Name = $Name;
+        $this->name = $name;
     }
 
     /**
@@ -50,31 +50,31 @@ class productcategory
      */
     public function getDescription()
     {
-        return $this->Description;
+        return $this->description;
     }
 
     /**
-     * @param mixed $Description
+     * @param mixed $description
      */
-    public function setDescription($Description)
+    public function setDescription($description)
     {
-        $this->Description = $Description;
+        $this->description = $description;
     }
 
     public function listObject()
     {
         return "
-            <p>$this->Name | $this->Description</p>
+            <p>$this->name | $this->description</p>
         ";
     }
 
-    public static function getDropdown($ProductCategories)
+    public static function getDropdown($productCategories)
     {
         $content = "
-        <select class='dropdown'  name=\"ProductCategory\">
+        <select class='dropdown'  name=\"Produktkategorie\">
         <option selected value=\"null\">&nbsp;</option> ";
 
-        foreach ($ProductCategories as $PC)
+        foreach ($productCategories as $PC)
         {
             $content .= "<option value=\"" . $PC->getId() . "\">" . $PC->getName() . "</option>\n";
         }
