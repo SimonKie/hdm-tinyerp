@@ -6,12 +6,14 @@
  * Date: 30.08.2016
  * Time: 15:07
  */
-class pdfArchive
+class PdfArchive
 {
     private $id;
     private $type;
     private $file;
     private $filetype;
+    private $invoice;
+
 
     /**
      * pdfArchive constructor.
@@ -20,7 +22,7 @@ class pdfArchive
      * @param $file
      * @param $filetype
      */
-    public function __construct($id, $type, $file, $filetype)
+    public function __construct($id, $type, $file, $filetype, $invoice)
     {
         $this->id = $id;
         $this->type = $type;
@@ -90,6 +92,34 @@ class pdfArchive
     public function setFiletype($filetype)
     {
         $this->filetype = $filetype;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInvoice()
+    {
+        return $this->invoice;
+    }
+
+    /**
+     * @param mixed $invoice
+     */
+    public function setInvoice($invoice)
+    {
+        $this->invoice = $invoice;
+    }
+
+    public function listObject()
+    {
+        $return = '
+        <h6>' . $this->getInvoice() . '</h6>
+        <p>File: ' . $this->getFile() . 'Filetype: ' . $this->getFiletype(). 'Typ: ' . $this->getType().'
+        <a href="">bearbeiten</a> | <a href="">löschen</a>
+        </p>        
+        ';
+
+        return $return;
     }
 
     public static function getDropdown($pdfArchive)

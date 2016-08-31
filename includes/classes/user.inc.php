@@ -6,23 +6,23 @@
  * Date: 30.08.2016
  * Time: 15:14
  */
-class user
+class User
 {
-    private $unsername;
+    private $username;
     private $password;
     private $employee;
     private $userRole;
 
     /**
      * user constructor.
-     * @param $unsername
+     * @param $username
      * @param $password
      * @param $employee
      * @param $userRole
      */
-    public function __construct($unsername, $password, $employee, $userRole)
+    public function __construct($username, $password, $employee, $userRole)
     {
-        $this->unsername = $unsername;
+        $this->username = $username;
         $this->password = $password;
         $this->employee = $employee;
         $this->userRole = $userRole;
@@ -31,17 +31,17 @@ class user
     /**
      * @return mixed
      */
-    public function getUnsername()
+    public function getUsername()
     {
-        return $this->unsername;
+        return $this->username;
     }
 
     /**
-     * @param mixed $unsername
+     * @param mixed $username
      */
-    public function setUnsername($unsername)
+    public function setUsername($username)
     {
-        $this->unsername = $unsername;
+        $this->username = $username;
     }
 
     /**
@@ -90,6 +90,18 @@ class user
     public function setUserRole($userRole)
     {
         $this->userRole = $userRole;
+    }
+
+    public function listObject()
+    {
+        $return = '
+        <h6>' . $this->getUsername() . '</h6>
+        <p>Passwort: ' . $this->getPassword() . 'Rolle: ' . $this->getUserRole(). 'Mitarbeiter: ' . $this->getEmployee().'
+        <a href="">bearbeiten</a> | <a href="">löschen</a>
+        </p>        
+        ';
+
+        return $return;
     }
 
     public static function getDropdown($user)

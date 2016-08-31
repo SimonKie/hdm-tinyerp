@@ -6,7 +6,7 @@
  * Date: 22.08.2016
  * Time: 22:29
  */
-class VAT
+class Vat
 {
     private $id = null;
     private $value;
@@ -107,11 +107,12 @@ class VAT
     {
         $return = '
         <h6>' . $this->getDescription() . '</h6>
-        <p>Steuersatz: ' . $this->getValueasPercent() . ' gültig: ' . $this->getStartDate() . ' - ' . $this->getEndDate() . '
+        <p>Wert: ' . $this->getValue() . 'in Prozent: ' . $this->getValueasPercent(). 'Start Datum: ' . $this->getStartDate().
+            'End Datum: ' . $this->getEndDate().'
         <a href="">bearbeiten</a> | <a href="">löschen</a>
         </p>        
         ';
-        
+
         return $return;
     }
 

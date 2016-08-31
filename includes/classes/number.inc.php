@@ -6,13 +6,15 @@
  * Date: 8/30/2016
  * Time: 12:48 PM
  */
-class number
+class Number
 {
-
     private $id = null;
     private $prefix;
     private $startInt;
     private $endInt;
+
+    /** Zusammengesetzter Schlüssel (Präfix) fehlt evtl? */
+
 
     /**
      * number constructor.
@@ -93,7 +95,17 @@ class number
         $this->startInt = $startInt;
     }
 
+    public function listObject()
+    {
+        $return = '
+        <h6>' . $this->getPrefix() . '</h6>
+        <p>Start: ' . $this->getStartInt() . 'Ende: ' . $this->getEndInt(). '
+        <a href="">bearbeiten</a> | <a href="">löschen</a>
+        </p>        
+        ';
 
+        return $return;
+    }
     
 //Wie schreibt man das richtig? Wofuer braucht man daS?
     public static function getDropdown($number)

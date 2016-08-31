@@ -6,9 +6,8 @@
  * Date: 8/30/2016
  * Time: 3:15 PM
  */
-class userRole
+class UserRole
 {
-
     private $id = null;
     private $name;
 
@@ -55,8 +54,17 @@ class userRole
         $this->name = $name;
     }
 
-    
-    //Wie schreibt man das richtig? Wofuer braucht man daS?
+    public function listObject()
+    {
+        $return = '
+        <p>Name: ' . $this->getName() . '
+        <a href="">bearbeiten</a> | <a href="">löschen</a>
+        </p>        
+        ';
+
+        return $return;
+    }
+
     public static function getDropdown($userRole)
     {
         $content = "
