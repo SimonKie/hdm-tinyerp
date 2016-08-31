@@ -13,13 +13,13 @@ require_once('classes/company.inc.php');
 require_once('classes/customer.inc.php');
 require_once('classes/employee.inc.php');
 require_once('classes/invoice.inc.php');
-require_once('classes/invoicePosition.inc.php');
+require_once('classes/invoiceposition.inc.php');
 require_once('classes/number.inc.php');
-require_once('classes/pdfArchive.inc.php');
+require_once('classes/pdfarchive.inc.php');
 require_once('classes/product.inc.php');
 require_once('classes/productCategory.inc.php');
 require_once('classes/user.inc.php');
-require_once('classes/userRole.inc.php');
+require_once('classes/userrole.inc.php');
 require_once('classes/vat.inc.php');
 
 require_once('mapper/companymapper.inc.php');
