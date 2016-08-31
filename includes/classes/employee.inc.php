@@ -22,9 +22,8 @@ class Employee
      * @param $eMail
      * @param $phone
      */
-    public function __construct($id, $firstName, $lastName, $eMail, $phone)
+    public function __construct($firstName, $lastName, $eMail, $phone)
     {
-        $this->id = $id;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->eMail = $eMail;

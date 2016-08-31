@@ -15,9 +15,8 @@ class Product
     private $number;
     private $productCategory;
 
-    public function __construct($id,$price,$vat,$number, $productCategory)
+    public function __construct($price,$vat,$number, $productCategory)
     {
-        $this->id = $id;
         $this->price = $price;
         $this->vat = $vat;
         $this->number = $number;

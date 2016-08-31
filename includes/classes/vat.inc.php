@@ -15,6 +15,22 @@ class Vat
     private $endDate;
 
     /**
+     * Vat constructor.
+     * @param $value
+     * @param $description
+     * @param $startDate
+     * @param $endDate
+     */
+    public function __construct($value, $description, $startDate, $endDate)
+    {
+        $this->value = $value;
+        $this->description = $description;
+        $this->startDate = $startDate;
+        $this->endDate = $endDate;
+    }
+
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -102,6 +118,7 @@ class Vat
     {
         $this->endDate = $endDate;
     }
+
 
     public function listObject()
     {
