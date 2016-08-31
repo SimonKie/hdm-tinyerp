@@ -18,28 +18,28 @@ class CompanyMapper extends DataMapper
         EMail = :EMail,
         ZIPCode = :ZIPCode,
         City = :City,
-        EMail = :EMail,
         Bank = :Bank,
         IBAN = :IBAN,
         BIC = :BIC,
         CEO = :CEO,
         Register = :Register,
         RegisterNr = :RegisterNr,
-        VATID = :VATID,
+        VATID = :VATID
         ");
  
         $st->execute(array(
             ':Name' => $company->getName(),
             ':Street' => $company->getStreet(),
             ':EMail' => $company->getEMail(),
-            ':ZipCode' => $company->getZipCode(),
+            ':ZIPCode' => intval($company->getZipCode()),
             ':City' => $company->getCity(),
             ':Bank' => $company->getBank(),
             ':IBAN' => $company->getIban(),
             ':BIC' => $company->getBic(),
+            ':CEO' => $company->getCeo(),
             ':Register' => $company->getRegister(),
             ':RegisterNr' => $company->getRegisterNr(),
-            ':VATID' => $company->getVatid(),
+            ':VATID' => $company->getVatid()
         ));
 
         return self::$db->lastInsertId();
@@ -61,7 +61,7 @@ class CompanyMapper extends DataMapper
             $Company->setId(intval($e->ID));
             $Company->setName($e->Name);
             $Company->setStreet($e->Street);
-            $Company->setZipCode($e->ZIPCode);
+            $Company->setZipCode(intval($e->ZIPCode));
             $Company->setCity($e->City);
             $Company->setEMail($e->EMail);
             $Company->setBank($e->Bank);
@@ -93,7 +93,7 @@ class CompanyMapper extends DataMapper
             $Company->setId(intval($e->ID));
             $Company->setName($e->Name);
             $Company->setStreet($e->Street);
-            $Company->setZipCode($e->ZIPCode);
+            $Company->setZipCode(intval($e->ZIPCode));
             $Company->setCity($e->City);
             $Company->setEMail($e->EMail);
             $Company->setBank($e->Bank);
@@ -121,7 +121,6 @@ class CompanyMapper extends DataMapper
         EMail = :EMail,
         ZIPCode = :ZIPCode,
         City = :City,
-        EMail = :EMail,
         Bank = :Bank,
         IBAN = :IBAN,
         BIC = :BIC,
@@ -136,11 +135,12 @@ class CompanyMapper extends DataMapper
             ':Name' => $company->getName(),
             ':Street' => $company->getStreet(),
             ':EMail' => $company->getEMail(),
-            ':ZipCode' => $company->getZipCode(),
+            ':ZIPCode' => $company->getZipCode(),
             ':City' => $company->getCity(),
             ':Bank' => $company->getBank(),
             ':IBAN' => $company->getIban(),
             ':BIC' => $company->getBic(),
+            ':CEO' => $company->getCeo(),
             ':Register' => $company->getRegister(),
             ':RegisterNr' => $company->getRegisterNr(),
             ':VATID' => $company->getVatid(),

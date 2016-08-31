@@ -20,12 +20,10 @@ class Company
     private $register;
     private $registerNr;
     private $eMail;
-    private $phone;
     private $ceo;
     private $vatid;
     
-    public function __constructor($id, $zipCode, $cityName, $name, $bank, $bic, $iban, $register, $registerNr, $eMail, $phone, $street, $ceo, $vatid){
-        $this->id = $id;
+    public function __construct($zipCode, $cityName, $name, $bank, $bic, $iban, $register, $registerNr, $eMail, $street, $ceo, $vatid){
         $this->zipCode = $zipCode;
         $this->city = $cityName;
         $this->name = $name;
@@ -35,7 +33,6 @@ class Company
         $this->register = $register;
         $this->registerNr = $registerNr;
         $this->eMail = $eMail;
-        $this->phone = $phone;
         $this->street = $street;
         $this->ceo = $ceo;
         $this->vatid = $vatid;
@@ -77,7 +74,7 @@ class Company
     /**
      * @return mixed
      */
-    public function getCityName()
+    public function getCity()
     {
         return $this->city;
     }
@@ -205,22 +202,6 @@ class Company
     /**
      * @return mixed
      */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
-     * @param mixed $phone
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getStreet()
     {
         return $this->street;
@@ -276,7 +257,7 @@ class Company
         $return = '
         <h6>' . $this->getName() . '</h6>
         <p>Adresse: ' . $this->getStreet() . ' - ' . $this->getZipCode(). ' - '. $this->getCityName()
-        .' CEO: ' . $this->getCeo() . 'Phone: ' . $this->getPhone(). 'eMail: ' . $this->getEMail()
+        .' CEO: ' . $this->getCeo() . 'eMail: ' . $this->getEMail()
         .' Bank: ' . $this->getBank() . 'BIC: ' . $this->getBic(). 'IBAN: ' . $this->getIban()
         .'Register: ' .$this->getRegister() . 'RegisterNr: ' .$this->getRegisterNr() .'MwSt: ' .$this->getVatid() . '
         <a href="">bearbeiten</a> | <a href="">löschen</a>
