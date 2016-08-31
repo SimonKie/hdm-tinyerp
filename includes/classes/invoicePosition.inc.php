@@ -7,9 +7,8 @@
  * Date: 8/30/2016
  * Time: 12:56 PM
  */
-class invoicePosition
+class InvoicePosition
 {
-
     private $qty;
     private $price;
     private $sort;
@@ -113,8 +112,20 @@ class invoicePosition
         $this->product = $product;
     }
 
+    public function listObject()
+    {
+        $return = '
+        <h6>' . $this->getProduct() . '</h6>
+        <p>Preis: ' . $this->getPrice() . 'Menge: ' . $this->getQty(). 'Reihenfolge: ' . $this->getSort().
+            'Rechnung: ' . $this->getInvoice().'
+        <a href="">bearbeiten</a> | <a href="">löschen</a>
+        </p>        
+        ';
 
-    //Wie schreibt man das richtig? Wofuer braucht man daS?
+        return $return;
+    }
+
+
     public static function getDropdown($invoicePosition)
     {
         $content = "

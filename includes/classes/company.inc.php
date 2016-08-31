@@ -7,12 +7,13 @@
  * Time: 12:57
  */
 
-class company
+class Company
 {
     private $id = null;
+    private $name;
+    private $street;
     private $zipCode;
     private $city;
-    private $name;
     private $bank;
     private $bic;
     private $iban;
@@ -20,7 +21,6 @@ class company
     private $registerNr;
     private $eMail;
     private $phone;
-    private $street;
     private $ceo;
     private $vatid;
     
@@ -271,6 +271,21 @@ class company
      * @return string
      */
 
+    public function listObject()
+    {
+        $return = '
+        <h6>' . $this->getName() . '</h6>
+        <p>Adresse: ' . $this->getStreet() . ' - ' . $this->getZipCode(). ' - '. $this->getCityName()
+        .' CEO: ' . $this->getCeo() . 'Phone: ' . $this->getPhone(). 'eMail: ' . $this->getEMail()
+        .' Bank: ' . $this->getBank() . 'BIC: ' . $this->getBic(). 'IBAN: ' . $this->getIban()
+        .'Register: ' .$this->getRegister() . 'RegisterNr: ' .$this->getRegisterNr() .'MwSt: ' .$this->getVatid() . '
+        <a href="">bearbeiten</a> | <a href="">löschen</a>
+        </p>        
+        ';
+
+        return $return;
+    }
+
     public static function getDropdown($company)
     {
         $content = "
@@ -286,4 +301,5 @@ class company
 
         return $content;
     }
+
 }

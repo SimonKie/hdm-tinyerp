@@ -17,6 +17,9 @@ class Invoice
     private $date;
     private $state;
 
+    /*private $product sollte doch eher private $invoicePosition sein?!?*/
+
+
     /**
      * Invoice constructor.
      * @param null $id
@@ -169,6 +172,18 @@ class Invoice
         $this->state = $state;
     }
 
+    public function listObject()
+    {
+        $return = '
+        <h6>' . $this->getInvoiceNr() . '</h6>
+        <p>Produkt: ' . $this->getProduct() . 'Status: ' . $this->getState(). 'Text: ' . $this->getText() .
+            'Kunde: ' . $this->getCustomer() . 'Datum: ' . $this->getDate(). 'Mitarbeiter: '. $this->getEmployee().'
+        <a href="">bearbeiten</a> | <a href="">löschen</a>
+        </p>        
+        ';
+
+        return $return;
+    }
 
     public static function getDropdown($invoice)
     {

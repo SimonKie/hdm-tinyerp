@@ -120,6 +120,18 @@ class Employee
         return $this->lastName . ", " . $this->firstName;
     }
 
+    public function listObject()
+    {
+        $return = '
+        <h6>' . $this->getFullName() . '</h6>
+        <p>eMail: ' . $this->getEMail() . 'Phone: ' . $this->getPhone().'
+        <a href="">bearbeiten</a> | <a href="">löschen</a>
+        </p>        
+        ';
+
+        return $return;
+    }
+
     public static function getDropdown($employee)
     {
         $content = "

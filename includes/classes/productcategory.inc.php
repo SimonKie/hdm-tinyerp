@@ -6,7 +6,7 @@
  * Date: 24.08.2016
  * Time: 16:33
  */
-class productcategory
+class ProductCategory
 {
     private $id = null;
     private $name;
@@ -63,9 +63,14 @@ class productcategory
 
     public function listObject()
     {
-        return "
-            <p>$this->name | $this->description</p>
-        ";
+        $return = '
+        <h6>' . $this->getName() . '</h6>
+        <p>Beschreibung: ' . $this->getDescription().'
+        <a href="">bearbeiten</a> | <a href="">löschen</a>
+        </p>        
+        ';
+
+        return $return;
     }
 
     public static function getDropdown($productCategories)

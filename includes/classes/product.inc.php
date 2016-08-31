@@ -7,14 +7,15 @@
  * Time: 12:39 PM
  */
 
-class product
+class Product
 {
     private $id = null;
     private $price;
     private $vat;
     private $number;
+    private $productCategory;
 
-    public function __construct($id,$price,$vat,$number)
+    public function __construct($id,$price,$vat,$number, $productCategory)
     {
         $this->id = $id;
         $this->price = $price;
@@ -86,7 +87,34 @@ class product
         $this->vat = $vat;
     }
 
-//Wie schreibt man das richtig? Wofuer braucht man daS?
+    /**
+     * @return mixed
+     */
+    public function getProductCategory()
+    {
+        return $this->productCategory;
+    }
+
+    /**
+     * @param mixed $productCategory
+     */
+    public function setProductCategory($productCategory)
+    {
+        $this->productCategory = $productCategory;
+    }
+
+    public function listObject()
+    {
+        $return = '
+        <h6>' . $this->getNumber() . '</h6>
+        <p>Kategorie: ' . $this->getProductCategory() . 'Preis: ' . $this->getPrice(). 'MwSt: '. $this->getVat().'
+        <a href="">bearbeiten</a> | <a href="">löschen</a>
+        </p>        
+        ';
+
+        return $return;
+    }
+
     public static function getDropdown($product)
     {
         $content = "

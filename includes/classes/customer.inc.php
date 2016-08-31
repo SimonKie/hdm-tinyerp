@@ -6,7 +6,7 @@
  * Date: 8/30/2016
  * Time: 10:57 AM
  */
-class customer
+class Customer
 {
     private $id = null;
     private $zipCode;
@@ -181,8 +181,20 @@ class customer
 
     }
 
+    public function listObject()
+    {
+        $return = '
+        <h6>' . $this->getCompanyName() . '</h6>
+        <p>Name: ' . $this->getFullName() . 'Phone: ' . $this->getPhone(). 'eMail: ' . $this->getEMail() .
+            'Adresse: ' . $this->getStreet() . ' - ' . $this->getZipCode(). ' - '. $this->getCityName().'
+        <a href="">bearbeiten</a> | <a href="">löschen</a>
+        </p>        
+        ';
 
-    //Wie schreibt man das richtig? Wofuer braucht man daS?
+        return $return;
+    }
+
+
     public static function getDropdown($customer)
     {
         $content = "
