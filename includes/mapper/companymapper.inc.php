@@ -6,7 +6,7 @@
  * Date: 8/30/2016
  * Time: 4:45 PM
  */
-require_once('dataMapper.inc.php');
+require_once('datamapper.inc.php');
 
 class CompanyMapper extends DataMapper
 {
@@ -144,6 +144,7 @@ class CompanyMapper extends DataMapper
             ':Register' => $company->getRegister(),
             ':RegisterNr' => $company->getRegisterNr(),
             ':VATID' => $company->getVatid(),
+            ':ID' => $company->getId()
         ));
     }
 
