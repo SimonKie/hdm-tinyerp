@@ -95,7 +95,8 @@ class InvoiceMapper extends DataMapper
             ':InvoiceNr' => $invoice->getInvoiceNr(),
             ':Date' => $invoice->getDate(),
             ':State' => $invoice->getSate(),
-            ':Text' => $invoice->getText()
+            ':Text' => $invoice->getText(),
+            ':id' => $invoice->getId()
         ));
     }
 

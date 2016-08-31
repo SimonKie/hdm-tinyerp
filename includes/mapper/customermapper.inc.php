@@ -121,7 +121,8 @@ class CustomerMapper extends DataMapper
             ':ZIPCode' => $customer->getZIPCompany(),
             ':City' => $customer->getCity(),
             ':EMail' => $customer->getEMail(),
-            ':Phone' => $customer->getPhone()
+            ':Phone' => $customer->getPhone(),
+            ':id' => $customer->getId()
         ));
     }
 }
