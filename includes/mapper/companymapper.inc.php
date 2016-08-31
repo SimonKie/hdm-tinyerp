@@ -144,6 +144,7 @@ class CompanyMapper extends DataMapper
             ':Register' => $company->getRegister(),
             ':RegisterNr' => $company->getRegisterNr(),
             ':VATID' => $company->getVatid(),
+            ':ID' => $company->getId()
         ));
     }
 
