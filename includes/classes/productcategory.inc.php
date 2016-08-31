@@ -13,6 +13,18 @@ class ProductCategory
     private $description;
 
     /**
+     * ProductCategory constructor.
+     * @param $name
+     * @param $description
+     */
+    public function __construct($name, $description)
+    {
+        $this->name = $name;
+        $this->description = $description;
+    }
+
+
+    /**
      * @return mixed
      */
     public function getId()

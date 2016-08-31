@@ -18,9 +18,8 @@ class Customer
     private $street;
     private $companyName;
 
-    public function __construct($id,$zipCode,$cityName,$firstName,$lastName,$eMail,$phone,$street,$companyName)
+    public function __construct($zipCode,$cityName,$firstName,$lastName,$eMail,$phone,$street,$companyName)
     {
-        $this->id = $id;
         $this->zipCode = $zipCode;
         $this->city = $cityName;
         $this->firstName = $firstName;
