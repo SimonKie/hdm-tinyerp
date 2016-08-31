@@ -12,19 +12,25 @@ class invoicePosition
 
     private $qty;
     private $price;
+    private $sort;
     private $invoice;
+    private $product;
 
     /**
      * invoicePosition constructor.
-     * @param $invoice
-     * @param $price
      * @param $qty
+     * @param $price
+     * @param $sort
+     * @param $invoice
+     * @param $product
      */
-    public function __construct($qty, $invoice, $price)
+    public function __construct($qty, $price, $sort, $invoice, $product)
     {
-        $this->invoice = $invoice;
-        $this->price = $price;
         $this->qty = $qty;
+        $this->price = $price;
+        $this->sort = $sort;
+        $this->invoice = $invoice;
+        $this->product = $product;
     }
 
     /**
@@ -75,6 +81,38 @@ class invoicePosition
         $this->qty = $qty;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getSort()
+    {
+        return $this->sort;
+    }
+
+    /**
+     * @param mixed $sort
+     */
+    public function setSort($sort)
+    {
+        $this->sort = $sort;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * @param mixed $product
+     */
+    public function setProduct($product)
+    {
+        $this->product = $product;
+    }
+
 
     //Wie schreibt man das richtig? Wofuer braucht man daS?
     public static function getDropdown($invoicePosition)
@@ -85,7 +123,7 @@ class invoicePosition
 
         foreach ($invoicePosition as $i)
         {
-            $content .= "<option value=\"" . $i->getInvoice() . "\">" . $i->getprice() . "</option>\n";
+            $content .= "<option value=\"" . $i->getInvoice() . "\">" . $i->getPrice() . "</option>\n";
         }
 
         $content .= "</select>";
