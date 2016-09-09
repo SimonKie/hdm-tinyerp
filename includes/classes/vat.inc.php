@@ -14,6 +14,14 @@ class Vat
     private $startDate;
     private $endDate;
 
+
+    /**
+     * Vat constructor.
+     */
+    public function __construct()
+    {
+    }
+
     /**
      * Vat constructor.
      * @param $value
@@ -21,7 +29,7 @@ class Vat
      * @param $startDate
      * @param $endDate
      */
-    public function __construct($value, $description, $startDate, $endDate)
+    public function __construct1($value, $description, $startDate, $endDate)
     {
         $this->value = $value;
         $this->description = $description;
@@ -148,5 +156,4 @@ class Vat
 
         return $content;
     }
-
 }

@@ -22,9 +22,10 @@ require_once('classes/user.inc.php');
 require_once('classes/userrole.inc.php');
 require_once('classes/vat.inc.php');
 
+
+require_once('mapper/datamapper.inc.php');
 require_once('mapper/companymapper.inc.php');
 require_once('mapper/customermapper.inc.php');
-require_once('mapper/datamapper.inc.php');
 require_once('mapper/employeemapper.inc.php');
 require_once('mapper/invoicemapper.inc.php');
 require_once('mapper/invoicepositionmapper.inc.php');

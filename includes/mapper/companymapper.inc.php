@@ -127,7 +127,7 @@ class CompanyMapper extends DataMapper
         CEO = :CEO,
         Register = :Register,
         RegisterNr = :RegisterNr,
-        VATID = :VATID,
+        VATID = :VATID
         WHERE ID= :ID
         ");
 

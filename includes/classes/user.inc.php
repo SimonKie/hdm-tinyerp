@@ -14,13 +14,20 @@ class User
     private $userRole;
 
     /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+    }
+
+    /**
      * user constructor.
      * @param $username
      * @param $password
      * @param $employee
      * @param $userRole
      */
-    public function __construct($username, $password, $employee, $userRole)
+    public function __construct1($username, $password, $employee, $userRole)
     {
         $this->username = $username;
         $this->password = $password;

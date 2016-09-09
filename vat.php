@@ -16,4 +16,4 @@ $page = new Page();
 $page->setTitle("tinyERP - VAT");
 $page->setRightArea($page->getMasterDataNav());
 $page->setContent($content);
-$page->run();
+$page->run(new User());

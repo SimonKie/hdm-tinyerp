@@ -35,7 +35,7 @@ class UserRoleMapper extends DataMapper
         if($e = $query->fetch(PDO::FETCH_OBJ))
         {
 
-            $userRole = new Company();
+            $userRole = new UserRole();
             $userRole->setId(intval($e->ID));
             $userRole->setName($e->Name);
 

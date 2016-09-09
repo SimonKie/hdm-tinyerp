@@ -40,14 +40,13 @@ class UserMapper extends DataMapper{
             $User->setId(intval($e->ID));
             $User->setUsername($e->Username);
             $User->setPassword($e->Password);
-
+            $User->setUserRole(UserMapper::findById(intval($e->UserRole_ID)));
             return $User;
         } else
         {
             return null;
         }
     }
-
 
     public static function getAllUsers()
     {
@@ -61,7 +60,7 @@ class UserMapper extends DataMapper{
             $User->setId(intval($e->ID));
             $User->setUsername($e->Username);
             $User->setPassword($e->Password);
-
+            $User->setUserRole(UserMapper::findById(intval($e->UserRole_ID)));
             $users[] = $User;
         }
 
