@@ -127,7 +127,6 @@ class Vat
         $this->endDate = $endDate;
     }
 
-
     public function listObject()
     {
         $return = '
@@ -139,6 +138,27 @@ class Vat
         ';
 
         return $return;
+    }
+
+    public static function formMapper($post)
+    {
+        $VAT = new VAT();
+
+        if(strlen($post['']) < 5)
+            return "Falsche Beschreibung.";
+        else
+            $VAT->setDescription($post['']);
+
+        return $VAT;
+    }
+
+    public static function getForm($VAT = null)
+    {
+        if($VAT == null)
+            $hidden = "new";
+        else
+            $hidden = "update";
+
     }
 
     public static function getDropdown($VATs)
