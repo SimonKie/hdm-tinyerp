@@ -154,13 +154,13 @@ class User
             <div class=\"form-style-1\">
             <form action=\"\" method=\"POST\">
             <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
-            <input type=\"hidden\" name=\"action\" value=\"$\" />
+            <input type=\"hidden\" name=\"action\" value=\"$username\" />
 
             <label for=\"name\"><span>Benutzername<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"username\" placeholder=\"Benutzername\" />
+              <input type=\"text\" class=\"input-field\" name=\"username\" value=\"$username\"placeholder=\"Benutzername\" />
             </label>
             <label for=\"name\"><span>Passwort<span class=\"required\">*</span></span> 
-              <input type=\"password\" class=\"input-field\" name=\"password\" maxlength=\"200\" placeholder=\"Passwort\" />
+              <input type=\"password\" class=\"input-field\" name=\"password\" value=\"$password\"  maxlength=\"200\" placeholder=\"Passwort\" />
             </label>
             
             <label for=\"name\"><span>Rolle<span class=\"required\">*</span></span><select name=\"selection\" class=\"select-field\">

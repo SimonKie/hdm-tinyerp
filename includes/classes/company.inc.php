@@ -271,6 +271,130 @@ class Company
         return $return;
     }
 
+
+    public static function formMapper($post)
+    {
+        $company = new Company();
+
+        if(strlen($post['name']) < 5)
+            return "Falsche Eingabe.";
+        else
+            $company->setName($post['name']);
+
+        if(strlen($post['street']) < 5)
+            return "Falsche Eingabe.";
+        else
+            $company->setStreet($post['street']);
+
+        if(is_numeric($post['vatId']))
+
+            $company->setVatId(floatval($post['vatId']));
+        else
+            return "Falsche Steuersatz.";
+
+        return $company;
+    }
+
+
+    public static function getForm(company $company = null)
+    {
+        $name = '';
+        $street = '';
+        $zipCode = '';
+        $city = '';
+        $eMail = '';
+        $bank = '';
+        $iban = '';
+        $bic = '';
+        $ceo = '';
+        $register = '';
+        $registerNr = '';
+        $vatId = '';
+
+        if($company == null) {
+            $hidden = "new";
+        }
+        else {
+            $hidden = "update";
+            $companyId = $company->getId();
+            $name = $company->getName();
+            $street = $company->getStreet();
+            $zipCode = $company->getZipCode();
+            $city = $company->getCity();
+            $eMail = $company->getEMail();
+            $bank = $company->getBank();
+            $iban = $company->getIban();
+            $bic = $company->getBic();
+            $ceo = $company->getCeo();
+            $register = $company->getRegister();
+            $registerNr = $company->getRegisterNr();
+            $vatId = $company->getVatid();
+        }
+
+
+        return "
+<div class=\"form-style-1\">
+<form action=\"\" method=\"POST\">
+<input type=\"hidden\" name=\"action\" value=\"$hidden\" />
+<input type=\"hidden\" name=\"action\" value=\"$companyId\">
+
+<label for=\"name\"><span>Name<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"name\" vaue=\"$name\" maxlength=\"100\" placeholder=\"Name\" />
+</label>
+
+<label for=\"name\"><span>Straße<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"street\" value=\"$street\" maxlength=\"100\" placeholder=\"Straße\" />
+</label>
+
+<label for=\"name\"><span>PLZ<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"plz\" value=\"$zipCode\" maxlength=\"11\" placeholder=\"PLZ\" />
+</label>
+
+<label for=\"name\"><span>Stadt<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"city\" value=\"$city\" maxlength=\"60\" placeholder=\"Stadt\" />
+</label>
+
+<label for=\"name\"><span>eMail<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"eMail\" value=\"$eMail\" maxlength=\"100\" placeholder=\"eMail\" />
+</label>
+
+<label for=\"name\"><span>Bank<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"bank\" value=\"$bank\" maxlength=\"100\" placeholder=\"Bank\" />
+</label>
+
+<label for=\"name\"><span>IBAN<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"iban\" value=\"$iban\" maxlength=\"34\" placeholder=\"IBAN\" />
+</label>
+
+<label for=\"name\"><span>BIC<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"bic\" value=\"$bic\" maxlength=\"11\" placeholder=\"BIC\" />
+</label>
+
+<label for=\"name\"><span>CEO<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"ceo\" value=\"$ceo\" maxlength=\"100\" placeholder=\"CEO\" />
+</label>
+
+<label for=\"name\"><span>Registername<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"register\" value=\"$register\" maxlength=\"100\" placeholder=\"Registername\" />
+</label>
+
+<label for=\"name\"><span>RegisterNr<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"registerNr\" value=\"$registerNr\" maxlength=\"45\" placeholder=\"RegisterNr\" />
+</label>
+
+<label for=\"name\"><span>MwSt<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"vatId\" value=\"$vatId\" maxlength=\"45\" placeholder=\"MwSt\" />
+</label>
+
+
+<label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
+
+</form>
+</div>
+        ";
+    }
+
+
     public static function getDropdown($company)
     {
         $content = "
