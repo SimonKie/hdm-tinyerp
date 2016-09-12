@@ -23,7 +23,12 @@ class InvoicePosition
      * @param $invoice
      * @param $product
      */
-    public function __construct($qty, $price, $sort, $invoice, $product)
+
+    public function __construct()
+    {
+    }
+
+    public function __construct1($qty, $price, $sort, $invoice, $product)
     {
         $this->qty = $qty;
         $this->price = $price;
@@ -141,7 +146,5 @@ class InvoicePosition
 
         return $content;
     }
-    
-    
 
 }

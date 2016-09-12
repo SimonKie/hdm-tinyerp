@@ -32,7 +32,12 @@ class Invoice
      * @param $state
      */
 
-    public function __construct($customer, $employee, $product, $invoiceNr, $text, $date, $state)
+    public function __construct()
+    {
+    }
+
+
+    public function __construct1($customer, $employee, $product, $invoiceNr, $text, $date, $state)
     {
         $this->customer = $customer;
         $this->employee = $employee;

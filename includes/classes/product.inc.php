@@ -15,7 +15,12 @@ class Product
     private $number;
     private $productCategory;
 
-    public function __construct($price,$vat,$number, $productCategory)
+
+    public function __construct()
+    {
+    }
+
+    public function __construct1($price,$vat,$number, $productCategory)
     {
         $this->price = $price;
         $this->vat = $vat;

@@ -22,8 +22,12 @@ class Company
     private $eMail;
     private $ceo;
     private $vatid;
-    
-    public function __construct($zipCode, $cityName, $name, $bank, $bic, $iban, $register, $registerNr, $eMail, $street, $ceo, $vatid){
+
+    public function __construct()
+    {
+    }
+
+    public function __construct1($zipCode, $cityName, $name, $bank, $bic, $iban, $register, $registerNr, $eMail, $street, $ceo, $vatid){
         $this->zipCode = $zipCode;
         $this->city = $cityName;
         $this->name = $name;

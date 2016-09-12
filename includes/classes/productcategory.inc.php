@@ -17,7 +17,13 @@ class ProductCategory
      * @param $name
      * @param $description
      */
-    public function __construct($name, $description)
+
+    public function __construct()
+    {
+    }
+
+
+    public function __construct1($name, $description)
     {
         $this->name = $name;
         $this->description = $description;

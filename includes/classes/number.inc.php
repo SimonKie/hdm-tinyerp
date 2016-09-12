@@ -15,6 +15,9 @@ class Number
 
     /** Zusammengesetzter Schlüssel (Präfix) fehlt evtl? */
 
+    public function __construct()
+    {
+    }
 
     /**
      * number constructor.
@@ -23,7 +26,7 @@ class Number
      * @param $prefix
      * @param $startInt
      */
-    public function __construct($endInt, $id, $prefix, $startInt)
+    public function __construct1($endInt, $id, $prefix, $startInt)
     {
         $this->endInt = $endInt;
         $this->id = $id;

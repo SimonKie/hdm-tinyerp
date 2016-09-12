@@ -14,6 +14,9 @@ class PdfArchive
     private $filetype;
     private $invoice;
 
+    public function __construct()
+    {
+    }
 
     /**
      * pdfArchive constructor.
@@ -22,7 +25,7 @@ class PdfArchive
      * @param $file
      * @param $filetype
      */
-    public function __construct($type, $file, $filetype, $invoice)
+    public function __construct1($type, $file, $filetype, $invoice)
     {
         $this->type = $type;
         $this->file = $file;

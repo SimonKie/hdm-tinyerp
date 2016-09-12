@@ -11,12 +11,17 @@ class UserRole
     private $id = null;
     private $name;
 
+    public function __construct()
+    {
+    }
+
+
     /**
      * userRole constructor.
      * @param null $id
      * @param $name
      */
-    public function __construct($name)
+    public function __construct1($name)
     {
         $this->name = $name;
     }
