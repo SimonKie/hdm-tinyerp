@@ -12,8 +12,8 @@ require_once('includes/bootstrap.inc.php');
 $content = "MWSt. : " . VAT::getDropdown(VATMapper::getAllVats());
 
 
-$VAT = VAT::formMapper($_POST);
-
+//$VAT = VAT::formMapper($_POST);
+$VAT = "";
 if($VAT instanceof VAT)
     if($_PST['action'] == 'update')
         VatMapper::update($VAT);

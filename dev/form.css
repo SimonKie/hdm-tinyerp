@@ -2,7 +2,6 @@
 .form-style-1{
     max-width: 500px;
     padding: 20px 12px 10px 20px;
-    font: 13px Arial, Helvetica, sans-serif;
 }
 .form-style-1-heading{
     font-weight: bold;
@@ -32,10 +31,6 @@
 }
 .form-style-1 input.input-field{
     width: 48%;
-}
-.form-style-1 input.text-field{
-	width: 48%;
-    height: 150px;
 }
 
 .form-style-1 input.input-field, 

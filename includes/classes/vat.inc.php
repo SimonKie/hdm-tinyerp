@@ -144,7 +144,7 @@ class Vat
     {
         $VAT = new VAT();
 
-        if(strlen($post['']) < 5)
+        if(strlen($post['description']) < 5)
             return "Falsche Beschreibung.";
         else
             $VAT->setDescription($post['']);
