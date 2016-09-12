@@ -197,6 +197,101 @@ class Customer
         return $return;
     }
 
+//nicht aktuell!!!
+    public static function formMapper($post)
+    {
+        $VAT = new VAT();
+
+        if(strlen($post['description']) < 5)
+            return "Falsche Beschreibung.";
+        else
+            $VAT->setDescription($post['description']);
+
+        if(is_numeric($post['value']))
+
+            $VAT->setValue(floatval($post['value']));
+        else
+            return "Falscher Steuersatz.";
+
+        return $VAT;
+    }
+
+
+
+    public static function getForm(customer $customer = null)
+    {
+        $companyName = '';
+        $firstName = '';
+        $lastName ='';
+        $street = '';
+        $zipCode = '';
+        $city = '';
+        $phone = '';
+        $eMail = '';
+
+        if($customer == null) {
+            $hidden = "new";
+        }
+        else {
+            $hidden = "update";
+            $customerId = $customer->getId();
+            $companyName = $customer->getCompanyName();
+            $firstName = $customer->getFirstName();
+            $lastName = $customer->getLastName();
+            $street = $customer->getStreet();
+            $zipCode = $customer->getZipCode();
+            $city = $customer->getCity();
+            $phone = $customer->getPhone();
+            $eMail = $customer->getEMail();
+        }
+
+
+        return "
+            <div class=\"form-style-1\">
+            <form action=\"\" method=\"POST\">
+            <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
+            <input type=\"hidden\" name=\"action\" value=\"$customerId\" />
+            
+            <label for=\"name\"><span>Firmename<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"companyName\" value=\"$companyName\" maxlength=\"100\" placeholder=\"Firmenname\" />
+            </label>
+            
+            <label for=\"name\"><span>Vorname<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"firstName\" value=\"$firstName\" maxlength=\"100\" placeholder=\"Vorname\" />
+            </label>
+            
+            <label for=\"name\"><span>Nachname<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"lastName\" value=\"$lastName\" maxlength=\"100\" placeholder=\"Nachname\" />
+            </label>
+            
+            <label for=\"name\"><span>Straße<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"street\" value=\"$street\" maxlength=\"100\" placeholder=\"Straße\" />
+            </label>
+            
+            <label for=\"name\"><span>PLZ<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"zipCode\" value=\"$zipCode\" maxlength=\"11\" placeholder=\"PLZ\" />
+            </label>
+            
+            <label for=\"name\"><span>Stadt<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"city\" value=\"$city\" maxlength=\"60\" placeholder=\"Stadt\" />
+            </label>
+            
+            <label for=\"name\"><span>Telefon<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"phone\"value=\"$phone\" maxlength=\"100\" placeholder=\"Telefon\" />
+            </label>
+            
+            <label for=\"name\"><span>eMail<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"eMail\" value=\"$eMail\" maxlength=\"100\" placeholder=\"eMail\" />
+            </label>
+            
+            
+            
+            <label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
+            
+            </form>
+            </div>
+     ";
+    }
 
     public static function getDropdown($customer)
     {

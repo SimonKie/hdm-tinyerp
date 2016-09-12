@@ -271,7 +271,7 @@ class Company
         return $return;
     }
 
-
+//nicht komplett gefüllt
     public static function formMapper($post)
     {
         $company = new Company();
