@@ -136,6 +136,82 @@ class Employee
         return $return;
     }
 
+    public static function formMapper($post)
+    {
+        $employee = new Employee();
+
+        if(strlen($post['firstName']) < 5)
+            return "Falscher Vorname.";
+        else
+            $employee->setFirstName($post['firstName']);
+
+        if(strlen($post['lastName']))
+
+            $employee->setLastName(strlen($post['lastName']));
+        else
+            return "Falscher Nachname.";
+
+        if(intval($post['phone']))
+
+            $employee->setPhone(intval($post['phone']));
+        else
+            return "Falsche Telefonnummer.";
+
+        if(strlen($post['eMail']))
+
+            $employee->setEMail(strlen($post['eMail']));
+        else
+            return "Falsche EMail.";
+
+        return $employee;
+    }
+
+    public static function getForm(Employee $employee = null)
+    {
+        $employeeId = '';
+        $firstName = '';
+        $lastName = '';
+        $eMail = '';
+        $phone = '';
+
+        if($employee == null) {
+            $hidden = "new";
+        }
+        else {
+            $hidden = "update";
+            $employeeId = $employee->getId();
+            $firstName = $employee->getFirstName();
+            $lastName = $employee->getLastName();
+            $eMail = $employee->getEMail();
+            $phone = $employee->getPhone();
+        }
+
+
+        return "
+            <div class=\"form-style-1\">
+            <form action=\"?id=2\" method=\"POST\">
+            <input type=\"hidden\" name=\"action\" value=\"hidden\" />
+            <input type=\"hidden\" name=\"employeeId\" value=\"$employeeId\" />
+            <label for=\"name\"><span>Vorname<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"firstName\" value=\"$firstName\" maxlength=\"100\" placeholder=\"Vorname\" />
+            </label>
+            <label for=\"name\"><span>Nachname<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"lastName\" value=\"$lastName\" maxlength=\"100\" placeholder=\"Nachname\" />
+            </label>
+            <label for=\"name\"><span>EMail<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"eMail\" value=\"$eMail\" maxlength=\"100\" placeholder=\"eMail\" />
+            </label>
+            <label for=\"name\"><span>Telefon<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"phone\" value=\"$phone\" maxlength=\"100\" placeholder=\"Telefon\" />
+            </label>
+            
+            <label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
+            
+            </form>
+            </div>
+        ";
+    }
+    
     public static function getDropdown($employee)
     {
         $content = "
