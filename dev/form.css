@@ -32,7 +32,10 @@
 }
 .form-style-1 input.input-field{
     width: 48%;
-    
+}
+.form-style-1 input.text-field{
+	width: 48%;
+    height: 150px;
 }
 
 .form-style-1 input.input-field, 
