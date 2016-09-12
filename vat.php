@@ -9,22 +9,43 @@
 
 require_once('includes/bootstrap.inc.php');
 
-$content = "MWSt. : " . VAT::getDropdown(VATMapper::getAllVats());
+$content = "";
 
-
-//$VAT = VAT::formMapper($_POST);
-$VAT = "";
-if($VAT instanceof VAT)
-    if($_PST['action'] == 'update')
-        VatMapper::update($VAT);
-    else
-        VatMapper::add($VAT);
+if(isset($_GET['id']))
+    $id = $_GET['id'];
 else
-    $content = $VAT;
+    $id = '';
 
+if($id)
+{
+    $content .= "<h6>Mehrwertsteuersatz ändern</h6>";
+    $VAT = VatMapper::findById(intval($_GET['vatid']));
+
+    $content .= VAT::getForm($VAT);
+
+} else if($id) {
+
+    $VAT = VAT::formMapper($_POST);
+
+    if ($VAT instanceof VAT) {
+        if ($_POST['action'] == 'update')
+            VatMapper::update($VAT);
+        else
+            VatMapper::add($VAT);
+
+        $content .= "Datensatz erfolgreich eingefügt.";
+    }
+    else {
+        $content .= $VAT;
+    }
+} else {
+    $content .= "<h6>Neuer Mehrwertsteuersatz</h6>";
+    $content .= VAT::getForm();
+}
 
 $page = new Page();
 $page->setTitle("tinyERP - VAT");
 $page->setRightArea($page->getMasterDataNav());
 $page->setContent($content);
-$page->run(new User());
+
+$page->run();

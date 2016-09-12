@@ -147,18 +147,61 @@ class Vat
         if(strlen($post['description']) < 5)
             return "Falsche Beschreibung.";
         else
-            $VAT->setDescription($post['']);
+            $VAT->setDescription($post['description']);
+
+        if(is_numeric($post['value']))
+
+            $VAT->setValue(floatval($post['value']));
+        else
+            return "Falscher Steuersatz.";
 
         return $VAT;
     }
 
-    public static function getForm($VAT = null)
+    public static function getForm(VAT $VAT = null)
     {
-        if($VAT == null)
-            $hidden = "new";
-        else
-            $hidden = "update";
+        $vatid = '';
+        $value = '';
+        $description = '';
+        $startDate = '';
+        $endDate = '';
 
+        if($VAT == null) {
+            $hidden = "new";
+        }
+        else {
+            $hidden = "update";
+            $vatid = $VAT->getId();
+            $value = $VAT->getValue();
+            $description = $VAT->getDescription();
+            $startDate = $VAT->getStartDate();
+            $endDate = $VAT->getEndDate();
+        }
+
+
+        return "
+<div class=\"form-style-1\">
+<form action=\"?id=2\" method=\"POST\">
+<input type=\"hidden\" name=\"action\" value=\"$hidden\" />
+<input type=\"hidden\" name=\"vatid\" value=\"$vatid\" />
+<label for=\"name\"><span>Wert<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"value\" maxlength=\"100\" value=\"$value\" placeholder=\"0.19\" />
+</label>
+<label for=\"name\"><span>Beschreibung<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"description\" maxlength=\"100\" value=\"$description\" placeholder=\"19%\" />
+</label>
+<label for=\"name\"><span>Anfangsdatum<span class=\"required\">*</span></span> 
+  <input type=\"date\" class=\"input-field\" name=\"startDate\" />
+</label>
+<label for=\"name\"><span>Enddatum<span class=\"required\">*</span></span> 
+  <input type=\"date\" class=\"input-field\" name=\"endDate\" />
+</label>
+
+<label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
+
+</form>
+</div>
+        ";
     }
 
     public static function getDropdown($VATs)
