@@ -111,6 +111,73 @@ class User
         return $return;
     }
 
+
+    public static function formMapper($post)
+    {
+        $USER = new User();
+
+        if(strlen($post['username']) < 2)
+            return "Falsche Eingabe.";
+        else
+            $USER->setUsername($post['username']);
+
+        if(strlen($post['password']))
+
+            $USER->setPassword($post['password']);
+        else
+            return "Falsches Passwort.";
+
+        //*UserRole und EmployeeID sind FK -> auch verwenden???
+
+        return $USER;
+    }
+
+    public static function getForm(User $user = null)
+    {
+        $username = '';
+        $password = '';
+
+        //*$employee = '';
+        //*$userRole = '';
+
+        if($user == null) {
+            $hidden = "new";
+        }
+        else {
+            $hidden = "update";
+            $username = $user->getUsername();
+            $password = $user->getPassword();
+        }
+
+
+        return "
+            <div class=\"form-style-1\">
+            <form action=\"\" method=\"POST\">
+            <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
+            <input type=\"hidden\" name=\"action\" value=\"$\" />
+
+            <label for=\"name\"><span>Benutzername<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"username\" placeholder=\"Benutzername\" />
+            </label>
+            <label for=\"name\"><span>Passwort<span class=\"required\">*</span></span> 
+              <input type=\"password\" class=\"input-field\" name=\"password\" maxlength=\"200\" placeholder=\"Passwort\" />
+            </label>
+            
+            <label for=\"name\"><span>Rolle<span class=\"required\">*</span></span><select name=\"selection\" class=\"select-field\">
+            <option value=\"?php?\">?php?</option>
+            <option value=\"?php?\">?php?</option>
+            <option value=\"?php?\">?php?</option>
+            </select></label>
+            
+            <label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
+            
+            </form>
+            </div>
+        ";
+    }
+
+
+
     public static function getDropdown($user)
     {
         $content = "
