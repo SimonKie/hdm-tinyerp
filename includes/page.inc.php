@@ -25,7 +25,7 @@ class Page
     private $masterDataNav = array(
         'Firma' => '',
         'Mitarbeiter' => '',
-        'Steuersätze' => '',
+        'Steuersätze' => 'vat.php',
         'Produktkategorien' => '',
         'Produkte' => '',
         'tinyERP' => ''
@@ -139,7 +139,7 @@ class Page
 
         foreach($this->mainNav as $key => $value)
         {
-            $return .= "<li><a href='$value'>$key</a></li>";
+            $return .= "<li><a href=\"$value\">$key</a></li>\n";
         }
 
         $return .= "</ul>";
@@ -153,7 +153,7 @@ class Page
 
         foreach($this->masterDataNav as $key => $value)
         {
-            $return .= "<li><a href='$value'>$key</a></li>";
+            $return .= "<li><a href=\"$value\">$key</a></li>\n";
         }
 
         $return .= "</ul>";
