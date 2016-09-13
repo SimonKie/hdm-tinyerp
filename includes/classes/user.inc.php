@@ -27,11 +27,14 @@ class User extends Employee
      * @param $employee
      * @param $userRole
      */
-    public function __construct1($username, $password, $userRole)
+    public function __construct1($username, $password, $userRole, $firstName, $lastName, $eMail, $phone)
     {
         $this->username = $username;
         $this->password = $password;
         $this->userRole = $userRole;
+        parent::__construct($firstName, $lastName, $eMail, $phone);
+
+
     }
 
     /**
