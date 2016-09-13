@@ -39,7 +39,7 @@ class VatMapper extends DataMapper
      */
     public static function delete($vat)
     {
-        self::$db->query("DELETE FROM VAT WHERE ID=" . $vat->getid());
+        self::$db->query("DELETE FROM VAT WHERE ID=" . $vat->getId());
     }
 
     /**

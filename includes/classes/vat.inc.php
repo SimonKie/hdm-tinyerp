@@ -146,7 +146,7 @@ class Vat
 
         $VAT->setId(intval($post['vatid']));
 
-        if(strlen($post['description']) < 5)
+        if(strlen($post['description']) < 3)
             return "Falsche Beschreibung.";
         else
             $VAT->setDescription($post['description']);
@@ -157,8 +157,11 @@ class Vat
         else
             return "Falscher Steuersatz.";
 
-        $VAT->setStartDate(new DateTime($post['startDate']));
-        $VAT->setEndDate(new DateTime($post['endDate']));
+        if(!empty($post['startDate']))
+            $VAT->setStartDate(new DateTime($post['startDate']));
+
+        if(!empty($post['endDate']))
+            $VAT->setEndDate(new DateTime($post['endDate']));
 
         return $VAT;
     }
@@ -189,10 +192,10 @@ class Vat
 <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
 <input type=\"hidden\" name=\"vatid\" value=\"$vatid\" />
 <label for=\"name\"><span>Wert<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"value\" maxlength=\"100\" value=\"$value\" placeholder=\"0.19\" />
+  <input type=\"text\" class=\"input-field\" name=\"value\" maxlength=\"100\" value=\"$value\" placeholder=\"0.19\" required />
 </label>
 <label for=\"name\"><span>Beschreibung<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"description\" maxlength=\"100\" value=\"$description\" placeholder=\"19%\" />
+  <input type=\"text\" class=\"input-field\" name=\"description\" maxlength=\"100\" value=\"$description\" placeholder=\"19%\" required />
 </label>
 <label for=\"name\"><span>Anfangsdatum<span class=\"required\">*</span></span> 
   <input type=\"date\" class=\"input-field\" name=\"startDate\" value=\"$startDate\" />
