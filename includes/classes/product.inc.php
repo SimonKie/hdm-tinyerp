@@ -119,6 +119,43 @@ class Product
         return $return;
     }
 
+    public static function getForm(Product $product = null)
+    {
+        $productId = '';
+        $number = '';
+        $price = '';
+        
+
+        if($product == null) {
+            $hidden = "new";
+        }
+        else {
+            $hidden = "update";
+            $productId = $product->getId();
+            $price = $product->getPrice();
+            $number = $product->getNumber();
+        }
+
+
+        return "
+            <div class=\"form-style-1\">
+            <form action=\"?id=2\" method=\"POST\">
+            <input type=\"hidden\" name=\"action\" value=\"hidden\" />
+            <input type=\"hidden\" name=\"productId\" value=\"$productId\" />
+            <label for=\"name\"><span>Nummer<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"number\" value=\"$number\" maxlength=\"100\" placeholder=\"Vorname\" />
+            </label>
+            <label for=\"name\"><span>Preis<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"price\" value=\"$price\" maxlength=\"100\" placeholder=\"Nachname\" />
+            </label>
+            
+            <label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
+            
+            </form>
+            </div>
+        ";
+    }
+    
     public static function getDropdown($product)
     {
         $content = "

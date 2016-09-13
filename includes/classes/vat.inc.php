@@ -190,6 +190,7 @@ class Vat
 <label for=\"name\"><span>Beschreibung<span class=\"required\">*</span></span> 
   <input type=\"text\" class=\"input-field\" name=\"description\" maxlength=\"100\" value=\"$description\" placeholder=\"19%\" />
 </label>
+//values are missing for startDate and EndDate, because we aren't sure how its supposed to be displayed
 <label for=\"name\"><span>Anfangsdatum<span class=\"required\">*</span></span> 
   <input type=\"date\" class=\"input-field\" name=\"startDate\" />
 </label>
