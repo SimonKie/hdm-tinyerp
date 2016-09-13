@@ -117,7 +117,7 @@ class Number
         return $VAT;
     }
 
-    public static function getForm(number $number = null)
+    public static function getForm(Number $number = null)
     {
         $numberId = '';
         $prefix = '';

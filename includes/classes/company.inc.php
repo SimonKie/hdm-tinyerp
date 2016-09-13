@@ -288,7 +288,7 @@ class Company
 
         if(is_numeric($post['vatId']))
 
-            $company->setVatId(floatval($post['vatId']));
+            $company->setVatid(floatval($post['vatId']));
         else
             return "Falsche Steuersatz.";
 
@@ -296,7 +296,7 @@ class Company
     }
 
 
-    public static function getForm(company $company = null)
+    public static function getForm(Company $company = null)
     {
         $name = '';
         $street = '';

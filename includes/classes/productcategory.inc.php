@@ -99,7 +99,7 @@ class ProductCategory
         return $VAT;
     }
 
-    public static function getForm(productCategory $productCategory = null)
+    public static function getForm(ProductCategory $productCategory = null)
     {
         $productCategoryId = '';
         $name = '';
