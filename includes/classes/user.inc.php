@@ -12,6 +12,7 @@ class User extends Employee
     private $password;
     private $userRole;
 
+
     /**
      * User constructor.
      */
@@ -91,6 +92,17 @@ class User extends Employee
         ';
 
         return $return;
+    }
+
+
+//*Membermethode employee welche beim anlegen eines Users die Daten vom Employee übernimmt - korrekt?
+    public static function employeeMember(){
+        $User = new User();
+        $User->getId();
+        $User->getFirstName();
+        $User->getLastName();
+        $User->getEMail();
+        $User->getPhone();
     }
 
 
