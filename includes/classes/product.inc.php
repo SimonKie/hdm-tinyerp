@@ -141,13 +141,13 @@ class Product
         return "
             <div class=\"form-style-1\">
             <form action=\"?id=2\" method=\"POST\">
-            <input type=\"hidden\" name=\"action\" value=\"hidden\" />
+            <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
             <input type=\"hidden\" name=\"productId\" value=\"$productId\" />
             <label for=\"name\"><span>Nummer<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"number\" value=\"$number\" maxlength=\"100\" placeholder=\"Vorname\" />
+              <input type=\"text\" class=\"input-field\" name=\"number\" value=\"$number\" maxlength=\"100\" placeholder=\"12345\" />
             </label>
             <label for=\"name\"><span>Preis<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"price\" value=\"$price\" maxlength=\"100\" placeholder=\"Nachname\" />
+              <input type=\"text\" class=\"input-field\" name=\"price\" value=\"$price\" maxlength=\"100\" placeholder=\"100.00\" />
             </label>
             
             <label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
