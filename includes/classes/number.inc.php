@@ -98,6 +98,7 @@ class Number
         $this->startInt = $startInt;
     }
 
+
 //*nicht befüllt
     public static function formMapper($post)
     {
@@ -142,14 +143,14 @@ class Number
             <input type=\"hidden\" name=\"action\" value=\"$numberId\" />
             
             <label for=\"name\"><span>Präfix<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"prefix\" value=\"$prefix\" placeholder=\"2016\" />
+              <input type=\"text\" class=\"input-field\" name=\"prefix\" value=\"$prefix\" placeholder=\"2016\" required/>
             </label>
             <label for=\"name\"><span>Startnummer<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"startInt\" value=\"$startInt\" maxlength=\"100\" placeholder=\"Startnummer\" />
+              <input type=\"text\" class=\"input-field\" name=\"startInt\" value=\"$startInt\" maxlength=\"100\" placeholder=\"Startnummer\" required/>
             </label>
             
             <label for=\"name\"><span>Endnummer<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"endInt\" value=\"$endInt\" maxlength=\"100\" placeholder=\"Endnummer\" />
+              <input type=\"text\" class=\"input-field\" name=\"endInt\" value=\"$endInt\" maxlength=\"100\" placeholder=\"Endnummer\" required/>
             </label>
             
             <label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
