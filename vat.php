@@ -9,7 +9,7 @@
 
 require_once('includes/bootstrap.inc.php');
 
-$content = "";
+$content = "<h3>Steuersätze</h3>";
 
 if(isset($_GET['id']))
     $id = $_GET['id'];
@@ -18,7 +18,6 @@ else
 
 if($id == '1')
 {
-    $content .= "<h6>Mehrwertsteuersatz ändern</h6>";
     $VAT = VatMapper::findById(intval($_GET['vatid']));
 
     $content .= VAT::getForm($VAT);
@@ -35,6 +34,8 @@ if($id == '1')
         }
 
         $content .= "Datensatz erfolgreich eingefügt.";
+        $content .= VAT::getTable(VatMapper::getAllVats());
+
     }
     else {
         $content .= $VAT;
@@ -44,44 +45,22 @@ if($id == '1')
     $content .= VAT::getForm();
 } else if($id == '4')
 {
-    $VAT = new VAT();
-    $VAT->setId(intval($_GET['vatid']));
-    VatMapper::delete($VAT);
-    $content .= "Datensatz wurde gelöscht.";
-} else {
-    $VATs = VatMapper::getAllVats();
-
-    $content .= "<h6>Mehrwertsteuersätze</h6>
-                 <button onclick=\"window.location.href='?id=3'\">Neuer Steuersatz</button>
-                 <table border=\"1\">
-                  <tr>
-                    <th>ID</th>
-                    <th>Steuersatz</th>
-                    <th>Beschreibung</th>
-                    <th>Start Datum</th>
-                    <th>End Datum</th>
-                    <th>&nbsp;</th>
-                    <th>&nbsp;</th>
-                   </tr>
-                ";
-
-    foreach ($VATs as $vat)
+    if(empty($_GET['sure']))
     {
-        $content .= "
-                        <tr>
-                         <td>" . $vat->getId() . "</td>
-                         <td>" . $vat->getValue() . "</td>
-                         <td>" . $vat->getDescription() . "</td>
-                         <td>" . $vat->getStartDate()->format('d.m.Y') . "</td>
-                         <td>" . $vat->getEndDate()->format('d.m.Y') . "</td>
-                         <td><button onclick=\"window.location.href='?id=1&vatid=" . $vat->getId() . "'\">ändern</button></td>
-                         <td><button onclick=\"window.location.href='?id=4&vatid=" . $vat->getId() . "'\">löschen</button></td>
-                        </tr>
-        ";
+        $content .= "Wirklich löschen?
+                     <button onclick=\"window.location.href='?id=4&vatid=" . $_GET['vatid'] . "&sure=true'\">Ja</button>
+                     <button onclick=\"window.location.href='?'\">Nein</button>";
+        $content .= VAT::getTable(VatMapper::getAllVats());
+    } else {
+        $VAT = new VAT();
+        $VAT->setId(intval($_GET['vatid']));
+        VatMapper::delete($VAT);
+        $content .= "Datensatz wurde gelöscht.";
+        $content .= VAT::getTable(VatMapper::getAllVats());
     }
+} else {
 
-    $content .= "</table>";
-
+    $content .= VAT::getTable(VatMapper::getAllVats());
 }
 
 $page = new Page();

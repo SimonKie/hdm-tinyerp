@@ -226,4 +226,41 @@ class Vat
 
         return $content;
     }
+
+    public static function getTable($VATs)
+    {
+        $content = "
+                 <table border=\"1\">
+                  <tr>
+                    <th>ID</th>
+                    <th>Steuersatz</th>
+                    <th>Beschreibung</th>
+                    <th>Start Datum</th>
+                    <th>End Datum</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                   </tr>
+                ";
+
+        foreach ($VATs as $vat)
+        {
+            $content .= "
+                        <tr>
+                         <td>" . $vat->getId() . "</td>
+                         <td>" . $vat->getValue() . "</td>
+                         <td>" . $vat->getDescription() . "</td>
+                         <td>" . $vat->getStartDate()->format('d.m.Y') . "</td>
+                         <td>" . $vat->getEndDate()->format('d.m.Y') . "</td>
+                         <td><button onclick=\"window.location.href='?id=1&vatid=" . $vat->getId() . "'\">ändern</button></td>
+                         <td><button onclick=\"window.location.href='?id=4&vatid=" . $vat->getId() . "'\">löschen</button></td>
+                        </tr>
+        ";
+        }
+
+        $content .= "</table>
+                       <button onclick=\"window.location.href='?id=3'\">Neuer Steuersatz</button>
+                ";
+
+        return $content;
+    }
 }
