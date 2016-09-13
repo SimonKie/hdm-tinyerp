@@ -6,6 +6,7 @@
  * Date: 30.08.2016
  * Time: 15:14
  */
+
 class User
 {
     private $username;
@@ -142,6 +143,8 @@ class User
 
         if($user == null) {
             $hidden = "new";
+
+            $employee = EmployeeMapper::findById();
         }
         else {
             $hidden = "update";
@@ -155,6 +158,7 @@ class User
             <form action=\"\" method=\"POST\">
             <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
             <input type=\"hidden\" name=\"action\" value=\"$username\" />
+
 
             <label for=\"name\"><span>Benutzername<span class=\"required\">*</span></span> 
               <input type=\"text\" class=\"input-field\" name=\"username\" value=\"$username\"placeholder=\"Benutzername\" />
