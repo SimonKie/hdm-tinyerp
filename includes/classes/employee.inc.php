@@ -8,11 +8,11 @@
  */
 class Employee
 {
-    private $id = null;
-    private $firstName;
-    private $lastName;
-    private $eMail;
-    private $phone;
+    protected $id = null;
+    protected $firstName;
+    protected $lastName;
+    protected $eMail;
+    protected $phone;
 
     /**
      * Employee constructor.

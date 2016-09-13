@@ -6,6 +6,7 @@
  * Date: 30.08.2016
  * Time: 15:14
  */
+
 class User extends Employee
 {
     private $username;
@@ -20,6 +21,14 @@ class User extends Employee
     {
     }
 
+    public function __construct1($firstName, $lastName, $eMail, $phone)
+    {
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->eMail = $eMail;
+        $this->phone = $phone;
+    }
+
     /**
      * user constructor.
      * @param $username
@@ -27,14 +36,12 @@ class User extends Employee
      * @param $employee
      * @param $userRole
      */
-    public function __construct1($username, $password, $userRole, $firstName, $lastName, $eMail, $phone)
+    public function __construct2($username, $password, $userRole, $firstName, $lastName, $eMail, $phone)
     {
         $this->username = $username;
         $this->password = $password;
         $this->userRole = $userRole;
-        parent::__construct($firstName, $lastName, $eMail, $phone);
-
-
+        parent::__construct1($firstName, $lastName, $eMail, $phone);
     }
 
     /**
@@ -129,11 +136,10 @@ class User extends Employee
         return $USER;
     }
 
-    public static function getForm(User $user = null)
+    public static function getForm(Employee $user = null)
     {
         $username = '';
         $password = '';
-
 
         //*$userRole = '';
 
@@ -177,7 +183,6 @@ class User extends Employee
     }
 
 
-
     public static function getDropdown($user)
     {
         $content = "
@@ -193,5 +198,4 @@ class User extends Employee
 
         return $content;
     }
-
 }
