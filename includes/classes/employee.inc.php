@@ -190,7 +190,7 @@ class Employee
         return "
             <div class=\"form-style-1\">
             <form action=\"?id=2\" method=\"POST\">
-            <input type=\"hidden\" name=\"action\" value=\"hidden\" />
+            <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
             <input type=\"hidden\" name=\"employeeId\" value=\"$employeeId\" />
             <label for=\"name\"><span>Vorname<span class=\"required\">*</span></span> 
               <input type=\"text\" class=\"input-field\" name=\"firstName\" value=\"$firstName\" maxlength=\"100\" placeholder=\"Vorname\" />

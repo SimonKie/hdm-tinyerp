@@ -141,7 +141,7 @@ class Product
         return "
             <div class=\"form-style-1\">
             <form action=\"?id=2\" method=\"POST\">
-            <input type=\"hidden\" name=\"action\" value=\"hidden\" />
+            <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
             <input type=\"hidden\" name=\"productId\" value=\"$productId\" />
             <label for=\"name\"><span>Nummer<span class=\"required\">*</span></span> 
               <input type=\"text\" class=\"input-field\" name=\"number\" value=\"$number\" maxlength=\"100\" placeholder=\"12345\" />
