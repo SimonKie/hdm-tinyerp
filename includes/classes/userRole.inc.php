@@ -69,6 +69,38 @@ class UserRole
         return $return;
     }
 
+    public static function getForm(UserRole $userRole = null)
+    {
+        $userRoleId = '';
+        $name = '';
+        
+
+        if($userRole == null) {
+            $hidden = "new";
+        }
+        else {
+            $hidden = "update";
+            $userRoleId = $userRole->getId();
+            $name = $userRole->getName();
+        }
+
+
+        return "
+<div class=\"form-style-1\">
+<form action=\"?id=2\" method=\"POST\">
+<input type=\"hidden\" name=\"action\" value=\"$hidden\" />
+<input type=\"hidden\" name=\"userRoleId\" value=\"$userRoleId\" />
+<label for=\"name\"><span>Bezeichnung<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"name\" maxlength=\"100\" value=\"$name\" placeholder=\"Admin\" />
+</label>
+
+<label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
+
+</form>
+</div>
+        ";
+    }
+    
     public static function getDropdown($userRole)
     {
         $content = "

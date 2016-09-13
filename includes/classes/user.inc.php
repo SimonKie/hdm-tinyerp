@@ -6,12 +6,10 @@
  * Date: 30.08.2016
  * Time: 15:14
  */
-
-class User
+class User extends Employee
 {
     private $username;
     private $password;
-    private $employee;
     private $userRole;
 
     /**
@@ -28,11 +26,10 @@ class User
      * @param $employee
      * @param $userRole
      */
-    public function __construct1($username, $password, $employee, $userRole)
+    public function __construct1($username, $password, $userRole)
     {
         $this->username = $username;
         $this->password = $password;
-        $this->employee = $employee;
         $this->userRole = $userRole;
     }
 
@@ -66,22 +63,6 @@ class User
     public function setPassword($password)
     {
         $this->password = $password;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEmployee()
-    {
-        return $this->employee;
-    }
-
-    /**
-     * @param mixed $employee
-     */
-    public function setEmployee($employee)
-    {
-        $this->employee = $employee;
     }
 
     /**
@@ -128,7 +109,7 @@ class User
         else
             return "Falsches Passwort.";
 
-        //*UserRole und EmployeeID sind FK -> auch verwenden???
+        //*UserRole
 
         return $USER;
     }
@@ -138,13 +119,11 @@ class User
         $username = '';
         $password = '';
 
-        //*$employee = '';
+
         //*$userRole = '';
 
         if($user == null) {
             $hidden = "new";
-
-            $employee = EmployeeMapper::findById();
         }
         else {
             $hidden = "update";
@@ -159,12 +138,14 @@ class User
             <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
             <input type=\"hidden\" name=\"action\" value=\"$username\" />
 
-
             <label for=\"name\"><span>Benutzername<span class=\"required\">*</span></span> 
               <input type=\"text\" class=\"input-field\" name=\"username\" value=\"$username\"placeholder=\"Benutzername\" />
             </label>
             <label for=\"name\"><span>Passwort<span class=\"required\">*</span></span> 
               <input type=\"password\" class=\"input-field\" name=\"password\" value=\"$password\"  maxlength=\"200\" placeholder=\"Passwort\" />
+            </label>
+            <label for=\"name\"><span>Passwort<span class=\"required\">*</span></span> 
+              <input type=\"password\" class=\"input - field\" name=\"password\" value=\"$password\"  maxlength=\"200\" placeholder=\"Passwort wiederholen\" />
             </label>
             
             <label for=\"name\"><span>Rolle<span class=\"required\">*</span></span><select name=\"selection\" class=\"select-field\">
