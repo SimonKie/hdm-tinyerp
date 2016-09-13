@@ -196,24 +196,26 @@ class Customer
 
         return $return;
     }
-
-//nicht aktuell!!!
+    
     public static function formMapper($post)
     {
-        $VAT = new VAT();
+        $Customer = new Customer();
+        
+            $Customer->setCompanyName($post['companyName']);
+            $Customer->setFirstName($post['firstName']);
+            $Customer->setLastName($post['lastName']);
+            $Customer->setStreet($post['street']);
+            $Customer->setEMail($post['eMail']);
+            $Customer->setPhone($post['phone']);
+            $Customer->setCity($post['city']);
 
-        if(strlen($post['description']) < 5)
-            return "Falsche Beschreibung.";
+        if(is_numeric($post['zipCode']))
+
+            $Customer->setZipCode(intval($post['zipCode']));
         else
-            $VAT->setDescription($post['description']);
+            return "Falsche PLZ.";
 
-        if(is_numeric($post['value']))
-
-            $VAT->setValue(floatval($post['value']));
-        else
-            return "Falscher Steuersatz.";
-
-        return $VAT;
+        return $Customer;
     }
 
 
@@ -252,35 +254,35 @@ class Customer
             <input type=\"hidden\" name=\"action\" value=\"$customerId\" />
             
             <label for=\"name\"><span>Firmename<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"companyName\" value=\"$companyName\" maxlength=\"100\" placeholder=\"Firmenname\" />
+              <input type=\"text\" class=\"input-field\" name=\"companyName\" value=\"$companyName\" maxlength=\"100\" placeholder=\"Firmenname\" required/>
             </label>
             
             <label for=\"name\"><span>Vorname<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"firstName\" value=\"$firstName\" maxlength=\"100\" placeholder=\"Vorname\" />
+              <input type=\"text\" class=\"input-field\" name=\"firstName\" value=\"$firstName\" maxlength=\"100\" placeholder=\"Vorname\" required />
             </label>
             
             <label for=\"name\"><span>Nachname<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"lastName\" value=\"$lastName\" maxlength=\"100\" placeholder=\"Nachname\" />
+              <input type=\"text\" class=\"input-field\" name=\"lastName\" value=\"$lastName\" maxlength=\"100\" placeholder=\"Nachname\" required/>
             </label>
             
             <label for=\"name\"><span>Straße<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"street\" value=\"$street\" maxlength=\"100\" placeholder=\"Straße\" />
+              <input type=\"text\" class=\"input-field\" name=\"street\" value=\"$street\" maxlength=\"100\" placeholder=\"Straße\" required/>
             </label>
             
             <label for=\"name\"><span>PLZ<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"zipCode\" value=\"$zipCode\" maxlength=\"11\" placeholder=\"PLZ\" />
+              <input type=\"text\" class=\"input-field\" name=\"zipCode\" value=\"$zipCode\" maxlength=\"11\" placeholder=\"PLZ\" required/>
             </label>
             
             <label for=\"name\"><span>Stadt<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"city\" value=\"$city\" maxlength=\"60\" placeholder=\"Stadt\" />
+              <input type=\"text\" class=\"input-field\" name=\"city\" value=\"$city\" maxlength=\"60\" placeholder=\"Stadt\" required />
             </label>
             
             <label for=\"name\"><span>Telefon<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"phone\"value=\"$phone\" maxlength=\"100\" placeholder=\"Telefon\" />
+              <input type=\"text\" class=\"input-field\" name=\"phone\"value=\"$phone\" maxlength=\"100\" placeholder=\"Telefon\" required/>
             </label>
             
             <label for=\"name\"><span>eMail<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"eMail\" value=\"$eMail\" maxlength=\"100\" placeholder=\"eMail\" />
+              <input type=\"text\" class=\"input-field\" name=\"eMail\" value=\"$eMail\" maxlength=\"100\" placeholder=\"eMail\" required/>
             </label>
              
             <label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
