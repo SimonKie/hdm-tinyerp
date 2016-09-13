@@ -271,26 +271,26 @@ class Company
         return $return;
     }
 
-//nicht komplett gefüllt
+
     public static function formMapper($post)
     {
         $company = new Company();
-
-        if(strlen($post['name']) < 5)
-            return "Falsche Eingabe.";
-        else
             $company->setName($post['name']);
-
-        if(strlen($post['street']) < 5)
-            return "Falsche Eingabe.";
-        else
             $company->setStreet($post['street']);
+            $company->setCity($post['city']);
+            $company->setEMail($post['eMail']);
+            $company->setBank($post['bank']);
+            $company->setIban($post['iban']);
+            $company->setBic($post['bic']);
+            $company->setCeo($post['ceo']);
+            $company->setRegister($post['register']);
+            $company->setRegisterNr($post['registerNr']);
+            $company->setVatid($post['vatId']);
 
-        if(is_numeric($post['vatId']))
-
-            $company->setVatid(floatval($post['vatId']));
+        if(is_numeric($post['zipCode']))
+            $company->setZipCode(intval($post['zipCode']));
         else
-            return "Falsche Steuersatz.";
+            return "Falsche PLZ Eingabe.";
 
         return $company;
     }
@@ -339,51 +339,51 @@ class Company
 <input type=\"hidden\" name=\"action\" value=\"$companyId\">
 
 <label for=\"name\"><span>Name<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"name\" vaue=\"$name\" maxlength=\"100\" placeholder=\"Name\" />
+  <input type=\"text\" class=\"input-field\" name=\"name\" vaue=\"$name\" maxlength=\"100\" placeholder=\"Name\" required/>
 </label>
 
 <label for=\"name\"><span>Straße<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"street\" value=\"$street\" maxlength=\"100\" placeholder=\"Straße\" />
+  <input type=\"text\" class=\"input-field\" name=\"street\" value=\"$street\" maxlength=\"100\" placeholder=\"Straße\" required/>
 </label>
 
 <label for=\"name\"><span>PLZ<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"plz\" value=\"$zipCode\" maxlength=\"11\" placeholder=\"PLZ\" />
+  <input type=\"text\" class=\"input-field\" name=\"plz\" value=\"$zipCode\" maxlength=\"11\" placeholder=\"PLZ\" required/>
 </label>
 
 <label for=\"name\"><span>Stadt<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"city\" value=\"$city\" maxlength=\"60\" placeholder=\"Stadt\" />
+  <input type=\"text\" class=\"input-field\" name=\"city\" value=\"$city\" maxlength=\"60\" placeholder=\"Stadt\" required/>
 </label>
 
 <label for=\"name\"><span>eMail<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"eMail\" value=\"$eMail\" maxlength=\"100\" placeholder=\"eMail\" />
+  <input type=\"text\" class=\"input-field\" name=\"eMail\" value=\"$eMail\" maxlength=\"100\" placeholder=\"eMail\" required/>
 </label>
 
 <label for=\"name\"><span>Bank<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"bank\" value=\"$bank\" maxlength=\"100\" placeholder=\"Bank\" />
+  <input type=\"text\" class=\"input-field\" name=\"bank\" value=\"$bank\" maxlength=\"100\" placeholder=\"Bank\" required/>
 </label>
 
 <label for=\"name\"><span>IBAN<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"iban\" value=\"$iban\" maxlength=\"34\" placeholder=\"IBAN\" />
+  <input type=\"text\" class=\"input-field\" name=\"iban\" value=\"$iban\" maxlength=\"34\" placeholder=\"IBAN\" required/>
 </label>
 
 <label for=\"name\"><span>BIC<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"bic\" value=\"$bic\" maxlength=\"11\" placeholder=\"BIC\" />
+  <input type=\"text\" class=\"input-field\" name=\"bic\" value=\"$bic\" maxlength=\"11\" placeholder=\"BIC\" required/>
 </label>
 
 <label for=\"name\"><span>CEO<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"ceo\" value=\"$ceo\" maxlength=\"100\" placeholder=\"CEO\" />
+  <input type=\"text\" class=\"input-field\" name=\"ceo\" value=\"$ceo\" maxlength=\"100\" placeholder=\"CEO\" required/>
 </label>
 
 <label for=\"name\"><span>Registername<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"register\" value=\"$register\" maxlength=\"100\" placeholder=\"Registername\" />
+  <input type=\"text\" class=\"input-field\" name=\"register\" value=\"$register\" maxlength=\"100\" placeholder=\"Registername\" required/>
 </label>
 
-<label for=\"name\"><span>RegisterNr<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"registerNr\" value=\"$registerNr\" maxlength=\"45\" placeholder=\"RegisterNr\" />
+<label for=\"name\"><span>Registernummer<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"registerNr\" value=\"$registerNr\" maxlength=\"45\" placeholder=\"Registernummer\" required/>
 </label>
 
-<label for=\"name\"><span>MwSt<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"vatId\" value=\"$vatId\" maxlength=\"45\" placeholder=\"MwSt\" />
+<label for=\"name\"><span>Steuernummer<span class=\"required\">*</span></span> 
+  <input type=\"text\" class=\"input-field\" name=\"vatId\" value=\"$vatId\" maxlength=\"45\" placeholder=\"Steuernummer\" required/>
 </label>
 
 

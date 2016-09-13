@@ -120,6 +120,22 @@ class Product
         return $return;
     }
 
+    public static function formMapper($post)
+    {
+        $Product = new Product();
+
+        $Product->setNumber($post['number']);
+        
+
+        if(is_numeric($post['price']))
+
+            $Product->setPrice(floatval($post['price']));
+        else
+            return "Falscher Preis.";
+
+        return $Product;
+    }
+    
     public static function getForm(Product $product = null)
     {
         $productId = '';
@@ -144,10 +160,10 @@ class Product
             <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
             <input type=\"hidden\" name=\"productId\" value=\"$productId\" />
             <label for=\"name\"><span>Nummer<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"number\" value=\"$number\" maxlength=\"100\" placeholder=\"12345\" />
+              <input type=\"text\" class=\"input-field\" name=\"number\" value=\"$number\" maxlength=\"100\" placeholder=\"12345\" required/>
             </label>
             <label for=\"name\"><span>Preis<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"price\" value=\"$price\" maxlength=\"100\" placeholder=\"100.00\" />
+              <input type=\"text\" class=\"input-field\" name=\"price\" value=\"$price\" maxlength=\"100\" placeholder=\"100.00\" required />
             </label>
             
             <label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
