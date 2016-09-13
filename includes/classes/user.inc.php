@@ -151,16 +151,16 @@ class User extends Employee
             <input type=\"hidden\" name=\"action\" value=\"$username\" />
 
             <label for=\"name\"><span>Benutzername<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"username\" value=\"$username\"placeholder=\"Benutzername\" />
+              <input type=\"text\" class=\"input-field\" name=\"username\" value=\"$username\"placeholder=\"Benutzername\" required />
             </label>
             <label for=\"name\"><span>Passwort<span class=\"required\">*</span></span> 
-              <input type=\"password\" class=\"input-field\" name=\"password\" value=\"$password\"  maxlength=\"200\" placeholder=\"Passwort\" />
+              <input type=\"password\" class=\"input-field\" name=\"password\" value=\"$password\"  maxlength=\"200\" placeholder=\"Passwort\" required/>
             </label>
             <label for=\"name\"><span>Passwort<span class=\"required\">*</span></span> 
-              <input type=\"password\" class=\"input - field\" name=\"password\" value=\"$password\"  maxlength=\"200\" placeholder=\"Passwort wiederholen\" />
+              <input type=\"password\" class=\"input - field\" name=\"password\" value=\"$password\"  maxlength=\"200\" placeholder=\"Passwort wiederholen\" required />
             </label>
             
-            <label for=\"name\"><span>Rolle<span class=\"required\">*</span></span><select name=\"selection\" class=\"select-field\">
+            <label for=\"name\"><span>Rolle<span class=\"required\">*</span></span><select name=\"selection\" class=\"select-field\" required>
             <option value=\"?php?\">?php?</option>
             <option value=\"?php?\">?php?</option>
             <option value=\"?php?\">?php?</option>

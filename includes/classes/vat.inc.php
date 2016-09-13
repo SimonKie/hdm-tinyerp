@@ -189,13 +189,13 @@ class Vat
 <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
 <input type=\"hidden\" name=\"vatid\" value=\"$vatid\" />
 <label for=\"name\"><span>Wert<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"value\" maxlength=\"100\" value=\"$value\" placeholder=\"0.19\" />
+  <input type=\"text\" class=\"input-field\" name=\"value\" maxlength=\"100\" value=\"$value\" placeholder=\"0.19\"required />
 </label>
 <label for=\"name\"><span>Beschreibung<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"description\" maxlength=\"100\" value=\"$description\" placeholder=\"19%\" />
+  <input type=\"text\" class=\"input-field\" name=\"description\" maxlength=\"100\" value=\"$description\" placeholder=\"19%\" required/>
 </label>
 <label for=\"name\"><span>Anfangsdatum<span class=\"required\">*</span></span> 
-  <input type=\"date\" class=\"input-field\" name=\"startDate\" value=\"$startDate\" />
+  <input type=\"date\" class=\"input-field\" name=\"startDate\" value=\"$startDate\" required/>
 </label>
 <label for=\"name\"><span>Enddatum<span class=\"required\">*</span></span> 
   <input type=\"date\" class=\"input-field\" name=\"endDate\" value=\"$endDate\" />
