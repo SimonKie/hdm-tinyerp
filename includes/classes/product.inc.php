@@ -25,6 +25,7 @@ class Product
         $this->price = $price;
         $this->vat = $vat;
         $this->number = $number;
+        $this->productCategory = $productCategory;
     }
 
     /**
