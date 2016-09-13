@@ -217,7 +217,7 @@ class Customer
     }
 
 
-    public static function getForm(customer $customer = null)
+    public static function getForm(Customer $customer = null)
     {
         $companyName = '';
         $firstName = '';
