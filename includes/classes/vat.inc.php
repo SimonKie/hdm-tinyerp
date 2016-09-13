@@ -182,7 +182,7 @@ class Vat
             $startDate = $VAT->getStartDate()->format('Y-m-d');
             $endDate = $VAT->getEndDate()->format('Y-m-d');
         }
-        
+
         return "
 <div class=\"form-style-1\">
 <form action=\"?id=2\" method=\"POST\">
