@@ -98,6 +98,68 @@ class Number
         $this->startInt = $startInt;
     }
 
+//*nicht befüllt
+    public static function formMapper($post)
+    {
+        $VAT = new VAT();
+
+        if(strlen($post['description']) < 5)
+            return "Falsche Beschreibung.";
+        else
+            $VAT->setDescription($post['description']);
+
+        if(is_numeric($post['value']))
+
+            $VAT->setValue(floatval($post['value']));
+        else
+            return "Falscher Steuersatz.";
+
+        return $VAT;
+    }
+
+    public static function getForm(number $number = null)
+    {
+        $numberId = '';
+        $prefix = '';
+        $startInt = '';
+        $endInt = '';
+
+        if($number == null) {
+            $hidden = "new";
+        }
+        else {
+            $hidden = "update";
+            $numberId = $number->getId();
+            $prefix = $number->getPrefix();
+            $startInt = $number->getStartInt();
+            $endInt = $number->getEndInt();
+        }
+
+        return "
+            <div class=\"form-style-1\">
+            <form action=\"\" method=\"POST\">
+            <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
+            <input type=\"hidden\" name=\"action\" value=\"$numberId\" />
+            
+            <label for=\"name\"><span>Präfix<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"prefix\" value=\"$prefix\" placeholder=\"2016\" />
+            </label>
+            <label for=\"name\"><span>Startnummer<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"startInt\" value=\"$startInt\" maxlength=\"100\" placeholder=\"Startnummer\" />
+            </label>
+            
+            <label for=\"name\"><span>Endnummer<span class=\"required\">*</span></span> 
+              <input type=\"text\" class=\"input-field\" name=\"endInt\" value=\"$endInt\" maxlength=\"100\" placeholder=\"Endnummer\" />
+            </label>
+            
+            <label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
+            
+            </form>
+            </div>";
+    }
+
+
+
     public function listObject()
     {
         $return = '

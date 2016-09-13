@@ -217,7 +217,6 @@ class Customer
     }
 
 
-
     public static function getForm(customer $customer = null)
     {
         $companyName = '';
@@ -283,9 +282,7 @@ class Customer
             <label for=\"name\"><span>eMail<span class=\"required\">*</span></span> 
               <input type=\"text\" class=\"input-field\" name=\"eMail\" value=\"$eMail\" maxlength=\"100\" placeholder=\"eMail\" />
             </label>
-            
-            
-            
+             
             <label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
             
             </form>
