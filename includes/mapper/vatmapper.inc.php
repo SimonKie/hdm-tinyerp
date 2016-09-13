@@ -27,8 +27,8 @@ class VatMapper extends DataMapper
         $st->execute(array(
             ':Value' => $vat->getValue(),
             ':Description' => $vat->getDescription(),
-            ':StartDate' => $vat->getStartDate(),
-            ':EndDate' => $vat->getEndDate()
+            ':StartDate' => $vat->getStartDate()->format("Y-m-d H:i:s"),
+            ':EndDate' => $vat->getEndDate()->format("Y-m-d H:i:s")
         ));
 
         return self::$db->lastInsertId();
@@ -56,8 +56,8 @@ class VatMapper extends DataMapper
             $VAT->setId(intval($v->ID));
             $VAT->setValue(floatval($v->Value));
             $VAT->setDescription($v->Description);
-            $VAT->setStartDate(strtotime($v->StartDate));
-            $VAT->setEndDate(strtotime($v->EndDate));
+            $VAT->setStartDate(new DateTime($v->StartDate));
+            $VAT->setEndDate(new Datetime($v->EndDate));
 
             return $VAT;
         } else
@@ -81,8 +81,8 @@ class VatMapper extends DataMapper
             $VAT->setId(intval($v->ID));
             $VAT->setValue(floatval($v->Value));
             $VAT->setDescription($v->Description);
-            $VAT->setStartDate(strtotime($v->StartDate));
-            $VAT->setEndDate(strtotime($v->EndDate));
+            $VAT->setStartDate(new Datetime($v->StartDate));
+            $VAT->setEndDate(new Datetime($v->EndDate));
 
             $vats[] = $VAT;
         }
@@ -100,15 +100,15 @@ class VatMapper extends DataMapper
         Value = :Value,
         Description = :Description,
         StartDate = :StartDate,
-        EndDate = :EndDate,
+        EndDate = :EndDate
         WHERE ID= :id
         ");
 
         $st->execute(array(
             ':Value' => $vat->getValue(),
             ':Description' => $vat->getDescription(),
-            ':StartDate' => $vat->getStartDate(),
-            ':EndDate' => $vat->getEndDate(),
+            ':StartDate' => $vat->getStartDate()->format("Y-m-d H:i:s"),
+            ':EndDate' => $vat->getEndDate()->format("Y-m-d H:i:s"),
             ':id' => $vat->getId()
         ));
     }

@@ -144,6 +144,8 @@ class Vat
     {
         $VAT = new VAT();
 
+        $VAT->setId(intval($post['vatid']));
+
         if(strlen($post['description']) < 5)
             return "Falsche Beschreibung.";
         else
@@ -154,6 +156,9 @@ class Vat
             $VAT->setValue(floatval($post['value']));
         else
             return "Falscher Steuersatz.";
+
+        $VAT->setStartDate(new DateTime($post['startDate']));
+        $VAT->setEndDate(new DateTime($post['endDate']));
 
         return $VAT;
     }
@@ -174,10 +179,9 @@ class Vat
             $vatid = $VAT->getId();
             $value = $VAT->getValue();
             $description = $VAT->getDescription();
-            $startDate = $VAT->getStartDate();
-            $endDate = $VAT->getEndDate();
+            $startDate = $VAT->getStartDate()->format('Y-m-d');
+            $endDate = $VAT->getEndDate()->format('Y-m-d');
         }
-
 
         return "
 <div class=\"form-style-1\">
@@ -190,12 +194,11 @@ class Vat
 <label for=\"name\"><span>Beschreibung<span class=\"required\">*</span></span> 
   <input type=\"text\" class=\"input-field\" name=\"description\" maxlength=\"100\" value=\"$description\" placeholder=\"19%\" />
 </label>
-//values are missing for startDate and EndDate, because we aren't sure how its supposed to be displayed
 <label for=\"name\"><span>Anfangsdatum<span class=\"required\">*</span></span> 
-  <input type=\"date\" class=\"input-field\" name=\"startDate\" />
+  <input type=\"date\" class=\"input-field\" name=\"startDate\" value=\"$startDate\" />
 </label>
 <label for=\"name\"><span>Enddatum<span class=\"required\">*</span></span> 
-  <input type=\"date\" class=\"input-field\" name=\"endDate\" />
+  <input type=\"date\" class=\"input-field\" name=\"endDate\" value=\"$endDate\" />
 </label>
 
 <label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>

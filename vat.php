@@ -16,22 +16,23 @@ if(isset($_GET['id']))
 else
     $id = '';
 
-if($id)
+if($id == '1')
 {
     $content .= "<h6>Mehrwertsteuersatz ändern</h6>";
     $VAT = VatMapper::findById(intval($_GET['vatid']));
 
     $content .= VAT::getForm($VAT);
 
-} else if($id) {
+} else if($id == '2') {
 
     $VAT = VAT::formMapper($_POST);
 
     if ($VAT instanceof VAT) {
-        if ($_POST['action'] == 'update')
+        if ($_POST['action'] == 'update') {
             VatMapper::update($VAT);
-        else
+        } else {
             VatMapper::add($VAT);
+        }
 
         $content .= "Datensatz erfolgreich eingefügt.";
     }
