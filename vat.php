@@ -9,6 +9,8 @@
 
 require_once('includes/bootstrap.inc.php');
 
+User::checkLogin();
+
 $content = "<h3>Steuersätze</h3>";
 
 if(isset($_GET['id']))
@@ -58,6 +60,7 @@ if($id == '1')
         $content .= "Datensatz wurde gelöscht.";
         $content .= VAT::getTable(VatMapper::getAllVats());
     }
+
 } else {
 
     $content .= VAT::getTable(VatMapper::getAllVats());

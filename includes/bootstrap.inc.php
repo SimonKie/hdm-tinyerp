@@ -51,3 +51,5 @@ try {
     echo $e->getMessage();
     die();
 }
+
+session_start();

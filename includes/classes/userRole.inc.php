@@ -13,6 +13,16 @@ class UserRole
 
     public function __construct()
     {
+        $arguments = func_get_args();
+
+        switch(sizeof(func_get_args()))
+        {
+            case 0: //No arguments
+                break;
+            case 4: //One argument
+                $this->__construct1($arguments[0]);
+                break;
+        }
     }
 
 

@@ -14,7 +14,8 @@ class Page
     private $title = "tinyERP";
     private $content = "Error 404!";
     private $rightArea = "Fortschritt";
-    private $loggedIn = true;
+    private $loggedIn = false;
+    private $User = null;
 
     private $mainNav = array(
         'Home' => 'index.php',
@@ -30,6 +31,20 @@ class Page
         'Produkte' => '',
         'tinyERP' => ''
     );
+
+    public function __construct()
+    {
+        if(isset($_SESSION['USER']))
+            $this->User = unserialize($_SESSION['USER']);
+
+        if($this->User instanceof User && UserMapper::checkLogin($this->User))
+            $this->loggedIn = true;
+
+        if(!FORCE_LOGIN) {
+            $this->loggedIn = true;
+            $this->User = new User('admin','',new UserRole('UserRole1'),'Admin','User','email@email.com','00');
+        }
+    }
 
     /**
      * @param string $title
@@ -68,25 +83,31 @@ class Page
      */
     private function getHeader()
     {
-        if($this->loggedIn) {
-            return "
-    <!DOCTYPE html>
+        return "
+            <!DOCTYPE html>
     <html lang=\"de\">
     <head>
-        <meta charset=\"UTF-8\">
+        <meta charset=\"UTF - 8\">
         <title>$this->title</title>
         
         <!-- css -->
         <link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">
-        <link rel=\"stylesheet\" type=\"text/css\" href=\"includes/css/main.css\" />
-        <link rel=\"stylesheet\" type=\"text/css\" href=\"includes/css/form.css\" />
+        <link rel = \"stylesheet\" type = \"text/css\" href = \"includes/css/main.css\" />
+        <link rel = \"stylesheet\" type = \"text/css\" href = \"includes/css/form.css\" />
         
-        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>
-        <script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>
+        <script src = \"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\" ></script >
+        <script src = \"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" ></script >
         
         
-    </head>
-    <body>
+    </head >
+    <body >
+        ";
+      }
+
+      private function getTopbar()
+      {
+        if($this->loggedIn) {
+            return "
         <div class=\"topbar\">
                 <div class=\"container\">
                     <div class=\"row\">
@@ -96,7 +117,7 @@ class Page
                         <div class=\"col-xs-4 dropdown\">
                             <button class=\"btn btn-primary dropdown-toggle\" id=\"user-menu\" type=\"button\" data-toggle=\"dropdown\"
                                     style=\"background: url('" . HOME_URL . "/images/users/example.jpg') no-repeat right 12px center; background-size: 40px 40px;\">
-                                    <span class=\"badge\">ADMIN</span> " .  "?php Username" . " 
+                                    <span class=\"badge\">ADMIN</span> " .  $this->User->getUsername() . " 
                             </button>
                             <ul class=\"dropdown-menu dropdown-menu-right\">
                                 <li class=\"dropdown-header\">Verbundene E-Mail-Adresse</li>
@@ -225,12 +246,21 @@ class Page
         ";
     }
 
+
     public function run()
     {
         echo $this->getHeader();
-        echo $this->getLeftArea($this->getMainNav());
-        echo $this->getContent();
-        echo $this->getRightArea();
+
+        if($this->loggedIn) {
+            echo $this->getTopbar();
+            echo $this->getLeftArea($this->getMainNav());
+            echo $this->getContent();
+            echo $this->getRightArea();
+        } else
+        {
+            echo $this->content;
+        }
+
         echo $this->getFooter();
         die();
     }
