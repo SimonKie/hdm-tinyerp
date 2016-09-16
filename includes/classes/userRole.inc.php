@@ -19,7 +19,7 @@ class UserRole
         {
             case 0: //No arguments
                 break;
-            case 4: //One argument
+            case 1: //One argument
                 $this->__construct1($arguments[0]);
                 break;
         }

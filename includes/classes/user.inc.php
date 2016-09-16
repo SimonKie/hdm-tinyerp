@@ -49,7 +49,7 @@ class User extends Employee
      * @param $employee
      * @param $userRole
      */
-    public function __construct2($username, $password, $userRole, $firstName, $lastName, $eMail, $phone)
+    public function __construct2($username, $password, UserRole $userRole, $firstName, $lastName, $eMail, $phone)
     {
         $this->username = $username;
         $this->password = $password;
@@ -100,7 +100,7 @@ class User extends Employee
     /**
      * @param mixed $userRole
      */
-    public function setUserRole($userRole)
+    public function setUserRole(UserRole $userRole)
     {
         $this->userRole = $userRole;
     }

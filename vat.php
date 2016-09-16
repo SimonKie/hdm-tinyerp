@@ -11,6 +11,7 @@ require_once('includes/bootstrap.inc.php');
 
 User::checkLogin();
 
+
 $content = "<h3>Steuersätze</h3>";
 
 if(isset($_GET['id']))

@@ -27,7 +27,7 @@ class Page
         'Firma' => '',
         'Mitarbeiter' => '',
         'Steuersätze' => 'vat.php',
-        'Produktkategorien' => '',
+        'Produktkategorien' => 'productcategory.php',
         'Produkte' => '',
         'tinyERP' => ''
     );
@@ -117,14 +117,14 @@ class Page
                         <div class=\"col-xs-4 dropdown\">
                             <button class=\"btn btn-primary dropdown-toggle\" id=\"user-menu\" type=\"button\" data-toggle=\"dropdown\"
                                     style=\"background: url('" . HOME_URL . "/images/users/example.jpg') no-repeat right 12px center; background-size: 40px 40px;\">
-                                    <span class=\"badge\">ADMIN</span> " .  $this->User->getUsername() . " 
+                                    <span class=\"badge\">" . $this->User->getUserRole()->getName() . "</span> " .  $this->User->getUsername() . " 
                             </button>
                             <ul class=\"dropdown-menu dropdown-menu-right\">
                                 <li class=\"dropdown-header\">Verbundene E-Mail-Adresse</li>
                                 <li><a href=\"#\">" .  "?php User EMail" . "</a></li>
                                 <li class=\"divider\" ></li >
                                 <li ><a href = \"#\" ><span class=\"glyphicon glyphicon-user\" ></span > Profil bearbeiten </a ></li >
-                                <li ><a href = \"./login.php?logout=true\" ><span class=\"glyphicon glyphicon-off\" ></span > Abmelden</a ></li >
+                                <li ><a href = \"login.php?logout=true\" ><span class=\"glyphicon glyphicon-off\" ></span > Abmelden</a ></li >
                             </ul >
                         </div >
                     </div >
@@ -201,6 +201,9 @@ class Page
         ";
     }
 
+    /**
+     * @return string
+     */
     private function getContent()
     {
         return "
@@ -213,6 +216,9 @@ class Page
         ";
     }
 
+    /**
+     * @return string
+     */
     private function getRightArea()
     {
         return "
@@ -258,6 +264,7 @@ class Page
             echo $this->getRightArea();
         } else
         {
+            echo $this->getTopbar();
             echo $this->content;
         }
 
