@@ -115,6 +115,7 @@ class ProductCategory
             $description = $productCategory->getDescription();
         }
 
+        
         return "
             <div class=\"form-style-1\">
             <form action=\"?id=2\" method=\"POST\">
