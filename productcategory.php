@@ -7,6 +7,7 @@
  */
 
 require_once('includes/bootstrap.inc.php');
+User::checkLogin();
 
 $content= '<h3>Produktkategorien</h3>';
 
