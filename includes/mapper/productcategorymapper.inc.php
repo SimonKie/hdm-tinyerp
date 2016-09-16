@@ -41,15 +41,15 @@ class ProductCategoryMapper extends DataMapper
     
     public static function findById($id)
     {
-        $query = self::$db->query("SELECT FROM ProductCategory WHERE ID=" . $id);
-        
+        $query = self::$db->query("SELECT * FROM ProductCategory WHERE ID=" . $id);
+
         if($p = $query->fetch(PDO::FETCH_OBJ))
         {
-            $ProductCategory = new ProductCategory();
-            $ProductCategory->setId(intval($p->ID));
-            $ProductCategory->setName($p->Name);
-            $ProductCategory->setDescription($p->Description);
-            return $ProductCategory;
+            $productCategory = new ProductCategory();
+            $productCategory->setId(intval($p->ID));
+            $productCategory->setName($p->Name);
+            $productCategory->setDescription($p->Description);
+            return $productCategory;
         } else
         {
             return null;
@@ -61,18 +61,18 @@ class ProductCategoryMapper extends DataMapper
      */
     public static function getAllProductCategories()
     {
-        $query = self::$db->query("SELECT * FROM ProductCategory");
+        $query = self::$db->query("SELECT * FROM ProductCategory ORDER BY Name");
 
         $productCategories = array();
 
         while($p = $query->fetch(PDO::FETCH_OBJ))
         {
-            $ProductCategory = new ProductCategory();
-            $ProductCategory->setId(intval($p->ID));
-            $ProductCategory->setName($p->Name);
-            $ProductCategory->setDescription($p->Description);
+            $productCategory = new ProductCategory();
+            $productCategory->setId(intval($p->ID));
+            $productCategory->setName($p->Name);
+            $productCategory->setDescription($p->Description);
 
-            $productCategories[] = $ProductCategory;
+            $productCategories[] = $productCategory;
         }
 
         if($query->rowCount() == 0)
@@ -87,13 +87,13 @@ class ProductCategoryMapper extends DataMapper
             UPDATE ProductCategory SET 
             Name = :Name,
             Description = :Description
-            WHERE ID = :ID"
-        );
+            WHERE ID = :id
+          ");
 
         $st->execute(array(
             ':Name' => $productCategory->getName(),
             ':Description' => $productCategory->getDescription(),
-            ':ID' => $productCategory->getId()
+            ':id' => $productCategory->getId()
         ));
 
         return self::$db->lastInsertId();
