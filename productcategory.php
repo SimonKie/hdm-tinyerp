@@ -7,6 +7,7 @@
  */
 
 require_once('includes/bootstrap.inc.php');
+User::checkLogin();
 
 $content= '<h3>Produktkategorien</h3>';
 
@@ -29,11 +30,12 @@ if($id == '1')
     if ($productcategory instanceof ProductCategory) {
         if ($_POST['action'] == 'update') {
             ProductCategoryMapper::update($productcategory);
+            $content .= "Produktkategorie erfolgreich geändert.";
         } else {
             ProductCategoryMapper::add($productcategory);
+            $content .= "Produktkategorie erfolgreich erstellt.";
         }
 
-        $content .= "Produktkategorie erfolgreich erstellt.";
         $content .= ProductCategory::getTable(ProductCategoryMapper::getAllProductCategories());
 
     }

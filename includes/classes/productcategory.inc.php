@@ -92,6 +92,7 @@ class ProductCategory
     public static function formMapper($post)
     {
         $productCategory = new ProductCategory();
+            $productCategory->setId($post['productcategoryid']);
             $productCategory->setName($post['name']);
             $productCategory->setDescription($post['description']);
 
@@ -114,24 +115,20 @@ class ProductCategory
             $description = $productCategory->getDescription();
         }
 
+        
         return "
             <div class=\"form-style-1\">
             <form action=\"?id=2\" method=\"POST\">
             <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
-            <input type=\"hidden\" name=\"action\" value=\"$productCategoryId\">
+            <input type=\"hidden\" name=\"productcategoryid\" value=\"$productCategoryId\">
             
             <label for=\"name\"><span>Name<span class=\"required\">*</span></span> 
               <input type=\"text\" class=\"input-field\" name=\"name\" value=\"$name\" maxlength=\"100\" placeholder=\"Name\" required/>
             </label>
-            
-          <!--<label for=\"name\"><span>Beschreibung<span class=\"required\">*</span></span> 
-              <textarea name=\"description\" class=\"textarea-field\" value=\"$description\" placeholder=\"Beschreibung\" requirede></textarea>
-              </label>	-->
-           
-             <label for=\"name\"><span>Beschreibung<span class=\"required\">*</span></span> 
-              <input text=\"description\" class=\"input-field\" name=\"name\" value=\"$description\" placeholder=\"Beschreibung\" requirede/>
+           <label for=\"name\"><span>Beschreibung<span class=\"required\">*</span></span> 
+              <textarea name=\"description\" class=\"textarea-field\" placeholder=\"Beschreibung\" required>$description</textarea>
               </label>	
-           
+          
             <label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
             
             </form>
@@ -143,6 +140,7 @@ class ProductCategory
         $content = "
                  <table border=\"1\">
                   <tr>
+                    <th>ID</th>
                     <th>Titel</th>
                     <th>Beschreibung</th>
                     <th>&nbsp;</th>
@@ -154,6 +152,7 @@ class ProductCategory
         {
             $content .= "
                         <tr>
+                         <td>" . $productCategory->getId() . "</td>
                          <td>" . $productCategory->getName() . "</td>
                          <td>" . $productCategory->getDescription() . "</td>
                          <td><button onclick=\"window.location.href='?id=1&productcategoryid=" . $productCategory->getId() . "'\">ändern</button></td>
