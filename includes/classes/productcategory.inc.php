@@ -124,10 +124,14 @@ class ProductCategory
               <input type=\"text\" class=\"input-field\" name=\"name\" value=\"$name\" maxlength=\"100\" placeholder=\"Name\" required/>
             </label>
             
-            <label for=\"name\"><span>Beschreibung<span class=\"required\">*</span></span> 
+          <!--<label for=\"name\"><span>Beschreibung<span class=\"required\">*</span></span> 
               <textarea name=\"description\" class=\"textarea-field\" value=\"$description\" placeholder=\"Beschreibung\" requirede></textarea>
+              </label>	-->
+           
+             <label for=\"name\"><span>Beschreibung<span class=\"required\">*</span></span> 
+              <input text=\"description\" class=\"input-field\" name=\"name\" value=\"$description\" placeholder=\"Beschreibung\" requirede/>
               </label>	
-            
+           
             <label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
             
             </form>

@@ -18,7 +18,6 @@ else
 
 if($id == '1')
 {
-
     $productcategory = ProductCategoryMapper::findById(intval($_GET['productcategoryid']));
 
     $content .= ProductCategory::getForm($productcategory);
@@ -60,7 +59,6 @@ if($id == '1')
         $content .= ProductCategory::getTable(ProductCategoryMapper::getAllProductCategories());
     }
 } else {
-
     $content .= ProductCategory::getTable(ProductCategoryMapper::getAllProductCategories());
 }
 

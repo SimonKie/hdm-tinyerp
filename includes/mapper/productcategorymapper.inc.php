@@ -87,8 +87,8 @@ class ProductCategoryMapper extends DataMapper
             UPDATE ProductCategory SET 
             Name = :Name,
             Description = :Description
-            WHERE ID = :ID"
-        );
+            WHERE ID = :id
+          ");
 
         $st->execute(array(
             ':Name' => $productCategory->getName(),
