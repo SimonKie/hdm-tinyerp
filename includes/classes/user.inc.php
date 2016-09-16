@@ -19,6 +19,19 @@ class User extends Employee
      */
     public function __construct()
     {
+        $arguments = func_get_args();
+
+        switch(sizeof(func_get_args()))
+        {
+            case 0: //No arguments
+                break;
+            case 4: //One argument
+                $this->__construct1($arguments[0],$arguments[1],$arguments[2],$arguments[3]);
+                break;
+            case 7:  //Two arguments
+                $this->__construct2($arguments[0],$arguments[1],$arguments[2],$arguments[3],$arguments[4],$arguments[5],$arguments[6]);
+                break;
+        }
     }
 
     public function __construct1($firstName, $lastName, $eMail, $phone)
@@ -103,7 +116,6 @@ class User extends Employee
 
         return $return;
     }
-
 
 //*Membermethode employee welche beim anlegen eines Users die Daten vom Employee übernimmt - korrekt?
     public static function employeeMember(){
@@ -197,5 +209,55 @@ class User extends Employee
         $content .= "</select>";
 
         return $content;
+    }
+
+    public static function getLoginForm($echo = false)
+    {
+        $content = "
+        <div class=\"dash\">
+        <div class=\"container\">
+            <div class=\"row\">
+                <div class=\"col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4\">
+                    <div class=\"box login\">
+                    <h2>TinyERP - Login</h2>
+        ";
+
+        if($echo !== false)
+            $content .= "<div class=\"alert alert-success fade in\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>$echo</div>";
+
+        $content .= "
+            <form method=\"post\" action=\"login.php\" class=\"form-group\">
+            <input class=\"form-control\" type=\"text\" name=\"username\" placeholder=\"Benutzername\" required />
+            <input class=\"form-control\" type=\"password\" name=\"password\" placeholder=\"Passwort\" required />
+            <button type=\"submit\" class=\"btn btn-primary\">Anmelden</button>
+            </form>
+            </div>
+      
+                </div>
+            </div>
+        </div>
+    </div>
+        ";
+
+        return $content;
+
+    }
+
+    public static function checkLogin()
+    {
+        if(isset($_SESSION['USER'])) {
+
+            $User = unserialize($_SESSION['USER']);
+
+            if($User instanceof User && UserMapper::checkLogin($User))
+                return true;
+
+        } else
+        {
+            if(FORCE_LOGIN)
+                Header('Location: login.php');
+            else
+                return true;
+        }
     }
 }

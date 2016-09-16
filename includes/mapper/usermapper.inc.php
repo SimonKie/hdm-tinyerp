@@ -14,7 +14,7 @@ class UserMapper extends DataMapper{
         $st = self::$db->prepare("
         INSERT INTO User SET 
          Username = :Username,
-        Password = :Password
+        Password = sha1(:Password)
         ");
 
         $st->execute(array(
@@ -37,7 +37,7 @@ class UserMapper extends DataMapper{
         if($e = $query->fetch(PDO::FETCH_OBJ))
         {
             $User = new User();
-            $User->setId(intval($e->ID));
+            $User->setId(intval($e->Employee_ID));
             $User->setUsername($e->Username);
             $User->setPassword($e->Password);
             $User->setUserRole(UserMapper::findById(intval($e->UserRole_ID)));
@@ -57,7 +57,7 @@ class UserMapper extends DataMapper{
         while($e = $query->fetch(PDO::FETCH_OBJ))
         {
             $User = new User();
-            $User->setId(intval($e->ID));
+            $User->setId(intval($e->Employee_ID));
             $User->setUsername($e->Username);
             $User->setPassword($e->Password);
             $User->setUserRole(UserMapper::findById(intval($e->UserRole_ID)));
@@ -75,7 +75,7 @@ class UserMapper extends DataMapper{
         $st = self::$db->prepare("
         UPDATE User SET 
         Username = :Username,
-        Password = :Password
+        Password = sha1(:Password)
         WHERE ID= :id
         ");
 
@@ -85,4 +85,46 @@ class UserMapper extends DataMapper{
             ':id' => $user->getId()
         ));
     }
+
+    public static function login($Username, $Password)
+    {
+
+        $st = self::$db->prepare("SELECT * FROM User WHERE Username = :Username AND Password = sha1(:Password)");
+
+        $st->execute(array(
+            ':Username' => $Username,
+            ':Password' => $Password
+        ));
+
+        if ($e = $st->fetch(PDO::FETCH_OBJ)) {
+
+            $User = new User();
+            $User->setId(intval($e->Employee_ID));
+            $User->setUsername($e->Username);
+            $User->setPassword($e->Password);
+            $User->setUserRole(UserRoleMapper::findById(intval($e->UserRole_ID)));
+            return $User;
+        } else {
+            return null;
+        }
+    }
+
+    public static function checkLogin($User)
+    {
+
+            $st = self::$db->prepare("SELECT * FROM User WHERE Username= :Username AND Password= :Password");
+
+            $st->execute(array(
+                ':Username' => $User->getUsername(),
+                ':Password' => $User->getPassword()
+            ));
+
+            if ($e = $st->fetch(PDO::FETCH_OBJ)) {
+                return true;
+            } else {
+                return false;
+            }
+
+    }
+
 }
