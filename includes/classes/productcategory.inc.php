@@ -47,6 +47,15 @@ class ProductCategory
             $this->id = $id;
     }
 
+    /**from VAT
+     * public function setId($id)
+     *{
+     *   if($this->id == null && $id !== null)
+     *      $this->id = $id;
+     *}
+     */
+    
+    
     /**
      * @return mixed
      */
@@ -107,7 +116,7 @@ class ProductCategory
 
         return "
             <div class=\"form-style-1\">
-            <form action=\"\" method=\"POST\">
+            <form action=\"?id=2\" method=\"POST\">
             <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
             <input type=\"hidden\" name=\"action\" value=\"$productCategoryId\">
             
@@ -125,6 +134,36 @@ class ProductCategory
             </div>";
     }
 
+    public static function getTable($productcategories)
+    {
+        $content = "
+                 <table border=\"1\">
+                  <tr>
+                    <th>Titel</th>
+                    <th>Beschreibung</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                   </tr>
+                ";
+
+        foreach ($productcategories as $productCategory)
+        {
+            $content .= "
+                        <tr>
+                         <td>" . $productCategory->getName() . "</td>
+                         <td>" . $productCategory->getDescription() . "</td>
+                         <td><button onclick=\"window.location.href='?id=1&productcategoryid=" . $productCategory->getId() . "'\">ändern</button></td>
+                         <td><button onclick=\"window.location.href='?id=4&productcategoryid=" . $productCategory->getId() . "'\">löschen</button></td>
+                        </tr>
+        ";
+        }
+
+        $content .= "</table>
+                       <button onclick=\"window.location.href='?id=3'\">Neue Produktkategorie</button>
+                ";
+
+        return $content;
+    }
 
 
     public function listObject()
