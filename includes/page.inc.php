@@ -20,7 +20,7 @@ class Page
     private $mainNav = array(
         'Home' => 'index.php',
         'Rechnungen' => '',
-        'Stammdaten' => ''
+        'Stammdaten' => 'vat.php'
     );
 
     private $masterDataNav = array(
