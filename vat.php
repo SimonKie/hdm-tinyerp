@@ -12,7 +12,7 @@ require_once('includes/bootstrap.inc.php');
 User::checkLogin();
 
 
-$content = "<h3>Steuersätze</h3>";
+$content = "<h3>Steuers&auml;tze</h3>";
 
 if(isset($_GET['id']))
     $id = $_GET['id'];
@@ -36,7 +36,7 @@ if($id == '1')
             VatMapper::add($VAT);
         }
 
-        $content .= "Datensatz erfolgreich eingefügt.";
+        $content .= "Datensatz erfolgreich eingef&uuml;gt.";
         $content .= VAT::getTable(VatMapper::getAllVats());
 
     }
@@ -50,7 +50,7 @@ if($id == '1')
 {
     if(empty($_GET['sure']))
     {
-        $content .= "Wirklich löschen?
+        $content .= "Wirklich l&ouml;schen?
                      <button onclick=\"window.location.href='?id=4&vatid=" . $_GET['vatid'] . "&sure=true'\">Ja</button>
                      <button onclick=\"window.location.href='?'\">Nein</button>";
         $content .= VAT::getTable(VatMapper::getAllVats());
@@ -58,7 +58,7 @@ if($id == '1')
         $VAT = new VAT();
         $VAT->setId(intval($_GET['vatid']));
         VatMapper::delete($VAT);
-        $content .= "Datensatz wurde gelöscht.";
+        $content .= "Datensatz wurde gel&ouml;scht.";
         $content .= VAT::getTable(VatMapper::getAllVats());
     }
 

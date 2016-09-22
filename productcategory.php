@@ -30,7 +30,7 @@ if($id == '1')
     if ($productcategory instanceof ProductCategory) {
         if ($_POST['action'] == 'update') {
             ProductCategoryMapper::update($productcategory);
-            $content .= "Produktkategorie erfolgreich geändert.";
+            $content .= "Produktkategorie erfolgreich ge&auml;ndert.";
         } else {
             ProductCategoryMapper::add($productcategory);
             $content .= "Produktkategorie erfolgreich erstellt.";
@@ -49,7 +49,7 @@ if($id == '1')
 {
     if(empty($_GET['sure']))
     {
-        $content .= "Wirklich löschen?
+        $content .= "Wirklich l&ouml;schen?
                      <button onclick=\"window.location.href='?id=4&productcategoryid=" . $_GET['productcategoryid'] . "&sure=true'\">Ja</button>
                      <button onclick=\"window.location.href='?'\">Nein</button>";
         $content .= ProductCategory::getTable(ProductCategoryMapper::getAllProductCategories());
@@ -57,7 +57,7 @@ if($id == '1')
         $productcategory = new ProductCategory();
         $productcategory->setId(intval($_GET['productcategoryid']));
         ProductCategoryMapper::delete($productcategory);
-        $content .= "Produktkategorie wurde gelöscht.";
+        $content .= "Produktkategorie wurde gel&ouml;scht.";
         $content .= ProductCategory::getTable(ProductCategoryMapper::getAllProductCategories());
     }
 } else {
