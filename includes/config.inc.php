@@ -25,4 +25,6 @@ slash here.
 */
 
 define('HOME_URL', 'http://127.0.0.1/projects/TinyERP/hdm-tinyerp');
-define('FORCE_LOGIN', true);
+
+// Switch login function
+define('FORCE_LOGIN', false); // When FORCE_LOGIN is "false" the login function is DISBLED  || default is true

@@ -155,8 +155,8 @@ class ProductCategory
                          <td>" . $productCategory->getId() . "</td>
                          <td>" . $productCategory->getName() . "</td>
                          <td>" . $productCategory->getDescription() . "</td>
-                         <td><button onclick=\"window.location.href='?id=1&productcategoryid=" . $productCategory->getId() . "'\">ändern</button></td>
-                         <td><button onclick=\"window.location.href='?id=4&productcategoryid=" . $productCategory->getId() . "'\">löschen</button></td>
+                         <td><button onclick=\"window.location.href='?id=1&productcategoryid=" . $productCategory->getId() . "'\">&auml;ndern</button></td>
+                         <td><button onclick=\"window.location.href='?id=4&productcategoryid=" . $productCategory->getId() . "'\">l&ouml;schen</button></td>
                         </tr>
         ";
         }
@@ -174,7 +174,7 @@ class ProductCategory
         $return = '
         <h6>' . $this->getName() . '</h6>
         <p>Beschreibung: ' . $this->getDescription().'
-        <a href="">bearbeiten</a> | <a href="">löschen</a>
+        <a href="">bearbeiten</a> | <a href="">l&ouml;schen</a>
         </p>        
         ';
 

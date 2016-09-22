@@ -14,9 +14,10 @@ User::checkLogin();
 $content = "<h3>Home</h3>";
 
 
+
+// Initialize Page
 $page = new Page();
 $page->setTitle("tinyERP - Home");
 
-$page->setContent($content);
 
 $page->run();

@@ -133,7 +133,7 @@ class Vat
         <h6>' . $this->getDescription() . '</h6>
         <p>Wert: ' . $this->getValue() . 'in Prozent: ' . $this->getValueasPercent(). 'Start Datum: ' . $this->getStartDate().
             'End Datum: ' . $this->getEndDate().'
-        <a href="">bearbeiten</a> | <a href="">löschen</a>
+        <a href="">bearbeiten</a> | <a href="">l&ouml;schen</a>
         </p>        
         ';
 
@@ -142,6 +142,8 @@ class Vat
 
     public static function formMapper($post)
     {
+        // Processing the VAT Data from the post var
+
         $VAT = new VAT();
 
         $VAT->setId(intval($post['vatid']));
@@ -168,6 +170,8 @@ class Vat
 
     public static function getForm(VAT $VAT = null)
     {
+        // return VAT HTML Form
+
         $vatid = '';
         $value = '';
         $description = '';
@@ -175,9 +179,11 @@ class Vat
         $endDate = '';
 
         if($VAT == null) {
+            // No parameter was given, return the Form without content
             $hidden = "new";
         }
         else {
+            // Insert VAT Data in HTML from the Object given as parameter
             $hidden = "update";
             $vatid = $VAT->getId();
             $value = $VAT->getValue();
@@ -211,15 +217,23 @@ class Vat
         ";
     }
 
-    public static function getDropdown($VATs)
+    public static function getDropdown($VATs, $selected = null)
     {
-        $content = "
-        <select class='dropdown' name=\"Steuersatz\">
-        <option selected value=\"null\">&nbsp;</option> ";
+        // generate Dropdown for VAT
+
+        $content = "<select class='dropdown' name=\"Steuersatz\">";
+
+        if($selected == null)
+            $content .= "<option selected value=\"null\">&nbsp;</option> ";
 
         foreach ($VATs as $v)
         {
-            $content .= "<option value=\"" . $v->getId(). "\">" . $v->getDescription() . "</option>\n";
+            $optiontag = "";
+
+            if($v->getId() == $selected)
+                $optiontag = "selected";
+
+            $content .= "<option $optiontag value=\"" . $v->getId(). "\">" . $v->getDescription() . "</option>\n";
         }
 
         $content .= "</select>";
@@ -251,8 +265,8 @@ class Vat
                          <td>" . $vat->getDescription() . "</td>
                          <td>" . $vat->getStartDate()->format('d.m.Y') . "</td>
                          <td>" . $vat->getEndDate()->format('d.m.Y') . "</td>
-                         <td><button onclick=\"window.location.href='?id=1&vatid=" . $vat->getId() . "'\">ändern</button></td>
-                         <td><button onclick=\"window.location.href='?id=4&vatid=" . $vat->getId() . "'\">löschen</button></td>
+                         <td><button onclick=\"window.location.href='?id=1&vatid=" . $vat->getId() . "'\">&auml;ndern</button></td>
+                         <td><button onclick=\"window.location.href='?id=4&vatid=" . $vat->getId() . "'\">l&ouml;schen</button></td>
                         </tr>
         ";
         }

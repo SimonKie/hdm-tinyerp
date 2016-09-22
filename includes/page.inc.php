@@ -13,16 +13,18 @@ class Page
 {
     private $title = "tinyERP";
     private $content = "Error 404!";
-    private $rightArea = "Fortschritt";
+    private $rightArea = "&nbsp;";
     private $loggedIn = false;
     private $User = null;
 
+    // Links for main navigation menu
     private $mainNav = array(
         'Home' => 'index.php',
         'Rechnungen' => '',
         'Stammdaten' => 'vat.php'
     );
 
+    // Links for masterdata navigabtion menu
     private $masterDataNav = array(
         'Firma' => '',
         'Mitarbeiter' => '',
@@ -34,12 +36,15 @@ class Page
 
     public function __construct()
     {
+        // Check if user is logged in
         if(isset($_SESSION['USER']))
             $this->User = unserialize($_SESSION['USER']);
 
+        // Check if selected user is valid
         if($this->User instanceof User && UserMapper::checkLogin($this->User))
             $this->loggedIn = true;
 
+        // If Login function is disabled a dummy user will be initialized
         if(!FORCE_LOGIN) {
             $this->loggedIn = true;
             $this->User = new User('admin','',new UserRole('UserRole1'),'Admin','User','email@email.com','00');
@@ -226,7 +231,7 @@ class Page
                 <!-- right area -->
                 <div class=\"col-sm-3\">
                     <div class=\"box\">
-                        <h2>$this->rightArea &nbsp;</h2>
+                        $this->rightArea &nbsp;
                     </div>
                 </div>        
         ";

@@ -12,6 +12,7 @@
 
     if(!FORCE_LOGIN)
     {
+        // If login is disabled, then the user will be redirected to index.php
         Header('Location: index.php');
     } else if(isset($_GET['logout'])) {
 
@@ -28,10 +29,12 @@
 
         if($User == null)
         {
+            // Login failed
             $content .= User::getLoginForm("Falscher Benutzername oder Passwort!");
 
         } else
         {
+            // Login was correct, the user object is given to SESSION var.
             $_SESSION['USER'] = serialize($User);
             Header('Location: index.php');
         }
@@ -42,10 +45,12 @@
         Header('Location: index.php');
 
     } else {
+        // Nothing happended, the Login form will be shown to the user
         $content .= User::getLoginForm();
     }
 
 
+// Initialize Page
 $page = new Page();
 $page->setTitle("tinyERP - Login");
 $page->setContent($content);
