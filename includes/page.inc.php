@@ -121,7 +121,7 @@ class Page
                             </button>
                             <ul class=\"dropdown-menu dropdown-menu-right\">
                                 <li class=\"dropdown-header\">Verbundene E-Mail-Adresse</li>
-                                <li><a href=\"#\">" .  "?php User EMail" . "</a></li>
+                                <li><a href=\"mailto:" . $this->User->getEMail() . "\">" .  $this->User->getEMail() . "</a></li>
                                 <li class=\"divider\" ></li >
                                 <li ><a href = \"#\" ><span class=\"glyphicon glyphicon-user\" ></span > Profil bearbeiten </a ></li >
                                 <li ><a href = \"login.php?logout=true\" ><span class=\"glyphicon glyphicon-off\" ></span > Abmelden</a ></li >
@@ -156,7 +156,8 @@ class Page
      */
     private function getMainNav()
     {
-        $return = "<ul class=\"main-nav\">";
+        $return = "<h2>Hauptmen&uuml;</h2>
+                    <ul class=\"main-nav\">";
 
         foreach($this->mainNav as $key => $value)
         {
@@ -170,7 +171,8 @@ class Page
 
     public function getMasterDataNav()
     {
-        $return = "<ul class=\"sub-nav\">";
+        $return = "<h2>Stammdaten</h2>
+                    <ul class=\"sub-nav\">";
 
         foreach($this->masterDataNav as $key => $value)
         {
@@ -191,7 +193,6 @@ class Page
                 <!-- left area -->
                 <div class=\"col-sm-3\">
                     <div class=\"box\">
-                        <h2>Hauptmenü</h2>
                         $LeftArea
                     </div>
                     <div class=\"box\">

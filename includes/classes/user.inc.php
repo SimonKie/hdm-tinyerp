@@ -25,10 +25,10 @@ class User extends Employee
         {
             case 0: //No arguments
                 break;
-            case 4: //One argument
+            case 4: //four argument
                 $this->__construct1($arguments[0],$arguments[1],$arguments[2],$arguments[3]);
                 break;
-            case 7:  //Two arguments
+            case 7:  //seven arguments
                 $this->__construct2($arguments[0],$arguments[1],$arguments[2],$arguments[3],$arguments[4],$arguments[5],$arguments[6]);
                 break;
         }

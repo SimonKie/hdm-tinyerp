@@ -34,7 +34,6 @@
         {
             $_SESSION['USER'] = serialize($User);
             Header('Location: index.php');
-
         }
 
     } else if(isset($_SESSION['USER'])) {

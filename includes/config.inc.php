@@ -25,4 +25,4 @@ slash here.
 */
 
 define('HOME_URL', 'http://127.0.0.1/projects/TinyERP/hdm-tinyerp');
-define('FORCE_LOGIN', false);
+define('FORCE_LOGIN', true);
