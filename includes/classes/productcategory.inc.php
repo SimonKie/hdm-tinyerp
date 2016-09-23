@@ -129,7 +129,7 @@ class ProductCategory
               <textarea name=\"description\" class=\"textarea-field\" placeholder=\"Beschreibung\" required>$description</textarea>
               </label>	
           
-            <label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
+            <label><span>&nbsp;</span><input class='btn' type=\"submit\" value=\"speichern\" /></label>
             
             </form>
             </div>";
@@ -138,13 +138,11 @@ class ProductCategory
     public static function getTable($productcategories)
     {
         $content = "
-                 <table border=\"1\">
+                 <table>
                   <tr>
                     <th>ID</th>
                     <th>Titel</th>
                     <th>Beschreibung</th>
-                    <th>&nbsp;</th>
-                    <th>&nbsp;</th>
                    </tr>
                 ";
 
@@ -155,14 +153,16 @@ class ProductCategory
                          <td>" . $productCategory->getId() . "</td>
                          <td>" . $productCategory->getName() . "</td>
                          <td>" . $productCategory->getDescription() . "</td>
-                         <td><button onclick=\"window.location.href='?id=1&productcategoryid=" . $productCategory->getId() . "'\">&auml;ndern</button></td>
-                         <td><button onclick=\"window.location.href='?id=4&productcategoryid=" . $productCategory->getId() . "'\">l&ouml;schen</button></td>
+                         <td>
+                          <button class='btn update' onclick=\"window.location.href='?id=1&productcategoryid=" . $productCategory->getId() . "'\">&auml;ndern</button>
+                          <button class='btn delete' onclick=\"window.location.href='?id=4&productcategoryid=" . $productCategory->getId() . "'\">l&ouml;schen</button>
+                         </td>
                         </tr>
         ";
         }
 
         $content .= "</table>
-                       <button onclick=\"window.location.href='?id=3'\">Neue Produktkategorie</button>
+                       <button class='btn' onclick=\"window.location.href='?id=3'\">Neue Produktkategorie</button>
                 ";
 
         return $content;

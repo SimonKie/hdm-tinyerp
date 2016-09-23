@@ -9,7 +9,7 @@
 require_once('includes/bootstrap.inc.php');
 User::checkLogin();
 
-$content= '<h3>Produktkategorien</h3>';
+$content= '<h2>Produktkategorien</h2>';
 
 
 if(isset($_GET['id']))
@@ -30,10 +30,10 @@ if($id == '1')
     if ($productcategory instanceof ProductCategory) {
         if ($_POST['action'] == 'update') {
             ProductCategoryMapper::update($productcategory);
-            $content .= "Produktkategorie erfolgreich ge&auml;ndert.";
+            $content .= "<div class='alert alert-success'> <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><p>Produktkategorie erfolgreich ge&auml;ndert.</p></div>";
         } else {
             ProductCategoryMapper::add($productcategory);
-            $content .= "Produktkategorie erfolgreich erstellt.";
+            $content .= "<div class='alert alert-success'> <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><p>Produktkategorie erfolgreich erstellt.</p></div>";
         }
 
         $content .= ProductCategory::getTable(ProductCategoryMapper::getAllProductCategories());
@@ -49,15 +49,15 @@ if($id == '1')
 {
     if(empty($_GET['sure']))
     {
-        $content .= "Wirklich l&ouml;schen?
-                     <button onclick=\"window.location.href='?id=4&productcategoryid=" . $_GET['productcategoryid'] . "&sure=true'\">Ja</button>
-                     <button onclick=\"window.location.href='?'\">Nein</button>";
+        $content .= "<div class='alert alert-warning'><p>Wirklich l&ouml;schen?</p>
+                     <p><button class='btn update' onclick=\"window.location.href='?id=4&productcategoryid=" . $_GET['productcategoryid'] . "&sure=true'\">Ja</button>
+                     <button class='btn delete' onclick=\"window.location.href='?'\">Nein</button></p></div>";
         $content .= ProductCategory::getTable(ProductCategoryMapper::getAllProductCategories());
     } else {
         $productcategory = new ProductCategory();
         $productcategory->setId(intval($_GET['productcategoryid']));
         ProductCategoryMapper::delete($productcategory);
-        $content .= "Produktkategorie wurde gel&ouml;scht.";
+        $content .= "<div class='alert alert-success'> <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><p>Produktkategorie wurde erfolgreich gel&ouml;scht.</p></div>";
         $content .= ProductCategory::getTable(ProductCategoryMapper::getAllProductCategories());
     }
 } else {

@@ -210,7 +210,7 @@ class Vat
   <input type=\"date\" class=\"input-field\" name=\"endDate\" value=\"$endDate\" />
 </label>
 
-<label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
+<label><span>&nbsp;</span><input class='btn' type=\"submit\" value=\"speichern\" /></label>
 
 </form>
 </div>
@@ -244,14 +244,13 @@ class Vat
     public static function getTable($VATs)
     {
         $content = "
-                 <table border=\"1\">
+                 <table>
                   <tr>
                     <th>ID</th>
                     <th>Steuersatz</th>
                     <th>Beschreibung</th>
-                    <th>Start Datum</th>
-                    <th>End Datum</th>
-                    <th>&nbsp;</th>
+                    <th>Startdatum</th>
+                    <th>Enddatum</th>
                     <th>&nbsp;</th>
                    </tr>
                 ";
@@ -265,14 +264,16 @@ class Vat
                          <td>" . $vat->getDescription() . "</td>
                          <td>" . $vat->getStartDate()->format('d.m.Y') . "</td>
                          <td>" . $vat->getEndDate()->format('d.m.Y') . "</td>
-                         <td><button onclick=\"window.location.href='?id=1&vatid=" . $vat->getId() . "'\">&auml;ndern</button></td>
-                         <td><button onclick=\"window.location.href='?id=4&vatid=" . $vat->getId() . "'\">l&ouml;schen</button></td>
+                         <td class='controls'>
+                            <button class='btn update' onclick=\"window.location.href='?id=1&vatid=" . $vat->getId() . "'\">&auml;ndern</button>
+                            <button class='btn delete' onclick=\"window.location.href='?id=4&vatid=" . $vat->getId() . "'\">l&ouml;schen</button>
+                         </td>
                         </tr>
         ";
         }
 
         $content .= "</table>
-                       <button onclick=\"window.location.href='?id=3'\">Neuer Steuersatz</button>
+                       <button class=\"btn\" onclick=\"window.location.href='?id=3'\">Neuer Steuersatz</button>
                 ";
 
         return $content;

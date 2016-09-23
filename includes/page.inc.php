@@ -88,20 +88,19 @@ class Page
      */
     private function getHeader()
     {
-        return "
-            <!DOCTYPE html>
+        return "<!DOCTYPE html>
     <html lang=\"de\">
     <head>
-        <meta charset=\"UTF - 8\">
+        <meta charset=\"utf-8\">
         <title>$this->title</title>
         
         <!-- css -->
-        <link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">
-        <link rel = \"stylesheet\" type = \"text/css\" href = \"includes/css/main.css\" />
-        <link rel = \"stylesheet\" type = \"text/css\" href = \"includes/css/form.css\" />
+        <link rel=\"stylesheet\" type=\"text/css\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">
+        <link rel=\"stylesheet\" type=\"text/css\" href=\"includes/css/main.css\" />
+        <link rel=\"stylesheet\" type=\"text/css\" href=\"includes/css/form.css\" />
         
-        <script src = \"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\" ></script >
-        <script src = \"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" ></script >
+        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\" ></script >
+        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" ></script >
         
         
     </head >
@@ -113,30 +112,32 @@ class Page
       {
         if($this->loggedIn) {
             return "
-        <div class=\"topbar\">
-                <div class=\"container\">
+            <div class=\"topbar\">
+                <div class=\"container-fluid\">
                     <div class=\"row\">
                         <div class=\"col-xs-8\">
                             <h1>T</h1>
                         </div>                   
-                        <div class=\"col-xs-4 dropdown\">
-                            <button class=\"btn btn-primary dropdown-toggle\" id=\"user-menu\" type=\"button\" data-toggle=\"dropdown\"
-                                    style=\"background: url('" . HOME_URL . "/images/users/example.jpg') no-repeat right 12px center; background-size: 40px 40px;\">
-                                    <span class=\"badge\">" . $this->User->getUserRole()->getName() . "</span> " .  $this->User->getUsername() . " 
-                            </button>
-                            <ul class=\"dropdown-menu dropdown-menu-right\">
-                                <li class=\"dropdown-header\">Verbundene E-Mail-Adresse</li>
-                                <li><a href=\"mailto:" . $this->User->getEMail() . "\">" .  $this->User->getEMail() . "</a></li>
-                                <li class=\"divider\" ></li >
-                                <li ><a href = \"#\" ><span class=\"glyphicon glyphicon-user\" ></span > Profil bearbeiten </a ></li >
-                                <li ><a href = \"login.php?logout=true\" ><span class=\"glyphicon glyphicon-off\" ></span > Abmelden</a ></li >
-                            </ul >
+                        <div class=\"col-xs-4\">
+                            <div class='dropdown'>
+                                <button class=\"btn btn-primary dropdown-toggle\" id=\"user-menu\" type=\"button\" data-toggle=\"dropdown\"
+                                        style=\"background: url('" . HOME_URL . "/images/users/example.jpg') no-repeat right 12px center; background-size: 40px 40px;\">
+                                        <span class=\"badge\">" . $this->User->getUserRole()->getName() . "</span> " .  $this->User->getUsername() . " 
+                                </button>
+                                <ul class=\"dropdown-menu dropdown-menu-right\" role=\"menu\">
+                                    <li class=\"dropdown-header\">Verbundene E-Mail-Adresse</li>
+                                    <li><a href=\"mailto:" . $this->User->getEMail() . "\">" .  $this->User->getEMail() . "</a></li>
+                                    <li class=\"divider\" ></li>
+                                    <li><a href=\"#\" ><span class=\"glyphicon glyphicon-user\" ></span> Profil bearbeiten </a></li>
+                                    <li><a href=\"login.php?logout=true\" ><span class=\"glyphicon glyphicon-off\" ></span> Abmelden</a></li>
+                                </ul>
+                            </div>
                         </div >
                     </div >
                 </div >
             </div > 
             <div class=\"dash\">
-                <div class=\"container\">
+                <div class=\"container-fluid\">
                     <div class=\"row\">";
         }
         else {
