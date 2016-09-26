@@ -47,7 +47,7 @@ class CustomerMapper extends DataMapper
 
     public static function findById($id)
     {
-        $query = self::$db->query("select * from Customer where ID=" . $id);
+        $query = self::$db->query("SELECT * FROM Customer WHERE ID=" . $id);
 
         if($e = $query->fetch(PDO::FETCH_OBJ))
         {
@@ -57,7 +57,7 @@ class CustomerMapper extends DataMapper
             $customer->setFirstName($e->FirstName);
             $customer->setLastName($e->LastName);
             $customer->setStreet($e->Street);
-            $customer->setZIPCode($e->ZIPCode);
+            $customer->setZipCode($e->ZIPCode);
             $customer->setCity($e->City);
             $customer->setEMail($e->EMail);
             $customer->setPhone($e->Phone);
@@ -84,7 +84,7 @@ class CustomerMapper extends DataMapper
             $customer->setFirstName($e->FirstName);
             $customer->setLastName($e->LastName);
             $customer->setStreet($e->Street);
-            $customer->setZIPCode($e->ZIPCode);
+            $customer->setZipCode($e->ZIPCode);
             $customer->setCity($e->City);
             $customer->setEMail($e->EMail);
             $customer->setPhone($e->Phone);
@@ -101,7 +101,7 @@ class CustomerMapper extends DataMapper
     public static function update($customer)
     {
         $st = self::$db->prepare("
-        UPDATE customer SET 
+        UPDATE Customer SET 
         CompanyName = :CompanyName,
         FirstName = :FirstName,
         LastName = :LastName,

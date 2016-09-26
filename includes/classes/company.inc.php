@@ -260,7 +260,7 @@ class Company
     {
         $return = '
         <h6>' . $this->getName() . '</h6>
-        <p>Adresse: ' . $this->getStreet() . ' - ' . $this->getZipCode(). ' - '. $this->getCityName()
+        <p>Adresse: ' . $this->getStreet() . ' - ' . $this->getZipCode(). ' - '. $this->getCity()
         .' CEO: ' . $this->getCeo() . 'eMail: ' . $this->getEMail()
         .' Bank: ' . $this->getBank() . 'BIC: ' . $this->getBic(). 'IBAN: ' . $this->getIban()
         .'Register: ' .$this->getRegister() . 'RegisterNr: ' .$this->getRegisterNr() .'MwSt: ' .$this->getVatid() . '
@@ -286,11 +286,12 @@ class Company
             $company->setRegister($post['register']);
             $company->setRegisterNr($post['registerNr']);
             $company->setVatid($post['vatId']);
+            $company->setZipCode($post['zipCode']);
 
-        if(is_numeric($post['zipCode']))
-            $company->setZipCode(intval($post['zipCode']));
-        else
-            return "Falsche PLZ Eingabe.";
+     //  if(is_numeric($post['zipCode']))
+       //$company->setZipCode(intval($post['zipCode']));
+    //else
+      //return "Falsche PLZ Eingabe.";
 
         return $company;
     }
@@ -334,12 +335,12 @@ class Company
 
         return "
 <div class=\"form-style-1\">
-<form action=\"\" method=\"POST\">
+<form action=\"?id=2\" method=\"POST\">
 <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
-<input type=\"hidden\" name=\"action\" value=\"$companyId\">
+<input type=\"hidden\" name=\"companyid\" value=\"$companyId\" >
 
 <label for=\"name\"><span>Name<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"name\" vaue=\"$name\" maxlength=\"100\" placeholder=\"Name\" required/>
+  <input type=\"text\" class=\"input-field\" name=\"name\" value=\"$name\" maxlength=\"100\" placeholder=\"Name\" required/>
 </label>
 
 <label for=\"name\"><span>Straße<span class=\"required\">*</span></span> 
@@ -347,7 +348,7 @@ class Company
 </label>
 
 <label for=\"name\"><span>PLZ<span class=\"required\">*</span></span> 
-  <input type=\"text\" class=\"input-field\" name=\"plz\" value=\"$zipCode\" maxlength=\"11\" placeholder=\"PLZ\" required/>
+  <input type=\"text\" class=\"input-field\" name=\"zipCode\" value=\"$zipCode\" maxlength=\"11\" placeholder=\"PLZ\" required/>
 </label>
 
 <label for=\"name\"><span>Stadt<span class=\"required\">*</span></span> 
@@ -387,11 +388,10 @@ class Company
 </label>
 
 
-<label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
+<label><span>&nbsp;</span><input class='btn' type=\"submit\" value=\"speichern\" /></label>
 
 </form>
-</div>
-        ";
+</div>";
     }
 
 
@@ -410,5 +410,60 @@ class Company
 
         return $content;
     }
+
+    public static function getTable($companies)
+    {
+        $content = "
+                 <table>
+                  <tr>
+                    <th>ID</th>
+                    <th>Firmenname</th>
+                    <th>Straße</th>
+                    <th>PLZ</th>
+                    <th>Stadt</th>
+                    <th>eMail</th>
+                    <th>Bank</th>
+                    <th>IBAN</th>
+                    <th>BIC</th>
+                    <th>CEO</th>
+                    <th>Register</th>
+                    <th>Register Nummer</th>
+                    <th>Steuernummer</th>
+                    <th>&nbsp;</th>
+                   </tr>
+                ";
+
+        foreach ($companies as $company)
+        {
+            $content .= "
+                        <tr>
+                         <td>" . $company->getId() . "</td>
+                         <td>" . $company->getName() . "</td>
+                         <td>" . $company->getStreet() . "</td>
+                         <td>" . $company->getZipCode() . "</td>
+                         <td>" . $company->getCity() . "</td>
+                         <td>" . $company->getEMAil() . "</td>
+                         <td>" . $company->getBank() . "</td>
+                         <td>" . $company->getIban() . "</td>
+                         <td>" . $company->getBic() . "</td>
+                         <td>" . $company->getCeo() . "</td>
+                         <td>" . $company->getRegister() . "</td>
+                         <td>" . $company->getRegisterNr() . "</td>
+                         <td>" . $company->getVatid() . "</td>
+                         <td class='controls'>
+                            <button class='btn update' onclick=\"window.location.href='?id=1&companyid=" . $company->getId() . "'\">&auml;ndern</button>
+                            <button class='btn delete' onclick=\"window.location.href='?id=4&companyid=" . $company->getId() . "'\">l&ouml;schen</button>
+                         </td>
+                        </tr>
+        ";
+        }
+
+        $content .= "</table>
+                       <button class=\"btn\" onclick=\"window.location.href='?id=3'\">Neue Firma</button>
+                ";
+
+        return $content;
+    }
+
 
 }
