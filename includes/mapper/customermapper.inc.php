@@ -31,7 +31,7 @@ class CustomerMapper extends DataMapper
             ':FirstName' => $customer->getFirstName(),
             ':LastName' => $customer->getLastName(),
             ':Street' => $customer->getStreet(),
-            ':ZIPCode' => $customer->getZIPCompany(),
+            ':ZIPCode' => $customer->getZipCode(),
             ':City' => $customer->getCity(),
             ':EMail' => $customer->getEMail(),
             ':Phone' => $customer->getPhone()
@@ -89,7 +89,7 @@ class CustomerMapper extends DataMapper
             $customer->setEMail($e->EMail);
             $customer->setPhone($e->Phone);
 
-            $customer[] = $customer;
+            $customers[] = $customer;
         }
 
         if($query->rowCount() == 0)

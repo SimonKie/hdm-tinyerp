@@ -37,9 +37,9 @@ if($id == '1')
     if ($customer instanceof Customer) {
         // If the Mapper passed correctly, the data will be given to database
         if ($_POST['action'] == 'update') {
-            VatMapper::update($customer);
+            CustomerMapper::update($customer);
         } else {
-            VatMapper::add($customer);
+            CustomerMapper::add($customer);
         }
 
 
