@@ -307,6 +307,51 @@ class Customer
 
         return $content;
     }
+    
+    public static function getTable($customers)
+    {
+        $content = "
+                 <table>
+                  <tr>
+                    <th>ID</th>
+                    <th>Firmennamen</th>
+                    <th>Vorname</th>
+                    <th>Nachname</th>
+                    <th>Strasse</th>
+                    <th>PLZ</th>
+                    <th>Stadt</th>
+                    <th>Telefonnummer</th>
+                    <th>EMail</th>
+                    <th>&nbsp;</th>
+                   </tr>
+                ";
 
+        //if no customer is embeded there is a Warning: Invalid argument supplied for foreach() in C:\Users\Daniel\xampp\htdocs\tinyerp\includes\classes\customer.inc.php on line 330
+        foreach ($customers as $customer)
+        {
+            $content .= "
+                        <tr>
+                         <td>" . $customer->getId() . "</td>
+                         <td>" . $customer->getCompanyName() . "</td>
+                         <td>" . $customer->getFullName() . "</td>
+                         <td>" . $customer->getStreet() . "</td>
+                         <td>" . $customer->getZipCode() . "</td>
+                         <td>" . $customer->getCity() . "</td>
+                         <td>" . $customer->getPhone() . "</td>
+                         <td>" . $customer->getEMail() . "</td>
+                         <td class='controls'>
+                            <button class='btn update' onclick=\"window.location.href='?id=1&customerid=" . $customer->getId() . "'\">&auml;ndern</button>
+                            <button class='btn delete' onclick=\"window.location.href='?id=4&customerid=" . $customer->getId() . "'\">l&ouml;schen</button>
+                         </td>
+                        </tr>
+        ";
+        }
+
+        $content .= "</table>
+                       <button class=\"btn\" onclick=\"window.location.href='?id=3'\">Neuer Kunde</button>
+                ";
+
+        return $content;
+    }
 
 }

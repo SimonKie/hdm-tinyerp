@@ -66,7 +66,7 @@ if($id == '1')
 
 
 $page = new Page();
-$page->setTitle("tinyERP - Productcategory");
+$page->setTitle("tinyERP - Produkkategorie");
 $page->setRightArea($page->getMasterDataNav());
 $page->setContent($content);
 
