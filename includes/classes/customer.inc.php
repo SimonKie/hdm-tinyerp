@@ -196,7 +196,7 @@ class Customer
 
         return $return;
     }
-    
+
     public static function formMapper($post)
     {
         $Customer = new Customer();
@@ -209,13 +209,14 @@ class Customer
             $Customer->setPhone($post['phone']);
             $Customer->setCity($post['city']);
 
-        if(is_numeric($post['zipCode']))
+       /* if(is_numeric($post['zipCode']))
 
             $Customer->setZipCode(intval($post['zipCode']));
         else
             return "Falsche PLZ.";
-
+*/
         return $Customer;
+
     }
 
 
@@ -249,9 +250,9 @@ class Customer
 
         return "
             <div class=\"form-style-1\">
-            <form action=\"\" method=\"POST\">
+            <form action=\"?id=2\" method=\"POST\">
             <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
-            <input type=\"hidden\" name=\"action\" value=\"$customerId\" />
+            <input type=\"hidden\" name=\"customerId\" value=\"$customerId\" />
             
             <label for=\"name\"><span>Firmename<span class=\"required\">*</span></span> 
               <input type=\"text\" class=\"input-field\" name=\"companyName\" value=\"$companyName\" maxlength=\"100\" placeholder=\"Firmenname\" required/>
@@ -278,7 +279,7 @@ class Customer
             </label>
             
             <label for=\"name\"><span>Telefon<span class=\"required\">*</span></span> 
-              <input type=\"text\" class=\"input-field\" name=\"phone\"value=\"$phone\" maxlength=\"100\" placeholder=\"Telefon\" required/>
+              <input type=\"text\" class=\"input-field\" name=\"phone\" value=\"$phone\" maxlength=\"100\" placeholder=\"Telefon\" required/>
             </label>
             
             <label for=\"name\"><span>eMail<span class=\"required\">*</span></span> 
@@ -307,6 +308,52 @@ class Customer
 
         return $content;
     }
+    
+    public static function getTable($customers)
+    {
+        $content = "
+                 <table>
+                  <tr>
+                    <th>ID</th>
+                    <th>Firmennamen</th>
+                    <th>Vorname</th>
+                    <th>Nachname</th>
+                    <th>Strasse</th>
+                    <th>PLZ</th>
+                    <th>Stadt</th>
+                    <th>Telefonnummer</th>
+                    <th>EMail</th>
+                    <th>&nbsp;</th>
+                   </tr>
+                ";
 
+        //if no customer is embeded there is a Warning: Invalid argument supplied for foreach() in C:\Users\Daniel\xampp\htdocs\tinyerp\includes\classes\customer.inc.php on line 330
+        foreach ($customers as $customer)
+        {
+            $content .= "
+                        <tr>
+                         <td>" . $customer->getId() . "</td>
+                         <td>" . $customer->getCompanyName() . "</td>
+                         <td>" . $customer->getFirstName() . "</td>
+                         <td>" . $customer->getLastName() . "</td>
+                         <td>" . $customer->getStreet() . "</td>
+                         <td>" . $customer->getZipCode() . "</td>
+                         <td>" . $customer->getCity() . "</td>
+                         <td>" . $customer->getPhone() . "</td>
+                         <td>" . $customer->getEMail() . "</td>
+                         <td class='controls'>
+                            <button class='btn update' onclick=\"window.location.href='?id=1&customerid=" . $customer->getId() . "'\">&auml;ndern</button>
+                            <button class='btn delete' onclick=\"window.location.href='?id=4&customerid=" . $customer->getId() . "'\">l&ouml;schen</button>
+                         </td>
+                        </tr>
+        ";
+        }
+
+        $content .= "</table>
+                       <button class=\"btn\" onclick=\"window.location.href='?id=3'\">Neuer Kunde</button>
+                ";
+
+        return $content;
+    }
 
 }
