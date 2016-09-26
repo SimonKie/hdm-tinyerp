@@ -208,6 +208,7 @@ class Customer
             $Customer->setEMail($post['eMail']);
             $Customer->setPhone($post['phone']);
             $Customer->setCity($post['city']);
+            $Customer->setZipCode($post['zipCode']);
 
        /* if(is_numeric($post['zipCode']))
 

@@ -38,15 +38,14 @@ if($id == '1')
         // If the Mapper passed correctly, the data will be given to database
         if ($_POST['action'] == 'update') {
             CustomerMapper::update($customer);
+            $content .= "<div class='alert alert-success'> <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><p>Kunde erfolgreich ge&auml;ndert.</p></div>";
+
         } else {
             CustomerMapper::add($customer);
+            $content .= "<div class=\'alert alert-success'><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><p>Kunde erfolgreich eingef&uuml;gt.</p></div>";
+
         }
 
-
-        $content .= "<div class=\"alert alert-success\">
-  <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-  Datensatz erfolgreich eingef&uuml;gt.
-</div>";
         $content .= Customer::getTable(CustomerMapper::getAllCustomers());
 
     }
