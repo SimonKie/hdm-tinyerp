@@ -27,6 +27,7 @@ class Page
     // Links for masterdata navigabtion menu
     private $masterDataNav = array(
         'Firma' => '',
+        'Kunden' => 'customer.php',
         'Mitarbeiter' => '',
         'Steuersätze' => 'vat.php',
         'Produktkategorien' => 'productcategory.php',
