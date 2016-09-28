@@ -15,7 +15,7 @@ class CustomerMapper extends DataMapper
 
     public static function add($customer){
         $st = self::$db->prepare("
-        INSERT INTO Customer set 
+        INSERT INTO Customer SET
         CompanyName = :CompanyName,
         FirstName = :FirstName,
         LastName = :LastName,
@@ -42,7 +42,7 @@ class CustomerMapper extends DataMapper
 
     public static function delete($customer)
             {
-        self::$db->query("delete from Customer where ID=" . $customer->getId());
+        self::$db->query("DELETE FROM Customer WHERE ID=" . $customer->getId());
     }
 
     public static function findById($id)
@@ -72,7 +72,7 @@ class CustomerMapper extends DataMapper
 
     public static function getAllCustomers()
     {
-        $query = self::$db->query("SELECT * FROM Customer");
+        $query = self::$db->query("SELECT * FROM Customer ORDER BY LastName");
 
         $customer = array();
 
@@ -95,7 +95,7 @@ class CustomerMapper extends DataMapper
         if($query->rowCount() == 0)
             return null;
         else
-            return $customer;
+            return $customers;
     }
 
     public static function update($customer)
@@ -118,11 +118,13 @@ class CustomerMapper extends DataMapper
             ':FirstName' => $customer->getFirstName(),
             ':LastName' => $customer->getLastName(),
             ':Street' => $customer->getStreet(),
-            ':ZIPCode' => $customer->getZIPCompany(),
+            ':ZIPCode' => $customer->getZIPCode(),
             ':City' => $customer->getCity(),
             ':EMail' => $customer->getEMail(),
             ':Phone' => $customer->getPhone(),
             ':id' => $customer->getId()
         ));
+
+        return self::$db->lastInsertId();
     }
 }

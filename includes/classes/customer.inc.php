@@ -112,7 +112,8 @@ class Customer
      */
     public function setId($id)
     {
-        $this->id = $id;
+        if($this->id == null)
+            $this->id = $id;
     }
 
     /**
@@ -200,7 +201,8 @@ class Customer
     public static function formMapper($post)
     {
         $Customer = new Customer();
-        
+
+            $Customer->setId($post['customerid']);
             $Customer->setCompanyName($post['companyName']);
             $Customer->setFirstName($post['firstName']);
             $Customer->setLastName($post['lastName']);
@@ -253,7 +255,7 @@ class Customer
             <div class=\"form-style-1\">
             <form action=\"?id=2\" method=\"POST\">
             <input type=\"hidden\" name=\"action\" value=\"$hidden\" />
-            <input type=\"hidden\" name=\"customerId\" value=\"$customerId\" />
+            <input type=\"hidden\" name=\"customerid\" value=\"$customerId\" />
             
             <label for=\"name\"><span>Firmename<span class=\"required\">*</span></span> 
               <input type=\"text\" class=\"input-field\" name=\"companyName\" value=\"$companyName\" maxlength=\"100\" placeholder=\"Firmenname\" required/>
@@ -287,7 +289,7 @@ class Customer
               <input type=\"text\" class=\"input-field\" name=\"eMail\" value=\"$eMail\" maxlength=\"100\" placeholder=\"eMail\" required/>
             </label>
              
-            <label><span>&nbsp;</span><input type=\"submit\" value=\"speichern\" /></label>
+            <label><span>&nbsp;</span><input class='btn' type=\"submit\" value=\"speichern\" /></label>
             
             </form>
             </div>
@@ -342,7 +344,7 @@ class Customer
                          <td>" . $customer->getCity() . "</td>
                          <td>" . $customer->getPhone() . "</td>
                          <td>" . $customer->getEMail() . "</td>
-                         <td class='controls'>
+                         <td /*class='controls'*/>
                             <button class='btn update' onclick=\"window.location.href='?id=1&customerid=" . $customer->getId() . "'\">&auml;ndern</button>
                             <button class='btn delete' onclick=\"window.location.href='?id=4&customerid=" . $customer->getId() . "'\">l&ouml;schen</button>
                          </td>
