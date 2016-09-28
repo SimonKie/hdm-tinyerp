@@ -72,7 +72,7 @@ class CustomerMapper extends DataMapper
 
     public static function getAllCustomers()
     {
-        $query = self::$db->query("SELECT * FROM Customer ORDER BY LastName");
+        $query = self::$db->query("SELECT * FROM Customer ORDER BY CompanyName");
 
         $customer = array();
 
