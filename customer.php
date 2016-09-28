@@ -99,3 +99,4 @@ $page->setRightArea($page->getMasterDataNav());
 $page->setContent($content);
 
 $page->run();
+
