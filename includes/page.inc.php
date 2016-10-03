@@ -28,7 +28,7 @@ class Page
     private $masterDataNav = array(
         'Firma' => '',
         'Kunden' => 'customer.php',
-        'Mitarbeiter' => '',
+        'Mitarbeiter' => 'employee.php',
         'Steuersätze' => 'vat.php',
         'Produktkategorien' => 'productcategory.php',
         'Produkte' => '',

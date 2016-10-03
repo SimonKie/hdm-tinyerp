@@ -210,6 +210,45 @@ class Employee
         return $content;
     }
 
+    public static function getTable($employees)
+    {
+        $content = "
+                 <table>
+                  <tr>
+                    <th>ID</th>
+                    <th>Vorname</th>
+                    <th>Nachname</th>
+                    <th>Telefonnummer</th>
+                    <th>EMail</th>
+                    <th>&nbsp;</th>
+                   </tr>
+                ";
+
+        //if no employee is embeded there is a Warning: Invalid argument supplied for foreach() in C:\Users\Daniel\xampp\htdocs\tinyerp\includes\classes\employee.inc.php on line 330
+        foreach ($employees as $employee)
+        {
+            $content .= "
+                        <tr>
+                         <td>" . $employee->getId() . "</td>
+                         <td>" . $employee->getFirstName() . "</td>
+                         <td>" . $employee->getLastName() . "</td>
+                         <td>" . $employee->getPhone() . "</td>
+                         <td>" . $employee->getEMail() . "</td>
+                         <td /*class='controls'*/>
+                            <button class='btn update' onclick=\"window.location.href='?id=1&employeeid=" . $employee->getId() . "'\">&auml;ndern</button>
+                            <button class='btn delete' onclick=\"window.location.href='?id=4&employeeid=" . $employee->getId() . "'\">l&ouml;schen</button>
+                         </td>
+                        </tr>
+        ";
+        }
+
+        $content .= "</table>
+                       <button class=\"btn\" onclick=\"window.location.href='?id=3'\">Neuer Mitarbeiter</button>
+                ";
+
+        return $content;
+    }
+
 
 
 }
