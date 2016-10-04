@@ -128,7 +128,7 @@ class CompanyMapper extends DataMapper
         Register = :Register,
         RegisterNr = :RegisterNr,
         VATID = :VATID
-        WHERE ID= :ID
+        WHERE ID= :id
         ");
 
         $st->execute(array(
@@ -144,8 +144,10 @@ class CompanyMapper extends DataMapper
             ':Register' => $company->getRegister(),
             ':RegisterNr' => $company->getRegisterNr(),
             ':VATID' => $company->getVatid(),
-            ':ID' => $company->getId()
+            ':id' => $company->getId()
         ));
+
+        return self::$db->lastInsertId();
     }
 
 

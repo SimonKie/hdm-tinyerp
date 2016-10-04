@@ -74,7 +74,7 @@ class CustomerMapper extends DataMapper
     {
         $query = self::$db->query("SELECT * FROM Customer ORDER BY CompanyName");
 
-        $customer = array();
+        $customers = array();
 
         while($e = $query->fetch(PDO::FETCH_OBJ))
         {
