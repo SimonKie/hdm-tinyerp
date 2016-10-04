@@ -99,6 +99,7 @@ class Page
         <link rel=\"stylesheet\" type=\"text/css\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">
         <link rel=\"stylesheet\" type=\"text/css\" href=\"includes/css/main.css\" />
         <link rel=\"stylesheet\" type=\"text/css\" href=\"includes/css/form.css\" />
+        <link rel=\"stylesheet\" type=\"text/css\" href=\"includes/css/modal.css\" />
         
         <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\" ></script >
         <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" ></script >
@@ -252,12 +253,75 @@ class Page
         <div class=\"row\">
             <div class=\"col-xs-12\">
                 <p class=\"copyright\">&copy; " . date('Y') . " HdM GmbH</p>
+                
+                <button id=\"myBtn\">Impessum</button>
+                <!-- The Modal -->
+                <div id=\"myModal\" class=\"modal\">
+                
+                  <!-- Modal content -->
+                  <div class=\"modal-content\">
+                    <div class=\"modal-header\">
+                      <span class=\"close\">×</span>
+                      <h2>Impressum</h2>
+                    </div>
+                    <div class=\"modal-body\">
+                      <p>Anbieter:<br>
+                    Max Mustermann<br>
+                    Nobelstr. 8<br>
+                    12345 Stuttgart<br><br>
+                    
+                    Kontakt:<br>
+                    Telefon: 030/12345678<br>
+                    Telefax: 030/12345679<br>
+                    e-Mail: tinyERP@hdm-stuttgart.de<br>
+                    Website: www.tinyerp.risenet.de<br><br>
+                
+                    Registergericht: AG Stuttgart<br>
+                    HRB-Nummer: 54321<br>
+                    Umsatzsteueridentifikationsnummer: 123456789</p>
+                    </div>
+                    <div class=\"modal-footer\">                  
+                    <input class=\"modal-footer-btn\" type=\"button\" 
+                    onClick=\"window.print()\" 
+                    value=\"Ausdrucken\"/>
+                    </div>
+                  </div>
+                
+                </div>
+                <script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById('myBtn');
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName(\"close\")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = \"block\";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = \"none\";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = \"none\";
+    }
+}
+</script>
             </div>
         </div>
     </div>
 </body>
 </html>
         ";
+
     }
 
 
