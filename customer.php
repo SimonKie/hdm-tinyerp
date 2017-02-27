@@ -9,6 +9,7 @@
 
 require_once('includes/bootstrap.inc.php');
 
+// check if user is logged in
 User::checkLogin();
 
 
